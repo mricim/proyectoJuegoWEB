@@ -1,0 +1,2 @@
+composer require mongodb/mongodb --ignore-platform-reqs
+composer require phpmailer/phpmailer --ignore-platform-reqs

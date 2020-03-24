@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <script>
+        function includeHTML(name) {
+            var z, i, elmnt, file, xhttp;
+            /* Loop through a collection of all HTML elements: */
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain atrribute:*/
+                //file = elmnt.getAttribute("w3-include-html");
+                file = elmnt.getAttribute(name);
+                if (file) {
+                    /* Make an HTTP request using the attribute value as the file name: */
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                            }
+                            if (this.status == 404) {
+                                elmnt.innerHTML = "Page not found.";
+                            }
+                            /* Remove the attribute, and call this function once more: */
+                            //elmnt.removeAttribute("w3-include-html");
+                            elmnt.removeAttribute(name);
+                            includeHTML();
+                        }
+                    }
+                    //xhttp.open("GET", file, true);
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /* Exit the function: */
+                    return;
+                }
+            }
+        }
+    </script>
+    <!--
+    <div onload="includeHTML();" w3-include-html="\add\header.html">
+        <script>
+            includeHTML();
+        </script>
+    </div>
+                        //col-8 col-sm-8 col-md-6 col-lg-4 col-xl-4
+    -->
+    <div head="..\add\01head.html">
+        <script>
+            includeHTML("head");
+        </script>
+    </div>
+
+
+
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6LctbbsUAAAAAHVc5Cp-j8FZKOZG1wAH0eUV690D"></script>
+
+</head>
+
+
+
+
+
+<body style="background-color:#848484;">
+    <div menu="..\add\02menu.html">
+        <script>
+            includeHTML("menu");
+        </script>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <main role="main" class="container" style="padding-bottom: 70px;">
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+            <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Login</h6>
+            <div class="containter">
+                <form id="comment_form" action="/includes/reCaptcha/postlogincall.php" method="POST">
+                    <div class="row">
+                        <input class="form-control mr-5 col-7 col-md-6 col-lg-6 col-xl-4 offset-1" type="text"
+                            placeholder="User or Email" aria-label="User">
+                        <input class="form-control mr-5 col-7 col-md-6 col-lg-6 col-xl-4 offset-1 offset-xl-0"
+                            type="password" placeholder="Password" aria-label="Password">
+                        <input type="hidden" name="recaptcha_response" id="recaptcha_response"
+                            class="recaptcha_response">
+                        <input type="hidden" name="send" class="send" id="send" value='postlogin.html'>
+                        <button class="btn btn-outline-success my-0 my-sm-0" type="submit" name="button"
+                            disabled>Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+            <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register</h6>
+            <div class="containter">
+                <form id="comment_form" action="/includes/reCaptcha/postlogincall.php" method="POST">
+                    <div class="row">
+                        <input class="form-control mr-5 col-7 col-md-6 col-lg-6 col-xl-4 offset-1" type="text"
+                            placeholder="Email" aria-label="email" name="email" id="email">
+                        <div class="mr-5 col-7 col-md-6 col-lg-6 col-xl-4 offset-1 offset-xl-0">
+                            <input type="hidden" name="recaptcha_response" id="recaptcha_response"
+                                class="recaptcha_response">
+                            <input type="hidden" name="send" class="send" id="send" value='register.html'>
+                        </div>
+                        <button class="btn btn-outline-success my-0 my-sm-0" type="submit" name="button"
+                            disable>Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="my-5 p-3 bg-white rounded shadow-sm">
+            <div class="containter">
+                <div class="row justify-content-md-center">
+                This site is protected by reCAPTCHA and the Google
+                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+            </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <link rel="import" href="\includes\reCaptcha\reCaptcha.html" onload="handleLoad(event)"
+        onerror="handleError(event, this.href)">
+    <script>
+        var inputText = document.getElementsByClassName('send');
+        //alert(inputText[1].value+" "+inputText[1].value.charAt(0));
+        if (inputText[1].value.charAt(0) != 'h') {
+            var url = window.location.href;
+            var usedUrl = window.location.href.slice(0, url.lastIndexOf("/"));
+            for (i = 0; i < inputText.length; i++) {
+                var cog = inputText[i].value;
+                inputText[i].value = usedUrl + '/' + cog;
+            }
+        }
+        window.setTimeout(function () {
+            if (document.getElementsByClassName('recaptcha_response')[0].value == "" || document
+                .getElementsByClassName('recaptcha_response')[1].value == "") {
+                location.reload();
+            } else {
+                var buttons = document.getElementsByName('button');
+                for (i = 0; i < buttons.length; i++) {
+                    buttons[i].disabled = false;
+                }
+            }
+        }, 3000);
+    </script>
+
+
+    <div footer="..\add\90footer.html">
+        <script>
+            includeHTML("footer");
+        </script>
+    </div>
+    <link rel="import" href="\example\add\91js.html" onload="handleLoad(event)" onerror="handleError(event, this.href)">
+</body>
+
+
+
+
+
+
+
+
+</html>

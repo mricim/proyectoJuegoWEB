@@ -1,0 +1,423 @@
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+body {
+    padding-top: 5px;
+    z-index: 3;
+}
+
+
+/* MAIN MENU */
+
+nav.navbar {
+    background-color: #BDBDBD;
+}
+
+
+/* FIN MAIN MENU */
+
+.columnas_por_folio {
+    margin-bottom: 100px;
+}
+
+.sombra {
+    -webkit-box-shadow: 4px 6px 14px 6px rgba(0, 0, 0, 0.33);
+    -moz-box-shadow: 4px 6px 14px 6px rgba(0, 0, 0, 0.33);
+    box-shadow: 4px 6px 14px 6px rgba(0, 0, 0, 0.33);
+}
+
+
+/* Cortar los mesnsajes muy largos al final del div */
+
+.principal {
+    height: 3% float: left;
+    white-space: pre;
+    /* CSS 2.0 */
+    white-space: pre-wrap;
+    /* CSS 2.1 */
+    white-space: pre-line;
+    /* CSS 3.0 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla */
+    white-space: -hp-pre-wrap;
+    /* HP */
+    word-wrap: break-word;
+    /* IE 5+ */
+}
+
+
+/* CIERRE Cortar los mesnsajes muy largos al final del div */
+
+
+/*CONTADORES DE CARACTERES*/
+
+#divContador {
+    float: right;
+    /* hacemos que quede dentro del divCajaProgreso */
+    margin-right: 10px;
+    margin-top: -1px;
+    font-family: 'Georgia', Times New Roman, Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+#divCajaProgreso {
+    height: 20px;
+    background: #555;
+    margin-bottom: 5px;
+    border: solid #333 2px;
+}
+
+#divProgreso {
+    width: 0px;
+    /* al comenzar no se debe mostrar */
+    height: 16px;
+}
+
+
+/*Para otro contador de caracteres*/
+
+#divContador1 {
+    float: right;
+    /* hacemos que quede dentro del divCajaProgreso */
+    margin-right: 10px;
+    margin-top: -1px;
+    font-family: 'Georgia', Times New Roman, Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+#divCajaProgreso1 {
+    height: 20px;
+    background: #555;
+    margin-bottom: 5px;
+    border: solid #333 2px;
+}
+
+#divProgreso1 {
+    width: 0px;
+    /* al comenzar no se debe mostrar */
+    height: 16px;
+}
+
+
+/*Para otro contador de caracteres*/
+
+#divContador2 {
+    float: right;
+    /* hacemos que quede dentro del divCajaProgreso */
+    margin-right: 10px;
+    margin-top: -1px;
+    font-family: 'Georgia', Times New Roman, Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+#divCajaProgreso2 {
+    height: 20px;
+    background: #555;
+    margin-bottom: 5px;
+    border: solid #333 2px;
+}
+
+#divProgreso2 {
+    width: 0px;
+    /* al comenzar no se debe mostrar */
+    height: 16px;
+}
+
+
+/*Para otro contador de caracteres*/
+
+#divContador3 {
+    float: right;
+    /* hacemos que quede dentro del divCajaProgreso */
+    margin-right: 10px;
+    margin-top: -1px;
+    font-family: 'Georgia', Times New Roman, Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+#divCajaProgreso3 {
+    height: 20px;
+    background: #555;
+    margin-bottom: 5px;
+    border: solid #333 2px;
+}
+
+#divProgreso3 {
+    width: 0px;
+    /* al comenzar no se debe mostrar */
+    height: 16px;
+}
+
+
+/*Para otro contador de caracteres*/
+
+#divContador4 {
+    float: right;
+    /* hacemos que quede dentro del divCajaProgreso */
+    margin-right: 10px;
+    margin-top: -1px;
+    font-family: 'Georgia', Times New Roman, Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+#divCajaProgreso4 {
+    height: 20px;
+    background: #555;
+    margin-bottom: 5px;
+    border: solid #333 2px;
+}
+
+#divProgreso4 {
+    width: 0px;
+    /* al comenzar no se debe mostrar */
+    height: 16px;
+}
+
+
+/*Para otro contador de caracteres*/
+
+#divContador5 {
+    float: right;
+    /* hacemos que quede dentro del divCajaProgreso */
+    margin-right: 10px;
+    margin-top: -1px;
+    font-family: 'Georgia', Times New Roman, Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+#divCajaProgreso5 {
+    height: 20px;
+    background: #555;
+    margin-bottom: 5px;
+    border: solid #333 2px;
+}
+
+#divProgreso5 {
+    width: 0px;
+    /* al comenzar no se debe mostrar */
+    height: 16px;
+}
+
+
+/*Para otro contador de caracteres*/
+
+#divContador6 {
+    float: right;
+    /* hacemos que quede dentro del divCajaProgreso */
+    margin-right: 10px;
+    margin-top: -1px;
+    font-family: 'Georgia', Times New Roman, Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+#divCajaProgreso6 {
+    height: 20px;
+    background: #555;
+    margin-bottom: 5px;
+    border: solid #333 2px;
+}
+
+#divProgreso6 {
+    width: 0px;
+    /* al comenzar no se debe mostrar */
+    height: 16px;
+}
+
+
+/*Para otro contador de caracteres*/
+
+#divContador7 {
+    float: right;
+    /* hacemos que quede dentro del divCajaProgreso */
+    margin-right: 10px;
+    margin-top: -1px;
+    font-family: 'Georgia', Times New Roman, Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+#divCajaProgreso7 {
+    height: 20px;
+    background: #555;
+    margin-bottom: 5px;
+    border: solid #333 2px;
+}
+
+#divProgreso7 {
+    width: 0px;
+    /* al comenzar no se debe mostrar */
+    height: 16px;
+}
+
+
+/*Para otro contador de caracteres*/
+
+#divContador8 {
+    float: right;
+    /* hacemos que quede dentro del divCajaProgreso */
+    margin-right: 10px;
+    margin-top: -1px;
+    font-family: 'Georgia', Times New Roman, Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+#divCajaProgreso8 {
+    height: 20px;
+    background: #555;
+    margin-bottom: 5px;
+    border: solid #333 2px;
+}
+
+#divProgreso8 {
+    width: 0px;
+    /* al comenzar no se debe mostrar */
+    height: 16px;
+}
+
+
+/*LOS COLORES*/
+
+.verde {
+    background-color: #00A600;
+}
+
+.amarillo {
+    background-color: #DFE40E
+}
+
+.rojo {
+    background-color: #FF2B2B
+}
+
+.casirojo {
+    background-color: #FF6347
+}
+
+
+/* FIN Barra de progreso y delimitador de texto */
+
+
+/*MUNTI DESPLEGABLES http://bootsnipp.com/snippets/featured/multi-level-dropdown-menu-bs3 
+http://bootsnipp.com/snippets/featured/large-dropdown-menu
+http://www.bootply.com/hI0VIES0RD
+*/
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: "";
+    float: left;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+
+/* Para hacer que todos los desplegables se hagan a la derecha!
+	
+	.dropdown-menu {
+		top: 0;
+		left: 100%;
+		margin-top: -6px;
+		margin-left: -1px;
+		-webkit-border-radius: 0 6px 6px 6px;
+		-moz-border-radius: 0 6px 6px;
+		border-radius: 0 6px 6px 6px;
+	}
+	 */
+
+
+/* centered columns styles */
+
+.row-centered {
+    text-align: center;
+}
+
+.col-centered {
+    display: inline-block;
+    float: none;
+    /* reset the text-align */
+    text-align: center;
+}
+
+
+/* Esto es para el gioncito ese raro que sale en los menus mirando para aariba*/
+
+.dropdown-menu:before {
+    position: absolute;
+    top: -7px;
+    right: 9px;
+    display: inline-block;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-left: 7px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    content: '';
+}
+
+.dropdown-menu:after {
+    position: absolute;
+    top: -6px;
+    right: 10px;
+    display: inline-block;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #ffffff;
+    border-left: 6px solid transparent;
+    content: '';
+}
+
+
+/**/
