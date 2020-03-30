@@ -1,0 +1,90 @@
+* {
+    font-family: monospace;
+    font-size: 15px;
+}
+h3 {
+	text-align:center;
+}
+.error {
+	color:#d70000;
+	text-align:center;
+}
+img {
+	width: 640px;
+	height: 400px;
+	display:block;
+	margin:auto;
+}
+input:invalid {
+    border: 2px solid red;
+}
+table {
+    border: 2px solid black;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 0 auto;
+}
+
+td {
+    border: 1px solid darkolivegreen;
+    border-spacing: 0;
+    width: 20%;
+}
+
+input,
+.boto {
+    width: 150px;
+    height: 30px;
+    margin: 0;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.boto {
+	color:white !important;
+	 border-color: darkolivegreen;
+    border-style: groove;
+    text-align: center;
+    background-color: #86aa4a!important;
+}
+.boto:hover {
+    background-color: darkolivegreen !important;
+    color:white;
+}
+
+input {
+    border-color: darkolivegreen;
+    border-style: groove;
+    text-align: center;
+}
+input:focus {
+    border-width: 3px;
+}
+
+#divDonarAlta {
+    width:auto !important;  
+    height: auto !important;
+    color:black; 
+    border:2px solid #fa8f68;
+    border-radius: 2px;
+    padding: 5px 10px;
+    background-color: #fa8f68;
+    float: right;
+    font-size: 12px;
+}
+#divDonarAlta:hover {
+    background-color: darkolivegreen !important;
+    border:2px solid darkolivegreen;
+    color: white !important;
+}
+#divDonarAlta a:hover {
+	color:white;
+}
+#divDonarAlta a:visited {
+	color:white;
+}
+#divDonarAlta a:link {
+	color:white;
+}
