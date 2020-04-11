@@ -3205,7 +3205,7 @@ centos:
   label: Centos
   search:
     terms:
-      - unix
+      - linux
       - operating system
       - os
   styles:
@@ -6732,7 +6732,7 @@ fedora:
   label: Fedora
   search:
     terms:
-      - unix
+      - linux
       - operating system
       - os
   styles:
@@ -14730,7 +14730,7 @@ redhat:
   label: Redhat
   search:
     terms:
-      - unix
+      - linux
       - operating system
       - os
   styles:
@@ -17511,7 +17511,7 @@ suse:
   label: Suse
   search:
     terms:
-      - unix
+      - linux
       - operating system
       - os
   styles:
@@ -18943,7 +18943,7 @@ ubuntu:
   label: Ubuntu
   search:
     terms:
-      - unix
+      - linux
       - operating system
       - os
   styles:
