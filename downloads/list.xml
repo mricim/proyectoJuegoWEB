@@ -1,0 +1,36 @@
+<lists>
+    <forVersions>
+        <list>
+            <type>installer</type>
+            <href>application/installers/</href>
+            <name>list.xml</name>
+        </list>
+        <list>
+            <type>updater</type>
+            <href>application/update/core/</href>
+            <name>list.xml</name>
+        </list>
+    </forVersions>
+    <files>
+        <list>
+            <system>generic</system>
+            <href>application/update/files/</href>
+            <name>list.xml</name>
+        </list>
+        <list>
+            <system>windows</system>
+            <href>application/update/files/</href>
+            <name>list_windows.xml</name>
+        </list>
+        <list>
+            <system>linux</system>
+            <href>application/update/files/</href>
+            <name>list_linux.xml</name>
+        </list>
+        <list>
+            <system>mac</system>
+            <href>application/update/files/</href>
+            <name>list_mac.xml</name>
+        </list>
+    </files>
+</lists>
