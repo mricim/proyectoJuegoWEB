@@ -30,7 +30,7 @@
         var i;
         var xmlDoc = xml.responseXML;
         var table = "<tr><th>name</th><th>href</th></tr>";
-        var x = xmlDoc.getElementsByTagName("CD");
+        var x = xmlDoc.getElementsByTagName("files");
         for (i = 0; i < x.length; i++) {
             table += "<tr><td>" + x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
                 "</td><td>" +
