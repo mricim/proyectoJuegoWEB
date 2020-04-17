@@ -1,20 +1,26 @@
 <files>
     <file>
-        <name>core.exe</name>
+        <version>0</version>
         <href>windows/core.exe</href>
         <md5>2315084effe53d21ae4909df7f194777</md5>
+        <name>core.exe</name>
         <path>.</path>
+        <remove>false</remove>
     </file>
     <file>
-        <name>generator.exe</name>
+        <version>0</version>
         <href>windows/generator.exe</href>
         <md5>dc4040aac720e62b15968689c540b413</md5>
+        <name>generator.exe</name>
         <path>.</path>
+        <remove>false</remove>
     </file>
     <file>
-        <name>run.exe</name>
+        <version>0</version>
         <href>windows/generator.exe</href>
         <md5>d058136bb7f9b46c35ffd6a8bdf684a7</md5>
+        <name>run.exe</name>
         <path>.</path>
+        <remove>false</remove>
     </file>
 </files>

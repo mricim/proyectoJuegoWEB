@@ -30,12 +30,9 @@
         var i;
         var xmlDoc = xml.responseXML;
         var table = "<tr><th>name</th><th>href</th></tr>";
-        var x = xmlDoc.getElementsByTagName("files");
+        var x = xmlDoc.getElementsByTagName("file");
         for (i = 0; i < x.length; i++) {
-            table += "<tr><td>" + x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
-                "</td><td>" +
-                x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue +
-                "</td></tr>";
+            table += "<tr><td>" + x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue + "</td>" + "<td>" + x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue + "</td>" + "<td>" + x[i].getElementsByTagName("md5")[0].childNodes[0].nodeValue + "</td>"+ "<td>" + x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue + "</td>"+ "<td>" + x[i].getElementsByTagName("path")[0].childNodes[0].nodeValue + "</td>"+ "<td>" + x[i].getElementsByTagName("remove")[0].childNodes[0].nodeValue + "</td>"+ "</tr>";
         }
         document.getElementById("demo").innerHTML = table;
     }
