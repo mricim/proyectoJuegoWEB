@@ -3,34 +3,34 @@
         <list>
             <type>installer</type>
             <href>application/installers/</href>
-            <name>list.xml</name>
+            <file>list.xml</file>
         </list>
         <list>
             <type>updater</type>
             <href>application/update/core/</href>
-            <name>list.xml</name>
+            <file>list.xml</file>
         </list>
     </forVersions>
     <files>
         <list>
             <system>generic</system>
             <href>application/update/files/</href>
-            <name>list.xml</name>
+            <file>list.xml</file>
         </list>
         <list>
             <system>windows</system>
             <href>application/update/files/</href>
-            <name>list_windows.xml</name>
+            <file>list_windows.xml</file>
         </list>
         <list>
             <system>linux</system>
             <href>application/update/files/</href>
-            <name>list_linux.xml</name>
+            <file>list_linux.xml</file>
         </list>
         <list>
             <system>mac</system>
             <href>application/update/files/</href>
-            <name>list_mac.xml</name>
+            <file>list_mac.xml</file>
         </list>
     </files>
 </lists>

@@ -1,0 +1,17 @@
+<lists>
+    <list>
+        <href>windows/</href>
+        <system>windows</system>
+        <file>list.xml</file>
+    </list>
+    <list>
+        <href>linux/</href>
+        <system>linux</system>
+        <file>list.xml</file>
+    </list>
+    <list>
+        <href>mac/</href>
+        <system>mac</system>
+        <file>list.xml</file>
+    </list>
+</lists>
