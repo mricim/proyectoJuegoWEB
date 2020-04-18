@@ -1,17 +1,17 @@
 <lists>
     <list>
-        <href>windows/</href>
         <system>windows</system>
+        <href>windows/</href>
         <file>list.xml</file>
     </list>
     <list>
-        <href>linux/</href>
         <system>linux</system>
+        <href>linux/</href>
         <file>list.xml</file>
     </list>
     <list>
-        <href>mac/</href>
         <system>mac</system>
+        <href>mac/</href>
         <file>list.xml</file>
     </list>
 </lists>
