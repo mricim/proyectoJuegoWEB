@@ -1,6 +1,6 @@
 <?php
 //$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-$target_dir = " /raid5/WEB/html/armegis.tk/uploads/";
+$target_dir = "/var/www/html/armegis.tk/uploads/";
 echo $target_dir;//PRINT TEST
 
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
