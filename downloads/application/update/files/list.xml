@@ -3,7 +3,7 @@
         <type>file</type>
         <href>res/images/error.png</href>
         <name>error.png</name>
-        <path>temp/caca</path>
+        <path>res/images</path>
         <md5>932702c857f947e94102770e419044bc</md5>
     </file>
 </files>
