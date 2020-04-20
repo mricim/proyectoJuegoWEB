@@ -1,26 +1,9 @@
 <files>
     <file>
-        <version>0</version>
-        <href>windows/core.exe</href>
-        <name>core.exe</name>
-        <path>.</path>
-        <remove>false</remove>
-        <md5>2315084effe53d21ae4909df7f194777</md5>
-    </file>
-    <file>
-        <version>0</version>
-        <href>windows/generator.exe</href>
-        <name>generator.exe</name>
-        <path>.</path>
-        <remove>false</remove>
-        <md5>dc4040aac720e62b15968689c540b413</md5>
-    </file>
-    <file>
-        <version>0</version>
-        <href>windows/generator.exe</href>
-        <name>run.exe</name>
-        <path>.</path>
-        <remove>false</remove>
-        <md5>d058136bb7f9b46c35ffd6a8bdf684a7</md5>
+        <type>file</type>
+        <href>res/images/error.png</href>
+        <name>error.png</name>
+        <path>res/images/</path>
+        <md5>932702c857f947e94102770e419044bc</md5>
     </file>
 </files>
