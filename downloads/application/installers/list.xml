@@ -2,16 +2,19 @@
     <list>
         <system>windows</system>
         <href>windows/</href>
+        <type>list</type>
         <file>list.xml</file>
     </list>
     <list>
         <system>linux</system>
         <href>linux/</href>
+        <type>list</type>
         <file>list.xml</file>
     </list>
     <list>
         <system>mac</system>
         <href>mac/</href>
+        <type>list</type>
         <file>list.xml</file>
     </list>
 </lists>
