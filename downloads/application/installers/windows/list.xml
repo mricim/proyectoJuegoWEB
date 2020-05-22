@@ -1,5 +1,12 @@
 <files>
 	<file>
+		<version>0.-13.0.4.20200417.0</version>
+		<type>file</type>
+		<href>0/-13/0/4/20200417/0/Armegis.exe</href>
+		<name>nameJuego.exe</name>
+		<path>tmp</path>
+		<md5>3a9153ba3ee0edd1d24264b42a3f2e9c</md5>
+	</file><file>
 		<version>0.-15.-15.4.20200412.0</version>
 		<type>file</type>
 		<href>0/-15/-15/4/20200412/0/nameJuego.exe</href>

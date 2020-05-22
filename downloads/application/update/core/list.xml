@@ -1,5 +1,11 @@
 <files>
     <file>
+        <version>0.-13.1.4.20200417.0</version>
+        <href>0/-13/0/4/20200417/0/core.jar</href>
+        <name>core.jar</name>
+        <path>bin</path>
+        <md5>6f4da1f2fb75ee0d0dd3f9d3da825ec4</md5>
+    </file><file>
         <version>0.-15.-14.4.20200412.0</version>
         <href>0/-15/-14/4/20200412/0/core.jar</href>
         <name>core.jar</name>
