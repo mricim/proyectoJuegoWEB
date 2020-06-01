@@ -3,18 +3,18 @@
         <system>windows</system>
         <href>windows/</href>
         <type>list</type>
-        <file>list.xml</file>
+        <nameFile>list.xml</nameFile>
     </list>
     <list>
         <system>linux</system>
         <href>linux/</href>
         <type>list</type>
-        <file>list.xml</file>
+        <nameFile>list.xml</nameFile>
     </list>
     <list>
         <system>mac</system>
         <href>mac/</href>
         <type>list</type>
-        <file>list.xml</file>
+        <nameFile>list.xml</nameFile>
     </list>
 </lists>
