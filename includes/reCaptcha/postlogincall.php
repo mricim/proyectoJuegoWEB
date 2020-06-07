@@ -62,7 +62,9 @@
         $SentToEmail = $UserEmail; //email destinatario
         $SentToName =  $UserName; //NAME OR NULL 
         $Asunto = 'Register complet';
-        $BodyHTML = 'Hola que tal, '.$UserName.'? <br><a href="'.$actual_link.'/example/users/beforeregister.html?key='.$hash.'">clicl Aqui</a>'; //Cuerpo
+        $BodyHTML = 'Hola que tal, '.$UserName.'? <br><a href="'.$actual_link.'/example/users/beforeregister.html?key='.$hash.'">Click aquí para terminar el registro.</a>'; //Cuerpo
+        $BodyHTMLTest = 'TEST, '.$UserName.'? <br><a href="'.$actual_link.'/includes/funciones/php/conexionbd.php?key='.$hash.'">Click aquí para terminar el registro.</a>'; //Cuerpo
+
         $x = require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/mail/emailUnique.php');//MAIL
        //PHP MAIL
         require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/mongo/UserTempInsert.php');

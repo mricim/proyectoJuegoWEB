@@ -70,6 +70,10 @@ function conectar_db(){
 		}
 		mysqli_close($conectar);
 
+
+         echo "<script> window.location='../../../example/beforeregister.html'; </script>";
+
+
 ?>
 </body>
 </html>
