@@ -52,7 +52,7 @@
       $UserEmail = $_POST["email"];
       echo '<input type="hidden" name="name" id="name" value="' . $UserName . '">';
       echo '<input type="hidden" name="email" id="email" value="' . $UserEmail . '">';
-      if (strpos($_POST['send'], 'beforeregister.php') !== false) {
+      if (strpos($_POST['send'], 'beforeregister.html') !== false) {
         $t = date("y.m.d"); // e.g. "03.10.01"
         $hash=hash('gost', "a.l45Up=dF8t0".$UserEmail.$t,false);
         //$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -62,7 +62,7 @@
         $SentToEmail = $UserEmail; //email destinatario
         $SentToName =  $UserName; //NAME OR NULL 
         $Asunto = 'Register complet';
-        $BodyHTML = 'Hola que tal, '.$UserName.'? <br><a href="'.$actual_link.'/example/users/beforeregister.php?key='.$hash.'">clicl Aqui</a>'; //Cuerpo
+        $BodyHTML = 'Hola que tal, '.$UserName.'? <br><a href="'.$actual_link.'/example/users/beforeregister.html?key='.$hash.'">clicl Aqui</a>'; //Cuerpo
         $x = require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/mail/emailUnique.php');//MAIL
        //PHP MAIL
         require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/mongo/UserTempInsert.php');
