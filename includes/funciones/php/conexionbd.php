@@ -28,6 +28,7 @@ function conectar_db(){
 				exit;
 			}
 			else{#TODO CORRECTO
+			echo "Conectado a la BD";
 				return $conexion;
 			}
 		}
