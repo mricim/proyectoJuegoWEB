@@ -48,6 +48,7 @@ function conectar_db(){
 			echo"Error: "+$consultar_mensaje+"<br>ERROR TIPO 2".$links->error;
 			echo "<br>No se a enviado el mensaje";
 		} else {
+		    echo $result_mensaje;
 			echo"Se a guardado en nuestra base de datos<br>";
 			echo"<br><b>Todo correcto</b><br>";
 			}
