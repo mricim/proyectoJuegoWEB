@@ -41,15 +41,15 @@ function conectar_db(){
 		//$consultar_mensaje = "INSERT INTO usuarios (nombre,numero,email,reg_date) VALUES ( 'nombre', 15, '".addslashes('correoelectronico@gmail.com')."', '2017-07-23')";
 		//guardar usuarios
 		$links = conectar_db();
-		$consultar_mensaje = "INSERT INTO usuarios (name,email,password,date_register,last_conexion) VALUES ( 'nombre', 'correoelectronico@gmail.com', 'kjdhdf',now(),now())";
+		$consultar_mensaje = "INSERT INTO users (name,email,password,date_register,last_conexion) VALUES ( 'nombre', 'correoelectronico@gmail.com', 'kjdhdf',now(),now())";
 		$result_mensaje = mysqli_query($links, $consultar_mensaje);
 
 		if (isset($result_mensaje) == FALSE) {
 			echo"Error: "+$consultar_mensaje+"<br>ERROR TIPO 2".$links->error;
 			echo "<br>No se a enviado el mensaje";
 		} else {
-		    echo "Result mensaje: ".$result_mensaje."AAA";
-			echo"Se a guardado en nuestra base de datos<br>";
+		    echo "Result mensaje: ".$result_mensaje."AAA<br>";
+			echo"<br>Se a guardado en nuestra base de datos<br>";
 			echo"<br><b>Todo correcto</b><br>";
 			}
 
