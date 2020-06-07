@@ -73,7 +73,7 @@ function conectar_db(){
 		mysqli_close($conectar);
 
 
-        // echo "<script> window.location='../../../example/users/beforeregister.html'; </script>";
+         echo "<script> window.location='../../../example/users/beforeregister.html'; </script>";
 
 
 ?>
