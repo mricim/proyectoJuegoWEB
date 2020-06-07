@@ -142,7 +142,7 @@
 <!--Include conexionbd.php-->
 <?php
         include('../../includes/funciones/php/conexionbd.php');
-        echo <b>$añadido</b>
+        echo '<b>$añadido</b>';
     ?>
 
 <script src="\includes\reCaptcha\reCaptcha.js" type="text/javascript"></script>
