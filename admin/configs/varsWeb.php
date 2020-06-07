@@ -3,11 +3,11 @@
 
 
 $HostSMTP='smtp.gmail.com';// Set the SMTP server to send through
-$ContrasenaDelCorreo='sjagerswmnyqrlyh';// SMTP password
-$SendFromEMAIL='icimcasanova@gmail.com';// SMTP username
-$QuienLoEnviaNAME='Gallery';
-$SendFromEMAILreply='icimcasanova@gmail.com';
-$QuienResponderNAME='Gallery';
+$ContrasenaDelCorreo='cpghrwpxpdwaemxf';// SMTP password
+$SendFromEMAIL='armegisgame@gmail.com';// SMTP username
+$QuienLoEnviaNAME='Armegis';
+$SendFromEMAILreply='armegisgame@gmail.com';
+$QuienResponderNAME='Armegis';
 $PortSMTP=587;// TCP port to connect to
 //FIN MAIL
 
