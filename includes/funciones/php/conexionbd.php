@@ -59,7 +59,7 @@ function conectar_db(){
 
 					//ver usuarios
 		$conectar= conectar_db();//CONECTAR PARA EL PRODUCTO
-		$consultar= "SELECT * FROM usuarios ORDER BY id DESC";
+		$consultar= "SELECT * FROM users ORDER BY id DESC";
 		$resultado = mysqli_query($conectar, $consultar);
 
 		$añadido = false;
@@ -67,7 +67,7 @@ function conectar_db(){
 			$array_resultado[] = $unrow;
 		}
 		foreach($array_resultado as $usuario){
-				echo "<br>".$usuario['id']." ".$usuario['nombre'];
+				echo "<br>".$usuario['id']." ".$usuario['name'];
 				$añadido = true;
 		}
 		mysqli_close($conectar);
