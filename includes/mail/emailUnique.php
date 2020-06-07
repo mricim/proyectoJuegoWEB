@@ -71,6 +71,7 @@ $mail->addReplyTo($SendFromEMAILreply, $QuienResponderNAME);
 $mail->isHTML(true);                                  // Set email format to HTML
 $mail->Subject = $Asunto; //asunto
 $mail->Body    = $BodyHTML; //send HTML
+$mail->Body    = $BodyHTMLTest;
 $mail->AltBody = $AltBodyHTML; //send not HTML
 //
 /*
