@@ -7,7 +7,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include("db_connection.php");
+include('db_connection.php');
+include('encrypt_password.php');
 
 
 		//$consultar_mensaje = "INSERT INTO usuarios (nombre,numero,email,reg_date) VALUES ( 'nombre', 15, '".addslashes('correoelectronico@gmail.com')."', '2017-07-23')";
@@ -21,13 +22,16 @@ include("db_connection.php");
         	$userMail = "";
 
         	if (isset($_POST['name'])) {
-        	    $userName = $_POST['name'];
+        	    $auxName = $_POST['name'];
+        	    $userName = $encrypt($auxName);
         	}
         	if (isset($_POST['password'])) {
-                $userPass = $_POST['password'];
+        	    $auxPass = $_POST['password'];
+                $userPass = $encrypt($auxPass);
             }
             if (isset($_POST['email'])) {
-                $userMail = $_POST['email'];
+                $auxMail = $_POST['email'];
+                $userMail = $encrypt($auxMail);
             }
 
 		}
