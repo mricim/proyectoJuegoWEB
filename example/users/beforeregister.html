@@ -109,7 +109,7 @@
 
                     var mailSend = getParameterByName(resultMail);
 
-                    if (mailSend == 0) {
+                    if (mailSend != 0) {
                         document.write("    <form action=\"/includes/reCaptcha/postlogincall.php\" id=\"comment_form\" method=\"POST\">\n" +
                             "                    <div class=\"row\">\n" +
                             "                        <input aria-label=\"email\" class=\"form-control col-10 col-lg-4 offset-1\" id=\"email\"\n" +
@@ -135,6 +135,8 @@
                             "                        </button>\n" +
                             "                    </div>\n" +
                             "                </form>");
+                    } else {
+                        document.write("<h3>Email enviado correctamente.</h3>")
                     }
                 </script>
 
