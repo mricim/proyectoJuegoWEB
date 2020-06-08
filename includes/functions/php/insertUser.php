@@ -17,6 +17,10 @@ include('user_exists.php');
 
 
 		//Valores del formulario de registro
+
+		$auxMail = "";
+		$auxName = "";
+		$auxPass = "";
 		if ($_POST) {
 		    $userName = "";
         	$userPass = "";
