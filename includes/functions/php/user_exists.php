@@ -15,7 +15,7 @@ include('encrypt_password.php');
         //Si existe el usuario -> return 0
         //Si no existe el usuario -> return 1
 		function userExists($mail) {
-		    $conectar= conectar_db();
+		    //$conectar= conectar_db();
 
             $decryptedMail = $decrypt($mail);
 		    $consulta = "SELECT * FROM users WHERE email = '$mail'";
@@ -27,10 +27,10 @@ include('encrypt_password.php');
 
             if (count($array_resultado) > 0) {
                 echo 'El usuario con email = '. $mail . 'ya existe.';
-                mysqli_close($conectar);
+                //mysqli_close($conectar);
                 return 0;
             } else {
-                mysqli_close($conectar);
+                //mysqli_close($conectar);
                 return 1;
             }
             /*foreach($array_resultado as $usuario){
