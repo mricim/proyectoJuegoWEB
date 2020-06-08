@@ -107,7 +107,7 @@
                         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
                     }
 
-                    var mailSend = getParameterByName(resultMail);
+                    var mailSend = getParameterByName('resultMail');
 
                     if (mailSend != 0) {
                         document.write("    <form action=\"/includes/reCaptcha/postlogincall.php\" id=\"comment_form\" method=\"POST\">\n" +
