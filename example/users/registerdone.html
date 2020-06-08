@@ -73,14 +73,31 @@
 
 
     <main class="container" role="main" style="padding-bottom: 70px;">
+        <script>
+            function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
 
-        <h1>Registro hecho correctamente</h1>
+            var addedUser = getParameterByName('AddedUser');
 
-    <div footer="..\add\90footer.html">
+            if (addedUser == 'true') {
+                document.write("<h1>Registro hecho correctamente</h1>");
+            } else if (addedUser == 'false') {
+                document.write("<h1>Error en el registro, el usuario ya existe.</h1>");
+            } else if (addedUser == 'error') {
+                document.write("<h3>Error en el registro</h3>");
+            }
+        </script>
+
+
+    <!--<div footer="..\add\90footer.html">
         <script>
             includeHTML("footer");
         </script>
-    </div>
+    </div>-->
     </div>
     <link rel="import" href="\example\add\91js.html" onload="handleLoad(event)" onerror="handleError(event, this.href)">
     </body>
