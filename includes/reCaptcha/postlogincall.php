@@ -38,7 +38,8 @@
     require_once($_SERVER['DOCUMENT_ROOT'] . '/admin/configs/varsWeb.php');
     if ($score >= $minimoPersonaReal) {
       //echo 'ERES HUMANO';
-      echo '<form id="form" action="' . $_POST['send'] . '" method="GET">';
+      $formUrl = $_POST['send'].'?mail=send'
+      echo '<form id="form" action="' . $formUrl . '" method="GET">';
       /*
       foreach (array_keys($_POST) as $field) {
         if ($field == 'recaptcha_response' || $field == 'button' || $field == 'send') {
