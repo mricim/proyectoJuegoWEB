@@ -14,7 +14,7 @@ include('user_exists.php');
 
 		//$insert_user = "INSERT INTO usuarios (nombre,numero,email,reg_date) VALUES ( 'nombre', 15, '".addslashes('correoelectronico@gmail.com')."', '2017-07-23')";
 		//guardar usuarios
-		$links = conectar_db();
+
 
 		//Valores del formulario de registro
 		if ($_POST) {
@@ -42,7 +42,7 @@ include('user_exists.php');
         $exists = userExists($auxMail);
         $userMail = $encrypt($auxMail);
         if ($exists == 1) {
-
+            $links = conectar_db();
             $insert_user = "INSERT INTO users (name,email,password,date_register,last_conexion)
             		VALUES ( '$userName', '$userMail', '$userPass',now(),now())";
             $result_mensaje = mysqli_query($links, $insert_user);
