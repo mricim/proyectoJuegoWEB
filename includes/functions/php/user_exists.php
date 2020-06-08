@@ -16,7 +16,7 @@ include 'encrypt_password.php';
         //Si no existe el usuario -> return 1
 		function userExists($mail) {
 		    $conectar= conectar_db();
-
+            echo 'Mail: '.$mail;
             $decryptedMail = $decrypt($mail);
 		    $consulta = "SELECT * FROM users WHERE email = '$mail'";
             $resultado = mysqli_query($conectar, $consulta);
