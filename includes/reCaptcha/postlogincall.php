@@ -38,7 +38,7 @@
     require_once($_SERVER['DOCUMENT_ROOT'] . '/admin/configs/varsWeb.php');
     if ($score >= $minimoPersonaReal) {
       //echo 'ERES HUMANO';
-      $formUrl = $_POST['send'].'?mail=send'
+      $formUrl = $_POST['send'].'?mail=send';
       echo '<form id="form" action="' . $formUrl . '" method="GET">';
       /*
       foreach (array_keys($_POST) as $field) {
