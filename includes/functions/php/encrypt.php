@@ -16,6 +16,6 @@
     }
 
     function encryptPassword($pass) {
-        password_hash($pass, PASSWORD_DEFAULT, array("cost"=>15));
+        return hash('md5', $pass);
     }
 ?>
