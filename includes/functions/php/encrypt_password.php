@@ -11,13 +11,13 @@ $iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
 
  //Encripta
  function encrypt ($valor) {
-     return openssl_encrypt ($valor, $method, $clave, false, $iv);
+     return openssl_encrypt ($valor, $method, $clave);
  };
 
  //Desencripta
  function decrypt ($valor) {
      $encrypted_data = base64_decode($valor);
-     return openssl_decrypt($valor, $method, $clave, false, $iv);
+     return openssl_decrypt($valor, $method, $clave);
  };
 
 ?>
