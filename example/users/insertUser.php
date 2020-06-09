@@ -19,7 +19,7 @@ $links = conectar_db();
 
 		//Valores del formulario de registro
 
-        echo "MAIL abans de l'encriptació: ".$_POST['email'];
+        echo "MAIL abans de l'encriptació: ".$_POST['email']."<br>";
 		if ($_POST) {
         	if (isset($_POST['name'])) {
         	    $userName = encrypt($_POST['name']);
@@ -36,7 +36,8 @@ $links = conectar_db();
 
         //Si no existe el usuario se añade a la BD
         $exists = userExists($userMail);
-
+        echo "MAIL encriptat: ".$userMail."<br>";
+        $mailDesencriptado = decrypt($userMail);
         if ($exists == 1) {
             $links = conectar_db();
             $insert_user = "INSERT INTO users (name,email,password,date_register,last_conexion)
