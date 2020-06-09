@@ -6,7 +6,7 @@
      return hash('md5', $valor);
  };*/
 
- function encrypt($cadena){
+ /*function encrypt($cadena){
      $key='edu766648';  // Una clave de codificacion, debe usarse la misma para encriptar y desencriptar
      $encrypted = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $cadena, MCRYPT_MODE_CBC, md5(md5($key))));
      return $encrypted; //Devuelve el string encriptado
@@ -16,6 +16,12 @@
       $key='edu766648';  // Una clave de codificacion, debe usarse la misma para encriptar y desencriptar
       $decrypted = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($key), base64_decode($cadena), MCRYPT_MODE_CBC, md5(md5($key))), "\0");
      return $decrypted;  //Devuelve el string desencriptado
- }
+ }*/
+
+ $algorithms = mcrypt_list_algorithms("/usr/local/lib/libmcrypt");
+
+    foreach ($algorithms as $cipher) {
+        echo "$cipher<br />\n";
+    }
 
 ?>
