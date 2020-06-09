@@ -7,9 +7,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include_once('db_connection.php');
-include('encrypt_password.php');
-include('user_exists.php');
+include_once('\includes\functions\php\db_connection.php');
+include('\includes\functions\php\encrypt_password.php');
+include('\includes\functions\php\user_exists.php');
 
 
 		//$insert_user = "INSERT INTO usuarios (nombre,numero,email,reg_date) VALUES ( 'nombre', 15, '".addslashes('correoelectronico@gmail.com')."', '2017-07-23')";
