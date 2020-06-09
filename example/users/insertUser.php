@@ -42,6 +42,8 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
             $links = conectar_db();
             $insert_user = "INSERT INTO users (name,email,password,date_register,last_conexion)
             		VALUES ( '$userName', '$userMail', '$userPass','$fechaRegistro',now())";
+            		$insert_user = "INSERT INTO users (name,email,password,date_register,last_conexion)
+                                		VALUES ( 'prova', 'provaMail', 'provaPass',now(),now())";
             $result_mensaje = mysqli_query($links, $insert_user);
 
             if (isset($result_mensaje) == FALSE) {
