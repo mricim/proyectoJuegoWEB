@@ -20,10 +20,6 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
 		//Valores del formulario de registro
 
 		if ($_POST) {
-		    $userName = "";
-        	$userPass = "";
-        	$userMail = "";
-
         	if (isset($_POST['name'])) {
         	    $userName = $encrypt($_POST['name']);
         	}
