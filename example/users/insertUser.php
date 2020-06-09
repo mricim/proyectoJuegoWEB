@@ -36,7 +36,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
 
         //Si no existe el usuario se añade a la BD
         $exists = userExists($userMail);
-        echo "MAIL: ".decrypt($userMail);
+
         if ($exists == 1) {
             $links = conectar_db();
             $insert_user = "INSERT INTO users (name,email,password,date_register,last_conexion)
