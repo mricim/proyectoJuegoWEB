@@ -63,7 +63,7 @@
         $SentToEmail = $UserEmail; //email destinatario
         $SentToName =  $UserName; //NAME OR NULL 
         $Asunto = 'Register complet';
-        $BodyHTML = 'Hola que tal, '.$UserName.'? <br><a href="'.$actual_link.'/example/users/beforeregister.html?key='.$hash.'">Click aquí para terminar el registro.</a>'; //Cuerpo
+        //$BodyHTML = 'Hola que tal, '.$UserName.'? <br><a href="'.$actual_link.'/example/users/beforeregister.html?key='.$hash.'">Click aquí para terminar el registro.</a>'; //Cuerpo
         $BodyHTMLTest = 'TEST, '.$UserName.'? <br><a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'">Click aquí para terminar el registro.</a>'; //Cuerpo
 
         $x = require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/mail/emailUnique.php');//MAIL

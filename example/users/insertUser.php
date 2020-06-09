@@ -11,7 +11,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] .'/includes/functions/php/db_connection.p
 include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt_password.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
 
-
+$links = conectar_db();
 
 		//$insert_user = "INSERT INTO usuarios (nombre,numero,email,reg_date) VALUES ( 'nombre', 15, '".addslashes('correoelectronico@gmail.com')."', '2017-07-23')";
 		//guardar usuarios
@@ -52,9 +52,9 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
             	echo"<br>Se a guardado en nuestra base de datos<br>";
             	echo"<br><b>Todo correcto</b><br>";
             }
-            //echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=true'; </script>";
+            echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=true'; </script>";
         } else {
-            //echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=false'; </script>";
+            echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=false'; </script>";
         }
 
 
