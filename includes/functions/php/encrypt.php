@@ -5,8 +5,8 @@
  /*function encrypt ($valor) {
      return hash('md5', $valor);
  }*/
-    $password='password';
 
+    $password='password';
     function encrypt($dato) {
         return openssl_encrypt($dato,"AES-128-ECB",$password);
     }
