@@ -12,6 +12,6 @@
     }
 
     function decrypt($dato) {
-        return openssl_decrypt($encrypted_string,"AES-128-ECB",$password);
+        return openssl_decrypt($dato,"AES-128-ECB",$password);
     }
 ?>
