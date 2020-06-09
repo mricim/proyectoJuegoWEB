@@ -1,9 +1,5 @@
 
 <?php
-
-include_once 'db_connection.php';
-include 'encrypt_password.php';
-
 		//Comprueba si existe el usuario
 
         //Si existe el usuario -> return 0
