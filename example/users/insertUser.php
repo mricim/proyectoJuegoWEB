@@ -19,6 +19,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
 
 		//Valores del formulario de registro
 
+        echo "MAIL abans de l'encriptació: ".$_POST['email'];
 		if ($_POST) {
         	if (isset($_POST['name'])) {
         	    $userName = encrypt($_POST['name']);
@@ -35,6 +36,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
 
         //Si no existe el usuario se añade a la BD
         $exists = userExists($userMail);
+        echo "MAIL: ".decrypt($userMail);
         if ($exists == 1) {
             $links = conectar_db();
             $insert_user = "INSERT INTO users (name,email,password,date_register,last_conexion)
@@ -44,15 +46,15 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
             if (isset($result_mensaje) == FALSE) {
             	echo"Error: "+$insert_user+"<br>ERROR TIPO 2".$links->error;
             	echo "<br>No se a enviado el mensaje";
-            	echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=error'; </script>";
+            	//echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=error'; </script>";
             } else {
                 echo "Result mensaje: ".$result_mensaje."<br>";
             	echo"<br>Se a guardado en nuestra base de datos<br>";
             	echo"<br><b>Todo correcto</b><br>";
             }
-            echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=true'; </script>";
+            //echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=true'; </script>";
         } else {
-            echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=false'; </script>";
+            //echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=false'; </script>";
         }
 
 
