@@ -1,10 +1,4 @@
-
 <?php
-
-//PARA VER LOS ERRORES
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 function conectar_db(){
 		// conexion a Servidor
@@ -32,4 +26,4 @@ function conectar_db(){
 		}
 	}
 
-	?>
+?>

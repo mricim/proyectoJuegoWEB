@@ -7,9 +7,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include_once('\includes\functions\php\db_connection.php');
-include('\includes\functions\php\encrypt_password.php');
-include('\includes\functions\php\user_exists.php');
+include_once($_SERVER['DOCUMENT_ROOT'] .'\includes\functions\php\db_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '\includes\functions\php\encrypt_password.php');
+include($_SERVER['DOCUMENT_ROOT'] . '\includes\functions\php\user_exists.php');
 
 
 		//$insert_user = "INSERT INTO usuarios (nombre,numero,email,reg_date) VALUES ( 'nombre', 15, '".addslashes('correoelectronico@gmail.com')."', '2017-07-23')";
@@ -18,25 +18,19 @@ include('\includes\functions\php\user_exists.php');
 
 		//Valores del formulario de registro
 
-		$auxMail = "";
-		$auxName = "";
-		$auxPass = "";
 		if ($_POST) {
 		    $userName = "";
         	$userPass = "";
         	$userMail = "";
 
         	if (isset($_POST['name'])) {
-        	    $auxName = $_POST['name'];
-        	    $userName = $encrypt($auxName);
+        	    $userName = $encrypt($_POST['name']);
         	}
         	if (isset($_POST['password'])) {
-        	    $auxPass = $_POST['password'];
-                $userPass = $encrypt($auxPass);
+                $userPass = $encrypt($_POST['password']);
             }
             if (isset($_POST['email'])) {
-                $auxMail = $_POST['email'];
-                //$userMail = $encrypt($auxMail);
+                $userMail = $encrypt($_POST['email']);
             }
 
 		}
@@ -44,7 +38,7 @@ include('\includes\functions\php\user_exists.php');
 
         //Si no existe el usuario se añade a la BD
 
-        $exists = userExists($auxMail);
+        $exists = userExists($userMail);
         $userMail = $encrypt($auxMail);
         if ($exists == 1) {
             $links = conectar_db();

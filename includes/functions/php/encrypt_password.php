@@ -1,9 +1,4 @@
-<html>
 
-<head>
-</head>
-
-<body>
 <?php
 
 //Clave
@@ -26,5 +21,3 @@ $iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
  };
 
 ?>
-</body>
-</html>
