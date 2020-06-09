@@ -21,13 +21,13 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
 
 		if ($_POST) {
         	if (isset($_POST['name'])) {
-        	    $userName = $encrypt($_POST['name']);
+        	    $userName = encrypt($_POST['name']);
         	}
         	if (isset($_POST['password'])) {
-                $userPass = $encrypt($_POST['password']);
+                $userPass = encrypt($_POST['password']);
             }
             if (isset($_POST['email'])) {
-                $userMail = $encrypt($_POST['email']);
+                $userMail = encrypt($_POST['email']);
             }
 
 		}
@@ -36,7 +36,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
         //Si no existe el usuario se añade a la BD
 
         $exists = userExists($userMail);
-        $userMail = $encrypt($auxMail);
+        $userMail = encrypt($auxMail);
         if ($exists == 1) {
             $links = conectar_db();
             $insert_user = "INSERT INTO users (name,email,password,date_register,last_conexion)

@@ -10,12 +10,12 @@ $method = 'aes-256-cbc';
 $iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
 
  //Encripta
- $encrypt = function ($valor, $method, $clave, $iv) {
+ function encrypt ($valor) {
      return openssl_encrypt ($valor, $method, $clave, false, $iv);
  };
 
  //Desencripta
- $decrypt = function ($valor, $method, $clave, $iv) {
+ function decrypt ($valor) {
      $encrypted_data = base64_decode($valor);
      return openssl_decrypt($valor, $method, $clave, false, $iv);
  };
