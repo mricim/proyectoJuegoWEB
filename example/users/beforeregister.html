@@ -96,7 +96,9 @@
         </div>
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register</h6>
-            <div class="containter">
+            <div class="containter" id="container-emailsend">
+                <div class="row justify-content-md-center" id="messageEmailSend">
+
 
                 <!--Averigua si el email se ha enviado-->
                 <script>
@@ -110,12 +112,14 @@
                     var mailSend = getParameterByName('resultMail');
 
                     if (mailSend != 0) {
-                        document.write("<h4>Error al enviar el email</h4>");
+                        //document.write("<h4>Error al enviar el email</h4>");
+                        var container = document.getElementById("messageEmailSend");
+                        //var div
                     } else {
                         document.write("<h4>Email enviado, revisa tu correo para finalizar el registro.</h4>")
                     }
                 </script>
-
+                </div>
             </div>
         </div>
 
