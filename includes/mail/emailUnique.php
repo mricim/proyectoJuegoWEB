@@ -46,7 +46,7 @@ $mail->Host       = $HostSMTP;                    // Set the SMTP server to send
 $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
 $mail->Username   = $SendFromEMAIL;                     // SMTP username
 $mail->Password   = $ContrasenaDelCorreo;                               // SMTP password
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted //Disable PHPMailer::ENCRYPTION_STARTTLS
+$mail->SMTPSecure = "ssl";         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted //Disable PHPMailer::ENCRYPTION_STARTTLS
 $mail->Port       = $PortSMTP;                                    // TCP port to connect to
 
 
