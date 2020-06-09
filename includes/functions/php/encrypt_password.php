@@ -5,7 +5,7 @@
 $clave  = 'Cadena para encriptar la informacion de los usuarios';
 
 //Metodo de encriptación
-$method = 'aes-256-cbc';
+$method = 'AES-256-CBC';
 
 $iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
 
