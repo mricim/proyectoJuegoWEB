@@ -8,7 +8,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include_once($_SERVER['DOCUMENT_ROOT'] .'/includes/functions/php/db_connection.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt_password.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
 
 $links = conectar_db();
@@ -24,7 +24,7 @@ $links = conectar_db();
         	    $userName = encrypt($_POST['name']);
         	}
         	if (isset($_POST['password'])) {
-                $userPass = encrypt($_POST['password']);
+                $userPass = encryptPassword($_POST['password']);
             }
             if (isset($_POST['email'])) {
                 $userMail = encrypt($_POST['email']);
