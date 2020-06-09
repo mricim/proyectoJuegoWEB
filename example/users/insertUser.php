@@ -53,9 +53,9 @@ $links = conectar_db();
             	echo"<br><b>Todo correcto</b><br>";
             }
 //            $uName = decrypt($userName)
-            echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=true&name=; </script>";
+          //  echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=true&name=; </script>";
         } else {
-            echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=false'; </script>";
+           // echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=false'; </script>";
         }
 
 

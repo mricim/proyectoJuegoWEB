@@ -2,9 +2,9 @@
 <?php
 
  //Encripta
- /*function encrypt ($valor) {
+ function encrypt ($valor) {
      return hash('md5', $valor);
- };*/
+ }
 
  /*function encrypt($cadena){
      $key='edu766648';  // Una clave de codificacion, debe usarse la misma para encriptar y desencriptar
