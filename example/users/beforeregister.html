@@ -110,7 +110,31 @@
                     var mailSend = getParameterByName('resultMail');
 
                     if (mailSend != 0) {
-                        document.write("<h4>No se ha podido enviar el correo.</h4>");
+                        document.write("    <form action=\"/example/users/postlogincall.php\" id=\"comment_form\" method=\"POST\">\n" +
+                            "                    <div class=\"row\">\n" +
+                            "                        <input aria-label=\"email\" class=\"form-control col-10 col-lg-4 offset-1\" id=\"email\"\n" +
+                            "                               name=\"email\" placeholder=\"Email\" type=\"text\">\n" +
+                            "                        <input aria-label=\"password\" class=\"form-control col-10 col-lg-4 offset-1 offset-lg-2\"\n" +
+                            "                               id=\"password\" name=\"password\" placeholder=\"Password\" type=\"password\">\n" +
+                            "                        <div class=\"clearfix\"></div>\n" +
+                            "                        <br><br>\n" +
+                            "                        <input aria-label=\"email\" class=\"form-control col-10 col-lg-4 offset-1\" id=\"user\"\n" +
+                            "                               name=\"user\" placeholder=\"Name User\" type=\"text\">\n" +
+                            "                        <input aria-label=\"passwordRepet\" class=\"form-control col-10 col-lg-4 offset-1 offset-lg-2\"\n" +
+                            "                               id=\"passwordRepet\" name=\"passwordRepet\" placeholder=\"Password Repet\"\n" +
+                            "                               type=\"password\">\n" +
+                            "\n" +
+                            "                        <input class=\"recaptcha_response\" disabled id=\"recaptcha_response\" name=\"recaptcha_response\"\n" +
+                            "                               type=\"hidden\">\n" +
+                            "                        <input class=\"key\" disabled id=\"key\" name=\"key\" type=\"hidden\" value=''>\n" +
+                            "                        <input class=\"send\" disabled id=\"send\" name=\"send\" type=\"hidden\" value='register.html'>\n" +
+                            "                    </div>\n" +
+                            "                    <div class=\"row\" style=\"margin-top: 20px; margin-left: 45%;\">\n" +
+                            "                        <button class=\"btn btn-outline-success\" disabled id=\"button_sender\" name=\"button_sender\"\n" +
+                            "                                type=\"submit\">Register\n" +
+                            "                        </button>\n" +
+                            "                    </div>\n" +
+                            "                </form>");
                     } else {
                         document.write("<h4>Email enviado, revisa tu correo para finalizar el registro.</h4>")
                     }

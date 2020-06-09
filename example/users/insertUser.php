@@ -40,7 +40,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/user_exists.php');
         if ($exists == 1) {
             $links = conectar_db();
             $insert_user = "INSERT INTO users (name,email,password,date_register,last_conexion)
-            		VALUES ( ".$userName.",". $userMail.",". $userPass",now(),now())";
+            		VALUES ( '$userName', '$userMail', '$userPass',now(),now())";
             $result_mensaje = mysqli_query($links, $insert_user);
 
             if (isset($result_mensaje) == FALSE) {
