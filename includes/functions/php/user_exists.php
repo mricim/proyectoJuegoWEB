@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<body>
+
 <?php
 //PARA VER LOS ERRORES
 ini_set('display_errors', 1);
@@ -40,5 +38,3 @@ include 'encrypt_password.php';
 
 
 ?>
-</body>
-</html>

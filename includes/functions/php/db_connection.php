@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<body>
+
 <?php
 
 //PARA VER LOS ERRORES
@@ -35,5 +33,3 @@ function conectar_db(){
 	}
 
 	?>
-	</body>
-	</html>
