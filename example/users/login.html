@@ -94,7 +94,7 @@
 
     <script type="text/javascript">
         document.addEventListener('keydown', (event) => {
-            var mailExists = false;
+            var mailExists;
             $.ajax({
                 url: "/includes/functions/php/user_exists.php",
                 success: function(data) {

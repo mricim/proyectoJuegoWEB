@@ -6,12 +6,14 @@
      return hash('md5', $valor);
  }*/
 
-    $password='password';
+
     function encrypt($dato) {
+        $password='password';
         return openssl_encrypt($dato,"AES-128-ECB",$password);
     }
 
     function decrypt($dato) {
+        $password='password';
         return openssl_decrypt($dato,"AES-128-ECB",$password);
     }
 
