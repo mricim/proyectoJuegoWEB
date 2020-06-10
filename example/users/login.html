@@ -98,6 +98,7 @@
             $.ajax({
                 url: "/includes/functions/php/user_exists.php",
                 success: function(data) {
+                    console.log(data);
                     if (data == 0) {
                         mailExists = true;
                     } else {
