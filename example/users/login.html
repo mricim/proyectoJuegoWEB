@@ -99,6 +99,8 @@
                 url: "/includes/functions/php/user_exists.php",
                 success: function(data) {
                     console.log(data);
+                    console.log(data[0]);
+                    console.log(typeof data);
                     if (data == 0) {
                         mailExists = true;
                     } else {

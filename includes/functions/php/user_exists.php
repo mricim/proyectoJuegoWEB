@@ -17,9 +17,11 @@
             if (count($array_resultado) > 0) {
                 echo '<br>El usuario con email = '. $mail . 'ya existe.';
                 mysqli_close($conectar);
+                echo '0';
                 return 0;
             } else {
                 mysqli_close($conectar);
+                echo '1';
                 return 1;
             }
             /*foreach($array_resultado as $usuario){
