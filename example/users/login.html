@@ -96,63 +96,22 @@
         document.addEventListener('keydown', (event) => {
 
             var mailExists;
-            $.get("/includes/functions/php/user_exists.php", function(data, status, jqxhr){
-                console.log("1.Dades rebudes: "+data);
-                //console.log("Estat de la petició: " +status);
-            });
 
-            $.getJSON("/includes/functions/php/user_exists.php", function(data, status, jqxhr){
-                console.log("2.Dades rebudes: "+data);
-                //console.log("Estat de la petició: "+status);
-                //console.log(data.nom + data.cognom);
-            });
-
-            $.ajax({
-                url: "/includes/functions/php/user_exists.php",
-                dataType: "txt",
-                success: function(data, status, jqxhr){
-                    console.log("3.Dades rebudes: "+data);
-                    //console.log("Estat de la petició: "+status);
-                    //console.log(data.nom + data.cognom);
-                }
-             });
-
-            $.post("/includes/functions/php/user_exists.php", {
-                    nom: "David",
-                    cognom: "Cornadó",
-                    edat: 34,
-                },
-                function(data,status) {
-                    console.log("4.Resposta: " + data + "Estat de la petició: " + status);
-                }
-            );
-
-
-           /* $.ajax({
-                url: "/includes/functions/php/user_exists.php",
-                success: function(data) {
-                    console.log(data);
-                    console.log(data[0]);
-                    console.log(typeof data);
-                    if (data == 0) {
-                        mailExists = true;
+                function showUser(str) {
+                    if (str == "") {
+                        document.getElementById("txtHint").innerHTML = "";
+                        return;
                     } else {
-                        mailExists = false;
+                        var xmlhttp = new XMLHttpRequest();
+                        xmlhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                document.getElementById("txtHint").innerHTML = this.responseText;
+                            }
+                        };
+                        xmlhttp.open("GET","/includes/functions/php/user_exists.php",true);
+                        xmlhttp.send();
                     }
-                    if (mailExists) {
-                        var inputLoginMail = document.getElementById("email");
-                        inputLoginMail.setAttribute("style","border: 1px solid #c90808;")
-                    } else {
-                        var inputLoginMail = document.getElementById("email");
-                        inputLoginMail.setAttribute("style","border: 1px solid #73c20c;")
-                    }
-                },
-                complete: function() {
-                    var result = document.getElementById("resultUser");
-                    console.log(data);
-                    var data = result.textContent;
                 }
-            });*/
         });
     </script>
     <div class="my-3 p-3 bg-white rounded shadow-sm">
