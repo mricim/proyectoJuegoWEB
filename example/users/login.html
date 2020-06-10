@@ -55,6 +55,7 @@
 
     <!-- Funciones JS-->
     <script src="\includes\js\parameter.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <!-- Funciones JS FIN-->
     <script src="https://www.google.com/recaptcha/api.js?render=6LctbbsUAAAAAHVc5Cp-j8FZKOZG1wAH0eUV690D"></script>
 
@@ -91,7 +92,27 @@
         </div>
     </div>
 
-    <script src="\includes\js\users_functions.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        var mailExists = false;
+        $.ajax({
+            url: "/functions/php/user_exists.php",
+            success: function(data) {
+                if (data == 0) {
+                    mailExists = true;
+                } else {
+                    mailExists = false;
+                }
+                if (mailExists) {
+                    var inputLoginMail = document.getElementById("email");
+                    inputLoginMail.setAttribute("style","border: 1px solid #c90808;")
+                } else {
+                    var inputLoginMail = document.getElementById("email");
+                    inputLoginMail.setAttribute("style","border: 1px solid #73c20c;")
+                }
+            }
+        });
+    </script>
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register</h6>
         <div class="containter">
