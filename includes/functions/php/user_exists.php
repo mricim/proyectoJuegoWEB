@@ -6,7 +6,7 @@
         //Si no existe el usuario -> return 1
 		function userExists($mail) {
 		    $conectar= conectar_db();
-            echo 'Mail: '.$mail;
+            echo '<br>Mail: '.$mail.'<br>';
 		    $consulta = "SELECT * FROM users WHERE email = '$mail'";
             $resultado = mysqli_query($conectar, $consulta);
 
@@ -15,7 +15,7 @@
             }
 
             if (count($array_resultado) > 0) {
-                echo 'El usuario con email = '. $mail . 'ya existe.';
+                echo '<br>El usuario con email = '. $mail . 'ya existe.';
                 mysqli_close($conectar);
                 return 0;
             } else {

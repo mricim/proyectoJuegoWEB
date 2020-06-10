@@ -93,24 +93,25 @@
     </div>
 
     <script type="text/javascript">
-
-        var mailExists = false;
-        $.ajax({
-            url: "/includes/functions/php/user_exists.php",
-            success: function(data) {
-                if (data == 0) {
-                    mailExists = true;
-                } else {
-                    mailExists = false;
+        document.addEventListener('keydown', (event) => {
+            var mailExists = false;
+            $.ajax({
+                url: "/includes/functions/php/user_exists.php",
+                success: function(data) {
+                    if (data == 0) {
+                        mailExists = true;
+                    } else {
+                        mailExists = false;
+                    }
+                    if (mailExists) {
+                        var inputLoginMail = document.getElementById("email");
+                        inputLoginMail.setAttribute("style","border: 1px solid #c90808;")
+                    } else {
+                        var inputLoginMail = document.getElementById("email");
+                        inputLoginMail.setAttribute("style","border: 1px solid #73c20c;")
+                    }
                 }
-                if (mailExists) {
-                    var inputLoginMail = document.getElementById("email");
-                    inputLoginMail.setAttribute("style","border: 1px solid #c90808;")
-                } else {
-                    var inputLoginMail = document.getElementById("email");
-                    inputLoginMail.setAttribute("style","border: 1px solid #73c20c;")
-                }
-            }
+            });
         });
     </script>
     <div class="my-3 p-3 bg-white rounded shadow-sm">
