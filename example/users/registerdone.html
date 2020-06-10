@@ -47,7 +47,6 @@
     -->
 
 
-
     <div head="..\add\01head.html">
         <script>
             includeHTML("head");
@@ -63,7 +62,7 @@
 
 </head>
 
-
+<body>
 <b style="background-color:#848484;">
     <div menu="..\add\02menu.html">
         <script>
@@ -73,34 +72,45 @@
 
 
     <main class="container" role="main" style="padding-bottom: 70px;">
-        <script>
-            function getParameterByName(name) {
-                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                    results = regex.exec(location.search);
-                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-            }
+        <div class="my-3 p-4 bg-white rounded shadow-sm">
+            <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register compled</h6>
+            <div class="containter">
+                <div class="row justify-content-md-center">
+                    <div class="row">
+                        <p>
 
-            var addedUser = getParameterByName('AddedUser');
+                            <script>
+                                function getParameterByName(name) {
+                                    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                                    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                                        results = regex.exec(location.search);
+                                    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+                                }
 
-            if (addedUser == 'true') {
-                document.write("<h1>Registro hecho correctamente</h1>");
-            } else if (addedUser == 'false') {
-                document.write("<h1>Error en el registro, el usuario ya existe.</h1>");
-            } else if (addedUser == 'error') {
-                document.write("<h3>Error en el registro</h3>");
-            }
-        </script>
+                                var addedUser = getParameterByName('AddedUser');
 
+                                if (addedUser == 'true') {
+                                    document.write("<h1>Registro hecho correctamente</h1>");
+                                } else if (addedUser == 'false') {
+                                    document.write("<h1>Error en el registro, el usuario ya existe.</h1>");
+                                } else if (addedUser == 'error') {
+                                    document.write("<h3>Error en el registro</h3>");
+                                }
+                            </script>
+                    </div>
+                </div>
+            </div>
 
-    <!--<div footer="..\add\90footer.html">
-        <script>
-            includeHTML("footer");
-        </script>
-    </div>-->
-    </div>
-    <link rel="import" href="\example\add\91js.html" onload="handleLoad(event)" onerror="handleError(event, this.href)">
-    </body>
+            <!--<div footer="..\add\90footer.html">
+                <script>
+                    includeHTML("footer");
+                </script>
+            </div>-->
+        </div>
+        <link rel="import" href="\example\add\91js.html" onload="handleLoad(event)"
+              onerror="handleError(event, this.href)">
 
-
+    </main>
+</b>
+</body>
 </html>

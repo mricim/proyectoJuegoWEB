@@ -15,7 +15,15 @@
         return openssl_decrypt($dato,"AES-128-ECB",$password);
     }
 
-    function encryptPassword($pass) {
-        return hash('md5', $pass);
+    function encryptPassword($pass,$mail,$user) {
+        $numChar = strlen($mail);
+
+        $pass = $mail . $pass;
+        $aux = hash('sha256',$pass);
+        $pass = $aux . $user;
+        $aux = hash('sha256',$pass);
+        $pass = $aux . $numChar;
+
+        return $pass;
     }
 ?>

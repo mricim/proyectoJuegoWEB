@@ -51,8 +51,10 @@
       */
       $UserName = $_POST["username"];
       $UserEmail = $_POST["email"];
+
       echo '<input type="hidden" name="name" id="name" value="' . $UserName . '">';
       echo '<input type="hidden" name="email" id="email" value="' . $UserEmail . '">';
+
       if (strpos($_POST['send'], 'beforeregister.html') !== false) {
         $t = date("y.m.d"); // e.g. "03.10.01"
         $hash=hash('gost', "a.l45Up=dF8t0".$UserEmail.$t,false);
