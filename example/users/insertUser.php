@@ -24,7 +24,7 @@ $links = conectar_db();
         	    $userName = encrypt($_POST['name']);
         	}
         	if (isset($_POST['password'])) {
-                $userPass = encryptPassword($_POST['password']);
+                $userPass = encryptPassword($_POST['password'],$_POST['email'],$_POST['name']);
             }
             if (isset($_POST['email'])) {
                 $userMail = encrypt($_POST['email']);
