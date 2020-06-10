@@ -28,7 +28,7 @@
 
 var mailExists = false;
 $.ajax({
-    url: "..\functions\php\user_exists.php",
+    url: "/functions/php/user_exists.php",
     success: function(data) {
         if (data == 0) {
             mailExists = true;
