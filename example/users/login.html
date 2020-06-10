@@ -109,8 +109,7 @@
 
             $.ajax({
                 url: "/includes/functions/php/user_exists.php",
-                dataType: "json",
-                data: data,
+                dataType: "txt",
                 success: function(data, status, jqxhr){
                     console.log("3.Dades rebudes: "+data);
                     //console.log("Estat de la petició: "+status);
