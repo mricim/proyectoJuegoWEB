@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
     var startingTime = new Date().getTime();
     // Load the script
     var script = document.createElement("SCRIPT");
@@ -15,16 +15,7 @@
             window.setTimeout(function() { checkReady(callback); }, 20);
         }
     };
-
-    // Start polling...
-    checkReady(function($) {
-        $(function() {
-            var endingTime = new Date().getTime();
-            var tookTime = endingTime - startingTime;
-            window.alert("jQuery is loaded, after " + tookTime + " milliseconds!");
-        });
-    });
-})();
+})();*/
 
 var mailExists = false;
 $.ajax({
