@@ -94,25 +94,8 @@
 
     <script type="text/javascript">
         document.addEventListener('keydown', (event) => {
-            var result = document.getElementById("resultUser");
-            var data = result.textContent;
 
-            console.log(data);
-
-            if (data == 0 || data == '0') {
-                mailExists = true;
-            } else {
-                mailExists = false;
-            }
-            if (mailExists) {
-                var inputLoginMail = document.getElementById("email");
-                inputLoginMail.setAttribute("style","border: 1px solid #c90808;")
-            } else {
-                var inputLoginMail = document.getElementById("email");
-                inputLoginMail.setAttribute("style","border: 1px solid #73c20c;")
-            }
-
-           /* var mailExists;
+            var mailExists;
             $.ajax({
                 url: "/includes/functions/php/user_exists.php",
                 success: function(data) {
@@ -131,8 +114,13 @@
                         var inputLoginMail = document.getElementById("email");
                         inputLoginMail.setAttribute("style","border: 1px solid #73c20c;")
                     }
+                },
+                complete: function() {
+                    var result = document.getElementById("resultUser");
+                    console.log(data);
+                    var data = result.textContent;
                 }
-            });*/
+            });
         });
     </script>
     <div class="my-3 p-3 bg-white rounded shadow-sm">
