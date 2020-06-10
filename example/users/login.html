@@ -96,35 +96,35 @@
         document.addEventListener('keydown', (event) => {
 
             var mailExists;
-            $.get("holamon.php", function(data, status, jqxhr){
-                console.log("Dades rebudes: "+data);
+            $.get("/includes/functions/php/user_exists.php", function(data, status, jqxhr){
+                console.log("1.Dades rebudes: "+data);
                 //console.log("Estat de la petició: " +status);
             });
 
-            $.getJSON("consultes.php", function(data, status, jqxhr){
-                console.log("Dades rebudes: "+data);
+            $.getJSON("/includes/functions/php/user_exists.php", function(data, status, jqxhr){
+                console.log("2.Dades rebudes: "+data);
                 //console.log("Estat de la petició: "+status);
                 //console.log(data.nom + data.cognom);
             });
 
             $.ajax({
-                url: "consultes.php",
+                url: "/includes/functions/php/user_exists.php",
                 dataType: "json",
                 data: data,
                 success: function(data, status, jqxhr){
-                    console.log("Dades rebudes: "+data);
+                    console.log("3.Dades rebudes: "+data);
                     //console.log("Estat de la petició: "+status);
                     //console.log(data.nom + data.cognom);
                 }
              });
 
-            $.post("alta.php", {
+            $.post("/includes/functions/php/user_exists.php", {
                     nom: "David",
                     cognom: "Cornadó",
                     edat: 34,
                 },
                 function(data,status) {
-                    console.log("Resposta: " + data + "Estat de la petició: " + status);
+                    console.log("4.Resposta: " + data + "Estat de la petició: " + status);
                 }
             );
 
