@@ -99,6 +99,9 @@
             var mail = document.getElementById("email").value;
             console.log(mail);
             showUser();*/
+            var button = document.getElementById("buttonRegister");
+            var inputMail = document.getElementById("email");
+
                 function comprobarMail(mail) {
                     console.log(mail);
                     $.ajax({
@@ -110,12 +113,12 @@
                         success: function (mailExists) {
                             //console.log("Prueba data php: "+mailExists);
                             if (mailExists == "0" || mailExists == 0) {
-                                var button = document.getElementById("buttonRegister");
+
                                 //button.setAttribute("disabled","true");
                                 button.disabled = true;
-                                button.setAttribute("style","border: 1px solid red");
+                                inputMail.setAttribute("style","border: 1px solid red");
                             } else {
-                                console.log("El mail NO existe");
+                                button.disabled = false;
                             }
                         }
                     })
