@@ -4,6 +4,7 @@
 
     $mailLogin = $_GET["mailLogin"];
     if ($mailLogin != "") {
+    echo '<script>console.log('.$mailLogin.');</script>';
         userExists($mailLogin);
     }
         //Si existe el usuario -> return 0

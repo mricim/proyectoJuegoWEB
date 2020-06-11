@@ -32,10 +32,6 @@ $links = conectar_db();
 
 		}
 
-        echo 'Name: '.$userName.'<br>';
-        echo 'Pass: '.$userPass.'<br>';
-        echo 'Mail: '.$userMail.'<br>';
-
         //Si no existe el usuario se añade a la BD
         $exists = userExists($userMail);
         if ($exists == 1) {
@@ -47,15 +43,15 @@ $links = conectar_db();
             if (isset($result_mensaje) == FALSE) {
             	echo"Error: "+$insert_user+"<br>ERROR TIPO 2".$links->error;
             	echo "<br>No se a enviado el mensaje";
-            	//echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=error'; </script>";
+            	echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=error'; </script>";
             } else {
                 echo "<br>Result mensaje: ".$result_mensaje."<br>";
             	echo"<br>Se a guardado en nuestra base de datos<br>";
             	echo"<br><b>Todo correcto</b><br>";
-            	//echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=true'; </script>";
+            	echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=true'; </script>";
             }
         } else {
-            //echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=false'; </script>";
+            echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=false'; </script>";
         }
 
 
