@@ -1,11 +1,16 @@
 
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt.php');
 
 
     $loginMail = encrypt($_POST['m']);
     if ($loginMail != "") {
         echo userExists($loginMail);
+    } else {
+        echo "Prueba"
     }
 
         //Si existe el usuario -> return 0
