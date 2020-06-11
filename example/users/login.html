@@ -100,11 +100,29 @@
             console.log(mail);
             showUser();*/
                 function comprobarMail(mail) {
+                    console.log(mail);
+                    $.ajax({
+                        method: "POST",
+                        url: "/includes/functions/php/user_exists.php",
+                        data: {
+                            m: mail
+                        },
+                        success: function(mailExists) {
+                            if (mailExists == "0" || mailExists == 0) {
+                                console.log("El mail ya existe");
+                            } else {
+                                console.log("El mail NO existe");
+                            }
+                        }
+                    })
+
+
+                }
                    /* if (str == "") {
                         document.getElementById("txtHint").innerHTML = "";
                         return ;
                     } else {*/
-                    console.log(mail)
+                    /*
 
                     $.ajax(
                         {
@@ -117,14 +135,14 @@
                         var xmlhttp = new XMLHttpRequest();
                         xmlhttp.onreadystatechange = function() {
                             if (this.readyState == 4 && this.status == 200) {
-                                /*document.getElementById("txtHint").innerHTML = this.responseText;*/
+                                /!*document.getElementById("txtHint").innerHTML = this.responseText;*!/
                                 console.log(this.responseText);
 
                             }
-                        };
-                        xmlhttp.open("GET","/includes/functions/php/user_exists.php?mailLogin="+mail,true);
-                        xmlhttp.send();
-                    }
+                        };*/
+                        /*xmlhttp.open("GET","/includes/functions/php/user_exists.php?mailLogin="+mail,true);
+                        xmlhttp.send();*/
+
 
         // });
     </script>

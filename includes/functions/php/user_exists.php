@@ -1,12 +1,13 @@
 
 <?php
+include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt.php');
 
 
-    $mailLogin = $_GET["mailLogin"];
-    if ($mailLogin != "") {
-    echo '<script>console.log('.$mailLogin.');</script>';
-        userExists($mailLogin);
+    $loginMail = encrypt($_POST['m']);
+    if ($loginMail != "") {
+        echo userExists($loginMail);
     }
+
         //Si existe el usuario -> return 0
         //Si no existe el usuario -> return 1
 		function userExists($mail) {
