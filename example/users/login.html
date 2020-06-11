@@ -108,6 +108,7 @@
                             m: mail
                         },
                         success: function(mailExists) {
+                            console.log("Prueba data php: "+mailExists);
                             if (mailExists == "0" || mailExists == 0) {
                                 console.log("El mail ya existe");
                             } else {
