@@ -114,12 +114,11 @@
                         success: function (mailExists) {
                             //console.log("Prueba data php: "+mailExists);
                             if (mailExists == "0" || mailExists == 0) {
-
-                                //button.setAttribute("disabled","true");
-                                button.disabled = true;
-                                inputMail.setAttribute("style","border: 1px solid red");
+                                $("#buttonRegister").prop('disabled', true);
+                                $("#email").prop("style","border: 1px solid red")
                             } else {
-                                button.disabled = false;
+                                $("#email").removeAttribute("style");
+                                $("#buttonRegister").prop('disabled', false);
                             }
                         }
                     })
