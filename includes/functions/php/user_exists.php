@@ -1,7 +1,11 @@
 
 <?php
-		//Comprueba si existe el usuario
 
+
+    $mailLogin = $_GET["mailLogin"];
+    if ($mailLogin != "") {
+        userExists($mailLogin);
+    }
         //Si existe el usuario -> return 0
         //Si no existe el usuario -> return 1
 		function userExists($mail) {

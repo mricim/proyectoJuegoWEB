@@ -32,6 +32,9 @@ $links = conectar_db();
 
 		}
 
+        echo 'Name: '.$userName.'<br>';
+        echo 'Pass: '.$userPass.'<br>';
+        echo 'Mail: '.$userMail.'<br>';
 
         //Si no existe el usuario se añade a la BD
         $exists = userExists($userMail);

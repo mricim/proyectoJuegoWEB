@@ -96,6 +96,7 @@
         document.addEventListener('keydown', (event) => {
 
             var mailExists;
+            var mail = document.getElementById("email");
             showUser();
                 function showUser() {
                    /* if (str == "") {
@@ -110,7 +111,7 @@
 
                             }
                         };
-                        xmlhttp.open("GET","/includes/functions/php/user_exists.php",true);
+                        xmlhttp.open("GET","/includes/functions/php/user_exists.php?mailLogin="+mail,true);
                         xmlhttp.send();
                     }
 
