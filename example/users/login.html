@@ -105,6 +105,15 @@
                         return ;
                     } else {*/
                     console.log(mail)
+
+                    $.ajax(
+                        {
+                            url: '/includes/functions/php/user_exists.php?mailLogin'+mail,
+                            success: function( data ) {
+                                alert( 'El servidor devolvio "' + data + '"' );
+                            }
+                        }
+                    )
                         var xmlhttp = new XMLHttpRequest();
                         xmlhttp.onreadystatechange = function() {
                             if (this.readyState == 4 && this.status == 200) {
