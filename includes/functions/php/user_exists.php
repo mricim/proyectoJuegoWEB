@@ -54,7 +54,7 @@ function conectar_db(){
                 return 0;
             } else {
                 mysqli_close($conectar);
-                echo '1';
+                //echo '1';
                 return 1;
             }
             /*foreach($array_resultado as $usuario){
