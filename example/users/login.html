@@ -107,10 +107,13 @@
                         data: {
                             m: mail
                         },
-                        success: function(mailExists) {
-                            console.log("Prueba data php: "+mailExists);
+                        success: function (mailExists) {
+                            //console.log("Prueba data php: "+mailExists);
                             if (mailExists == "0" || mailExists == 0) {
-                                console.log("El mail ya existe");
+                                var button = document.getElementById("buttonRegister");
+                                //button.setAttribute("disabled","true");
+                                element.disabled = true;
+                                button.setAttribute("style","border: 1px solid red");
                             } else {
                                 console.log("El mail NO existe");
                             }
@@ -119,33 +122,6 @@
 
 
                 }
-                   /* if (str == "") {
-                        document.getElementById("txtHint").innerHTML = "";
-                        return ;
-                    } else {*/
-                    /*
-
-                    $.ajax(
-                        {
-                            url: '/includes/functions/php/user_exists.php?mailLogin'+mail,
-                            success: function( data ) {
-                                alert( 'El servidor devolvio "' + data + '"' );
-                            }
-                        }
-                    )
-                        var xmlhttp = new XMLHttpRequest();
-                        xmlhttp.onreadystatechange = function() {
-                            if (this.readyState == 4 && this.status == 200) {
-                                /!*document.getElementById("txtHint").innerHTML = this.responseText;*!/
-                                console.log(this.responseText);
-
-                            }
-                        };*/
-                        /*xmlhttp.open("GET","/includes/functions/php/user_exists.php?mailLogin="+mail,true);
-                        xmlhttp.send();*/
-
-
-        // });
     </script>
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register</h6>
@@ -161,7 +137,7 @@
                            type="hidden">
                     <input class="send" id="send" name="send" type="hidden" value='beforeregister.html'>
                     <button class="btn btn-outline-success my-0 my-sm-0 offset-1" disabled name="button_sender"
-                            type="submit">Register
+                            type="submit" id="buttonRegister">Register
                     </button>
                 </div>
             </form>
