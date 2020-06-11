@@ -3,36 +3,11 @@
 header('Content-Type: text/html; charset=iso-8859-1');
 
 include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt.php');
-
-function conectar_db(){
-		// conexion a Servidor
-		$host = "localhost";#nombre del host
-		$user = "user";#Usuario
-		$pass = "user12345!Ab";#contraseña
-		$db_name = "armegis";#Nombre de la base de datos
-		$conexion = mysqli_connect($host, $user, $pass);#Envio a la base de datos (Todas las variables antes creadas)
-		$conexion->query("SET NAMES 'utf8'");#Le decimos en que charset hay que conectarse
-
-		if( !$conexion ){ //Si la conexión no se ha logrado
-			exit;
-		} else {
-			//seleccion de base de datos(Aqui ya se a establecido la conecxion continua) y iniciamos a decirle a que base de datos se tiene que conectar
-			$select_db = mysqli_select_db($conexion,$db_name);
-			if( !$select_db ){#La base de datos no existe o hay algun problema
-				exit;
-			}
-			else{#TODO CORRECTO
-				return $conexion;
-			}
-		}
-	}
-
+include_once($_SERVER['DOCUMENT_ROOT'] .'/includes/functions/php/db_connection.php');
 
     $loginMail = encrypt($_POST['m']);
     if ($loginMail != "") {
         echo userExists($loginMail);
-    } else {
-        echo "Prueba";
     }
 
         //Si existe el usuario -> return 0
@@ -50,7 +25,7 @@ function conectar_db(){
             if (count($array_resultado) > 0) {
                // echo '<br>El usuario con email = '. $mail . 'ya existe.';
                 mysqli_close($conectar);
-                echo '0';
+                //echo '0';
                 return 0;
             } else {
                 mysqli_close($conectar);
