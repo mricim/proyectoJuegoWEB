@@ -2,9 +2,6 @@
 <?php
 header('Content-Type: text/html; charset=iso-8859-1');
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt.php');
 
 function conectar_db(){
