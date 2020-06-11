@@ -10,7 +10,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt.php');
 
     $loginMail = encrypt($_POST['m']);
     if ($loginMail != "") {
-        echo 'P: '.userExists($loginMail);
+        echo userExists($loginMail);
     } else {
         echo "Prueba";
     }
