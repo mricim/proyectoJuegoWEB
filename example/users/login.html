@@ -94,9 +94,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript">
         function comprobarMail(mail) {
-           /* if (/^([a-zA-Z0-9._]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,4})+$/.test(mail)) {
+            var button = document.getElementById("buttonRegister");
+            var inputMail = document.getElementById("email");
+            if (!(/^([a-zA-Z0-9._]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,4})$/.test(mail))) {
                 $("#email").prop("style", "border: 1px solid red");
-            } else {*/
+            } else {
                 $.ajax({
                     method: "POST",
                     url: "/includes/functions/php/user_exists.php",
@@ -114,7 +116,7 @@
                         }
                     }
                 })
-            //}
+            }
         }
     </script>
     <div class="my-3 p-3 bg-white rounded shadow-sm">
