@@ -99,10 +99,11 @@
             var mail = document.getElementById("email").value;
             console.log(mail);
             showUser();*/
-            var button = document.getElementById("buttonRegister");
-            var inputMail = document.getElementById("email");
+
 
                 function comprobarMail(mail) {
+                    var button = document.getElementById("buttonRegister");
+                    var inputMail = document.getElementById("email");
                     console.log(mail);
                     $.ajax({
                         method: "POST",
