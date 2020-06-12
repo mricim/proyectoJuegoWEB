@@ -132,8 +132,9 @@
                     text.replace(/ /g, "");
                 }
 
-                removeWS(c);
-                removeWS(inputValue);
+                c = removeWS(c);
+                inputValue = removeWS(inputValue);
+
 
                 console.log("C: " + typeof c + "Valor: " + c);
                 console.log("input: " + typeof inputValue + "Valor: " + inputValue);
