@@ -123,13 +123,15 @@
                 versions.splice(i, 1);
             }
         }
+        console.log(versions);
 
-        document.body.onload = createTable(versions);
     }
 
     function createTable(versions) {
         //Construir tabla
         var table = document.createElement("table");
+        var body = document.getElementsByTagName("body")[0];
+        body.appendChild(table);
         for (var i = 0; i < versions.length; i++) {
             var row = document.createElement("tr");
             var numVersionColumn = document.createElement("td");

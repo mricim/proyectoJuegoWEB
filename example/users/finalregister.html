@@ -145,13 +145,24 @@
                     <script type="text/javascript">
                         function checkCaptcha(inputValue) {
                             var c = document.getElementById("mainCaptcha").textContent;
+
+                            //Remove whitespace
+                            function removeWS(text) {
+                                console.log(text.replace(/ /g, ""));
+                            }
+
+                            removeWS(c);
+                            removeWS(inputValue);
+
                             if (c == inputValue) {
                                 $("#ButtonCaptcha").prop('disabled', false);
                                 $("#txtInput").removeAttr("style");
+                                $("#button_sender").prop('disabled', false);
 
                             } else {
                                 $("#ButtonCaptcha").prop('disabled', true);
                                 $("#txtInput").prop("style", "border: 1px solid red");
+                                $("#button_sender").prop('disabled', true);
                             }
                         }
                     </script>
