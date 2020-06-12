@@ -103,11 +103,7 @@
 -->
 <script>
     //Load XML files
-    if (document.addEventListener) {
-        window.addEventListener('load', createTableVersions, false);
-    } else {
-        window.attachEvent('onload', createTableVersions);
-    }
+    createTableVersions();
 
     function createTableVersions() {
         var windowsV = loadWindows();
@@ -115,23 +111,23 @@
         var linuxV = loadLinux();
 
         var setVersions = new Set();
+        checkAllVersions();
+
         function checkAllVersions() {
             //Add windows versions
             for (var i = 0; i < windowsV.length; i++) {
-                map.set(windowsV[i].num);
+                setVersions.add(windowsV[i].num);
             }
             //Add mac versions
             for (var i = 0; i < macV.length; i++) {
-                map.set(macV[i].num);
+                setVersions.add(macV[i].num)
             }
             //Add linux versions
             for (var i = 0; i < linuxV.length; i++) {
-                map.set(linuxV[i].num);
+                setVersions.add(linuxV[i].num)
             }
+            createTable(setVersions);
         }
-
-        checkAllVersions();
-        createTable(setVersions);
 
 
         //Create table
