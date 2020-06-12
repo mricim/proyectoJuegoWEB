@@ -61,7 +61,7 @@
     <script src="https://www.google.com/recaptcha/api.js?render=6LctbbsUAAAAAHVc5Cp-j8FZKOZG1wAH0eUV690D"></script>
 
 </head>
-
+<body onload="Captcha()">
 
 <div style="background-color:#848484;">
     <div menu="..\add\02menu.html">
@@ -140,34 +140,43 @@
 
                     </div>
                     <script src='/includes/js/captcha.js'>
-                        Captcha('mainCaptcha');
+                        function checkCaptcha(inputValue) {
+                            var c = document.getElementById("mainCaptcha").textContent;
+                            if (c == inputValue) {
+                                $("#ButtonCaptcha").prop('disabled', false);
+                                $("#txtInput").removeAttr("style");
+
+                            } else {
+                                $("#ButtonCaptcha").prop('disabled', true);
+                                $("#txtInput").prop("style", "border: 1px solid red");
+                            }
+                        }
                     </script>
-
-                    <table>
-                        <td>
-                            Text Captcha
-                        </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <canvas id="captcha"></canvas>
-                                <input type="text" hidden="hidden" id="mainCaptcha">
-                                <input type="button" id="refresh" value="Refresh" onclick="Captcha('mainCaptcha');"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" id="txtInput"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input id="Button1" type="button" value="Check"
-                                       onclick="alert(ValidCaptcha('mainCaptcha', 'txtInput'));"/>
-                            </td>
-                        </tr>
-                    </table>
-
+                    <div class="row">
+                        <div class="col-12">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <canvas id="captcha"></canvas>
+                                        <input type="text" hidden="hidden" id="mainCaptcha">
+                                        <input type="button" id="refresh" value="Refresh"
+                                               onclick="Captcha('mainCaptcha');"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input id="ButtonCaptcha" type="button" value="Check"
+                                               onclick="alert(ValidCaptcha('mainCaptcha', 'txtInput'));"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                     <button class="btn btn-outline-success" disabled id="button_sender" name="button_sender"
                             type="submit">Register
                     </button>

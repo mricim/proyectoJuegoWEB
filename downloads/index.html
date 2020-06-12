@@ -1,71 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-	<style>
-		table, th, td {
-			border: 1px solid black;
-			border-collapse: collapse;
-			text-align: center;
-		}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
 
-		th, td {
-			padding: 15px;
-		}
-	</style>
+        th, td {
+            padding: 15px;
+        }
+    </style>
 </head>
 <body onload="loadXMLDoc()">
 
 
 <table style="width:100%">
-	<tr>
-		<th>Version</th>
-		<th colspan="2">Windows</th>
-		<th colspan="2">Linux</th>
-		<th colspan="2">Mac</th>
-	</tr>
-	<tr>
-		<td>1.1</td>
+    <tr>
+        <th>Version</th>
+        <th colspan="2">Windows</th>
+        <th colspan="2">Linux</th>
+        <th colspan="2">Mac</th>
+    </tr>
+    <tr>
+        <td>1.1</td>
 
-		<td><a href="application/installers/windows/0/-12/0/4/20200602/0/ArmegisInstaller.exe" target="_blank">exe</a>
-		</td>
-		<td><a href="application/installers/windows/0/-12/0/4/20200602/0/ArmegisInstaller.zip" target="_blank">zip</a>
-		</td>
+        <td><a href="application/installers/windows/0/-12/0/4/20200602/0/ArmegisInstaller.exe" target="_blank">exe</a>
+        </td>
+        <td><a href="application/installers/windows/0/-12/0/4/20200602/0/ArmegisInstaller.zip" target="_blank">zip</a>
+        </td>
 
-		<td><a href="application/installers/linux/0/-12/0/4/20200602/0/Armegis.tar.gz" target="_blank">tar.gz</a></td>
-		<td><a href="application/installers/linux/0/-12/0/4/20200602/0/Armegis.zip" target="_blank">zip</a></td>
+        <td><a href="application/installers/linux/0/-12/0/4/20200602/0/Armegis.tar.gz" target="_blank">tar.gz</a></td>
+        <td><a href="application/installers/linux/0/-12/0/4/20200602/0/Armegis.zip" target="_blank">zip</a></td>
 
-		<td>mac</td>
-		<td>rar</td>
-	</tr>
-	<tr>
-		<td>1.0</td>
+        <td>mac</td>
+        <td>rar</td>
+    </tr>
+    <tr>
+        <td>1.0</td>
 
-		<td><a href="" target="_blank">exe</a></td>
-		<td><a href="" target="_blank">zip</a></td>
+        <td><a href="" target="_blank">exe</a></td>
+        <td><a href="" target="_blank">zip</a></td>
 
-		<td>npl</td>
-		<td>tar.gz</td>
+        <td>npl</td>
+        <td>tar.gz</td>
 
-		<td>mac</td>
-		<td>rar</td>
-	</tr>
-	<tr>
-		<td>0.9</td>
+        <td>mac</td>
+        <td>rar</td>
+    </tr>
+    <tr>
+        <td>0.9</td>
 
-		<td>exe</td>
-		<td>zip</td>
+        <td>exe</td>
+        <td>zip</td>
 
-		<td>npl</td>
-		<td>tar.gz</td>
+        <td>npl</td>
+        <td>tar.gz</td>
 
-		<td>mac</td>
-		<td>rar</td>
-	</tr>
+        <td>mac</td>
+        <td>rar</td>
+    </tr>
 </table>
-
-
 
 
 <!---
@@ -82,9 +80,10 @@
 
 -->
 <script>
+    //WINDOWS
     function loadXMLDoc() {
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
+        xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 myFunction(this);
             }
@@ -92,12 +91,98 @@
         xmlhttp.open("GET", "application/installers/windows/list.xml", true);
         xmlhttp.send();
     }
+
     function myFunction(xml) {
         var i;
         var xmlDoc = xml.responseXML;
-        var table="<tr><th>Version</th><th>Href</th></tr>";
+        var table = "<tr><th>Version</th><th>Href</th></tr>";
         var x = xmlDoc.getElementsByTagName("file");
-        for (i = 0; i <x.length; i++) {
+        /*for (i = 0; i <x.length; i++) {
+            table += "<tr><td>" + x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue + "</td><td>" + x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue + "</td></tr>";
+        }*/
+
+        //Constructor
+        function Version(num, href) {
+            this.num = num;
+            this.href = href;
+        };
+        var versions = [];
+        for (var i = 0; i < x.length; i++) {
+            var n = x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue;
+            var h = x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue;
+            var auxVersion = new Version(n, h);
+            versions.push(auxVersion);
+        }
+        //Comprueba las versiones
+        for (var i = 0; i < versions.length; i++) {
+            var numVersion = (versions[i].num).substring(3, 7);
+            var numNextVersion = (versions[i + 1].num).substring(3, 7);
+
+            if (numVersion.equals(numNextVersion)) {
+                versions.splice(i, 1);
+            }
+        }
+
+        document.body.onload = createTable(versions);
+    }
+
+    function createTable(versions) {
+        //Construir tabla
+        var table = document.createElement("table");
+        for (var i = 0; i < versions.length; i++) {
+            var row = document.createElement("tr");
+            var numVersionColumn = document.createElement("td");
+            var hrefVersionColumn = document.createElement("td");
+            table.appendChild(row);
+            row.appendChild(numVersionColumn);
+            row.appendChild(hrefVersionColumn);
+            numVersionColumn.textContent = versions[i].num;
+            hrefVersionColumn.textContent = versions[i].href;
+        }
+        //document.getElementById("tablaVersiones").innerHTML = table;
+    }
+
+    //MAC
+    function loadXMLDoc() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunction(this);
+            }
+        };
+        xmlhttp.open("GET", "application/installers/mac/list.xml", true);
+        xmlhttp.send();
+    }
+
+    function myFunction(xml) {
+        var i;
+        var xmlDoc = xml.responseXML;
+        var table = "<tr><th>Version</th><th>Href</th></tr>";
+        var x = xmlDoc.getElementsByTagName("file");
+        for (i = 0; i < x.length; i++) {
+            table += "<tr><td>" + x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue + "</td><td>" + x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue + "</td></tr>";
+        }
+        document.getElementById("tablaVersiones").innerHTML = table;
+    }
+
+    //LINUX
+    function loadXMLDoc() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunction(this);
+            }
+        };
+        xmlhttp.open("GET", "application/installers/linux/list.xml", true);
+        xmlhttp.send();
+    }
+
+    function myFunction(xml) {
+        var i;
+        var xmlDoc = xml.responseXML;
+        var table = "<tr><th>Version</th><th>Href</th></tr>";
+        var x = xmlDoc.getElementsByTagName("file");
+        for (i = 0; i < x.length; i++) {
             table += "<tr><td>" + x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue + "</td><td>" + x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue + "</td></tr>";
         }
         document.getElementById("tablaVersiones").innerHTML = table;
