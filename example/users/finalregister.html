@@ -72,32 +72,9 @@
 
 
     <main class="container" role="main" style="padding-bottom: 70px;">
-        <!--
-                <div class="my-3 p-4 bg-white rounded shadow-sm">
-                    <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register compled</h6>
-                    <div class="containter">
-                        <div class="row justify-content-md-center">
-                            <div class="row">
-                                <p>
-                                <div id="resultMail">
-                                    Hello <b></b>
-
-
-                                    &lt;!&ndash;</b>!<br/>
-                                        An email has been sent to you, please check your email: <b>
-                                        <div id="email">Error</div>
-                                    </b>&ndash;&gt;
-                                </div>
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>-->
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script type="text/javascript">
-            function comprobarMail(mail) {
+            function checkMail(mail) {
                 if (!(/^([a-zA-Z0-9._]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,4})$/.test(mail))) {
                     $("#email").prop("style", "border: 1px solid red");
                     $("#buttonRegister").prop('disabled', true);
@@ -109,10 +86,9 @@
                             m: mail
                         },
                         success: function (mailExists) {
-                            //console.log("Prueba data php: "+mailExists);
                             if (mailExists == "0" || mailExists == 0) {
                                 $("#buttonRegister").prop('disabled', true);
-                                $("#email").prop("style", "border: 1px solid red")
+                                $("#email").prop("style", "border: 1px solid red");
                             } else {
                                 $("#email").removeAttr("style");
                                 $("#buttonRegister").prop('disabled', false);
@@ -121,6 +97,21 @@
                     })
                 }
             }
+            var pass = "";
+            function checkPass(p) {
+                pass = p;
+            }
+
+            function checkPassRepeat(p) {
+                if (p == pass) {
+                    $("#passwordRepet").removeAttr("style");
+                    $("#buttonRegister").prop('disabled', false);
+                } else {
+                    $("#passwordRepet").prop("style", "border: 1px solid red");
+                    $("#buttonRegister").prop('disabled', false);
+                }
+            }
+
         </script>
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register</h6>
@@ -128,16 +119,16 @@
                 <form action="/example/users/insertUser.php" id="comment_form" method="POST">
                     <div class="row">
                         <input aria-label="email" class="form-control col-10 col-lg-4 offset-1" id="email"
-                               name="email" placeholder="Email" type="text">
+                               name="email" placeholder="Email" type="text" onkeyup="checkMail(this.value)">
                         <input aria-label="password" class="form-control col-10 col-lg-4 offset-1 offset-lg-2"
-                               id="password" name="password" placeholder="Password" type="password">
+                               id="password" name="password" placeholder="Password" type="password" onkeyup="checkPass(this.value)">
                         <div class="clearfix"></div>
                         <br><br>
                         <input aria-label="name" class="form-control col-10 col-lg-4 offset-1" id="user"
                                name="name" placeholder="Name User" type="text">
                         <input aria-label="passwordRepet" class="form-control col-10 col-lg-4 offset-1 offset-lg-2"
                                id="passwordRepet" name="passwordRepet" placeholder="Password Repet"
-                               type="password">
+                               type="password" onkeyup="checkPassRepeat(this.value)">
 
                         <input class="recaptcha_response" disabled id="recaptcha_response" name="recaptcha_response"
                                type="hidden">
