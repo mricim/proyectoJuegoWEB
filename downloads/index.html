@@ -103,7 +103,13 @@
 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
+
     //Load XML files
+
+    var windowsV;
+    var macV;
+    var linuxV;
+
     $.when(function () {
         var windowsV = loadWindows();
     })
@@ -116,9 +122,7 @@
         .then(checkAllVersions);
 
 
-    /*var windowsV = loadWindows();
-    var macV = loadMac();
-    var linuxV = loadLinux();*/
+
 
     var setVersions = new Set();
 
