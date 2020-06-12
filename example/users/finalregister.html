@@ -140,7 +140,7 @@
 
                     </div>
                     <script src='/includes/js/captcha.js'>
-                        onload(Captcha('mainCaptcha'));
+                        Captcha('mainCaptcha');
                     </script>
 
                     <table>
@@ -150,7 +150,8 @@
                         </tr>
                         <tr>
                             <td>
-                                <canvas id="mainCaptcha"></canvas>
+                                <canvas id="captcha"></canvas>
+                                <input type="text" hidden="hidden" id="mainCaptcha">
                                 <input type="button" id="refresh" value="Refresh" onclick="Captcha('mainCaptcha');"/>
                             </td>
                         </tr>

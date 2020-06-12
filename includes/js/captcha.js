@@ -31,6 +31,7 @@ function removeSpaces(string) {
 
 function CreaIMG(texto) {
     var ctxCanvas = document.getElementById('mainCaptcha').getContext('2d');
+    document.getElementById("mainCaptcha").textContent = texto;
     var fontSize = "30px";
     var fontFamily = "Arial";
     var width = 250;
