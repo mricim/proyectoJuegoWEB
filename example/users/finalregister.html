@@ -97,7 +97,9 @@
                     })
                 }
             }
+
             var pass = "";
+
             function checkPass(p) {
                 pass = p;
             }
@@ -121,7 +123,8 @@
                         <input aria-label="email" class="form-control col-10 col-lg-4 offset-1" id="email"
                                name="email" placeholder="Email" type="text" onkeyup="checkMail(this.value)">
                         <input aria-label="password" class="form-control col-10 col-lg-4 offset-1 offset-lg-2"
-                               id="password" name="password" placeholder="Password" type="password" onkeyup="checkPass(this.value)">
+                               id="password" name="password" placeholder="Password" type="password"
+                               onkeyup="checkPass(this.value)">
                         <div class="clearfix"></div>
                         <br><br>
                         <input aria-label="name" class="form-control col-10 col-lg-4 offset-1" id="user"
@@ -136,11 +139,37 @@
                         <input class="send" disabled id="send" name="send" type="hidden" value='register.html'>
 
                     </div>
-                    <div class="row" style="margin-top: 20px; margin-left: 45%;">
-                        <button class="btn btn-outline-success" disabled id="button_sender" name="button_sender"
-                                type="submit">Register
-                        </button>
-                    </div>
+                    <script src='js/captcha.js'>
+                        onload(Captcha('mainCaptcha'));
+                    </script>
+
+                    <table>
+                        <td>
+                            Text Captcha
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <canvas id="captcha"></canvas>
+                                <input type="button" id="refresh" value="Refresh" onclick="Captcha('mainCaptcha');"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" id="txtInput"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="Button1" type="button" value="Check"
+                                       onclick="alert(ValidCaptcha('mainCaptcha', 'txtInput'));"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <button class="btn btn-outline-success" disabled id="button_sender" name="button_sender"
+                            type="submit">Register
+                    </button>
                 </form>
             </div>
         </div>
