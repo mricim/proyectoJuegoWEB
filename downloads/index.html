@@ -109,7 +109,7 @@
     var windowsV;
     var macV;
     var linuxV;
-
+/*
     $.when(function () {
         var windowsV = loadWindows();
     })
@@ -119,7 +119,18 @@
         .then(function () {
             var linuxV = loadLinux();
         })
-        .then(checkAllVersions);
+        .then(checkAllVersions);*/
+
+    function start(callback) {
+        setTimeout(function() {
+            var windowsV = loadWindows();
+        },1000);
+    }
+    start(function(err) {
+        if (err) return console.log(err.message)
+        console.log(windowsV);
+        checkAllVersions();
+    })
 
 
 
