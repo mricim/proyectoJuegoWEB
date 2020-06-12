@@ -143,6 +143,11 @@
 
                     </script>
                     <script type="text/javascript">
+                        window.addEventListener('load', function disabledButtons() {
+                            $("#button_sender").prop('disabled', true);
+                            $("#ButtonCaptcha").prop('disabled', true);
+                        })
+
                         function checkCaptcha(inputValue) {
                             var c = document.getElementById("mainCaptcha").textContent;
 
@@ -154,6 +159,9 @@
                             removeWS(c);
                             removeWS(inputValue);
 
+                            console.log("C: " + typeof c);
+                            console.log("input: " + typeof inputValue);
+                            console.log(c==inputValue);
                             if (c == inputValue) {
                                 $("#ButtonCaptcha").prop('disabled', false);
                                 $("#txtInput").removeAttr("style");

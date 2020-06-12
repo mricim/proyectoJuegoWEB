@@ -72,14 +72,30 @@
 
 
 -->
-<br><b>WINDOWS</b><br>
-<table id="windowsVerions"></table>
+<br><b>VERSIONS</b><br>
+<table id="versions">
+    <tr>
+        <th>Version</th>
+        <th>Windows</th>
+        <th>Linux</th>
+        <th>Mac</th>
+    </tr>
+</table>
+<!--<br><b>WINDOWS</b><br>
+<table id="verions">
+    <tr>
+        <th>Version</th>
+        <th>Windows</th>
+        <th>Linux</th>
+        <th>Mac</th>
+    </tr>
+</table>
 
 <br><b>LINUX</b><br>
 <table id="linuxVersions"></table>
 
 <br><b>MAC</b><br>
-<table id="macVersions"></table>
+<table id="macVersions"></table>-->
 <!---
 
 
@@ -87,14 +103,80 @@
 -->
 <script>
     //Load XML files
-    if (document.addEventListener){
-        window.addEventListener('load',loadWindows,false);
-        window.addEventListener('load',loadMac,false);
-        window.addEventListener('load',loadLinux,false);
+    if (document.addEventListener) {
+        window.addEventListener('load', loadWindows, false);
+        window.addEventListener('load', loadMac, false);
+        window.addEventListener('load', loadLinux, false);
     } else {
-        window.attachEvent('onload',loadWindows);
-        window.attachEvent('onload',loadMac);
-        window.attachEvent('onload',loadLinux);
+        window.attachEvent('onload', loadWindows);
+        window.attachEvent('onload', loadMac);
+        window.attachEvent('onload', loadLinux);
+    }
+
+    function createTableVersions() {
+        var windowsV = loadWindows();
+        var macV = loadMac();
+        var linuxV = loadLinux();
+
+        var setVersions = new Set();
+        function checkAllVersions() {
+            //Add windows versions
+            for (var i = 0; i < windowsV.length; i++) {
+                map.set(windowsV[i].num);
+            }
+            //Add mac versions
+            for (var i = 0; i < macV.length; i++) {
+                map.set(macV[i].num);
+            }
+            //Add linux versions
+            for (var i = 0; i < linuxV.length; i++) {
+                map.set(linuxV[i].num);
+            }
+        }
+
+        checkAllVersions();
+        createTable(setVersions);
+
+
+        //Create table
+        function createTable(allVersions) {
+            var table = document.getElementById("versions");
+
+            for (var i = 0; i < allVersions.length; i++) {
+                var rowVersion = document.createElement("tr");
+                var columnNumVersion = document.createElement("td");
+                table.appendChild(rowVersion);
+                rowVersion.appendChild(columnNumVersion);
+                columnNumVersion.setAttribute("id",allVersions[i]);
+                columnNumVersion.textContent = allVersions[i];
+
+                //Windows versions
+                for (var j = 0; j < windowsV.length; j++) {
+                    if (allVersions.has(windowsV[i].num)) {
+                        var columnWindows = document.createElement("td");
+                        rowVersion.appendChild(columnWindows);
+                        columnWindows.textContent = windowsV[i].href;
+                    }
+                }
+                //Linux versions
+                for (var j = 0; j < linuxV.length; j++) {
+                    if (allVersions.has(linuxV[i].num)) {
+                        var columnLinux = document.createElement("td");
+                        rowVersion.appendChild(columnLinux);
+                        columnLinux.textContent = linuxV[i].href;
+                    }
+                }
+                //Mac versions
+                for (var j = 0; j < macV.length; j++) {
+                    if (allVersions.has(macV[i].num)) {
+                        var columnMac = document.createElement("td");
+                        rowVersion.appendChild(columnMac);
+                        columnMac.textContent = macV[i].href;
+                    }
+                }
+            }
+        }
+
     }
 
     //WINDOWS
@@ -117,9 +199,6 @@
             var xmlDoc = xml.responseXML;
 
             var x = xmlDoc.getElementsByTagName("file");
-            /*for (i = 0; i <x.length; i++) {
-            table += "<tr><td>" + x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue + "</td><td>" + x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue + "</td></tr>";
-        }*/
 
             //Constructor
             function Version(num, href) {
@@ -146,7 +225,8 @@
                 }
             }
             console.log(versions);
-            createTable(versions);
+            //createTable(versions);
+            return versions;
         }
 
         function createTable(versions) {
@@ -218,7 +298,8 @@
                 }
             }
             console.log(versions);
-            createTable(versions);
+            //createTable(versions);
+            return versions;
         }
 
         function createTable(versions) {
@@ -227,8 +308,8 @@
 
             var titleRow = document.createElement("tr");
             table.appendChild(titleRow);
-            titleRow.appendChild((document.createElement("th")).textContent = "Version");
-            titleRow.appendChild((document.createElement("th")).textContent = "Href");
+            titleRow.appendChild((document.createElement("th"))).textContent = "Version";
+            titleRow.appendChild((document.createElement("th"))).textContent = "Href";
             table.appendChild(document.createElement("tr"))
 
             for (var i = 0; i < versions.length; i++) {
@@ -290,7 +371,8 @@
                 }
             }
             console.log(versions);
-            createTable(versions);
+            //createTable(versions);
+            return versions;
         }
 
         function createTable(versions) {
@@ -299,8 +381,8 @@
 
             var titleRow = document.createElement("tr");
             table.appendChild(titleRow);
-            titleRow.appendChild((document.createElement("th")).textContent = "Version");
-            titleRow.appendChild((document.createElement("th")).textContent = "Href");
+            titleRow.appendChild((document.createElement("th"))).textContent = "Version";
+            titleRow.appendChild((document.createElement("th"))).textContent = "Href";
             table.appendChild(document.createElement("tr"))
 
             for (var i = 0; i < versions.length; i++) {
