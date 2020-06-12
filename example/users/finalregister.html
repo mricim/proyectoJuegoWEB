@@ -115,6 +115,41 @@
             }
 
         </script>
+        <script src='/includes/js/captcha.js'>
+
+        </script>
+        <script type="text/javascript">
+            window.addEventListener('load', function disabledButtons() {
+                $("#button_sender").prop('disabled', true);
+                $("#ButtonCaptcha").prop('disabled', true);
+            })
+
+            function checkCaptcha(inputValue) {
+                var c = document.getElementById("mainCaptcha").textContent;
+
+                //Remove whitespace
+                function removeWS(text) {
+                    console.log(text.replace(/ /g, ""));
+                }
+
+                removeWS(c);
+                removeWS(inputValue);
+
+                console.log("C: " + typeof c + "Valor: " + c);
+                console.log("input: " + typeof inputValue + "Valor: " + inputValue);
+                console.log(c == inputValue);
+                if (c == inputValue) {
+                    $("#ButtonCaptcha").prop('disabled', false);
+                    $("#txtInput").removeAttr("style");
+                    $("#button_sender").prop('disabled', false);
+
+                } else {
+                    $("#ButtonCaptcha").prop('disabled', true);
+                    $("#txtInput").prop("style", "border: 1px solid red");
+                    $("#button_sender").prop('disabled', true);
+                }
+            }
+        </script>
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register</h6>
             <div class="containter">
@@ -139,69 +174,28 @@
                         <input class="send" disabled id="send" name="send" type="hidden" value='register.html'>
 
                     </div>
-                    <script src='/includes/js/captcha.js'>
-
-                    </script>
-                    <script type="text/javascript">
-                        window.addEventListener('load', function disabledButtons() {
-                            $("#button_sender").prop('disabled', true);
-                            $("#ButtonCaptcha").prop('disabled', true);
-                        })
-
-                        function checkCaptcha(inputValue) {
-                            var c = document.getElementById("mainCaptcha").textContent;
-
-                            //Remove whitespace
-                            function removeWS(text) {
-                                console.log(text.replace(/ /g, ""));
-                            }
-
-                            removeWS(c);
-                            removeWS(inputValue);
-
-                            console.log("C: " + typeof c + "Valor: " + c);
-                            console.log("input: " + typeof inputValue + "Valor: " + inputValue);
-                            console.log(c==inputValue);
-                            if (c == inputValue) {
-                                $("#ButtonCaptcha").prop('disabled', false);
-                                $("#txtInput").removeAttr("style");
-                                $("#button_sender").prop('disabled', false);
-
-                            } else {
-                                $("#ButtonCaptcha").prop('disabled', true);
-                                $("#txtInput").prop("style", "border: 1px solid red");
-                                $("#button_sender").prop('disabled', true);
-                            }
-                        }
-                    </script>
                     <div class="row">
                         <div class="col-12">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <canvas id="captcha"></canvas>
-                                        <input type="text" hidden="hidden" id="mainCaptcha">
-                                        <input type="button" id="refresh" value="Refresh"
-                                               onclick="Captcha('mainCaptcha');"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input id="ButtonCaptcha" type="button" value="Check"
-                                               onclick="alert(ValidCaptcha('mainCaptcha', 'txtInput'));" disabled/>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="row">
+                                <div class="col-6">
+                                    <canvas id="captcha"></canvas>
+                                </div>
+                                <div class="col-6">
+                                    <input type="button" id="refresh" value="Refresh"
+                                           onclick="Captcha('mainCaptcha');"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <input type="text" hidden="hidden" id="mainCaptcha">
+                                    <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)"/>
+                                </div>
+                            </div>
                         </div>
+                        <button class="btn btn-outline-success" disabled id="button_sender" name="button_sender"
+                                type="submit">Register
+                        </button>
                     </div>
-                    <button class="btn btn-outline-success" disabled id="button_sender" name="button_sender"
-                            type="submit">Register
-                    </button>
                 </form>
             </div>
         </div>
