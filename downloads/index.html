@@ -115,10 +115,8 @@
 
     function startWindows() {
         const promise = new Promise(function (resolve, reject) {
-            setTimeout(function () {
                 windowsV = loadWindows();
                 resolve(windowsV)
-            }, 1000);
         });
 
         return promise;
@@ -128,20 +126,17 @@
 
     function startMac() {
         const promise = new Promise(function (resolve, reject) {
-            setTimeout(function () {
                 macV = loadMac();
                 console.log("2");
-            }, 1000);
+                resolve(macV);
         });
         return promise;
     }
 
     function startLinux() {
         const promise = new Promise(function (resolve, reject) {
-            setTimeout(function () {
                 linuxV = loadLinux();
-                console.log("3");
-            },1000);
+                resolve(linuxV);
         });
         return promise;
     }
