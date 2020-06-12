@@ -9,13 +9,13 @@
 
     function encrypt($dato) {
         $key='password';
-        $iv='00000000';
+        $iv='0000000000000000';
         return openssl_encrypt($dato,"aes-256-cbc",$key,OPENSSL_RAW_DATA,$iv);
     }
 
     function decrypt($dato) {
         $key='password';
-        $iv='00000000';
+        $iv='0000000000000000';
         return openssl_decrypt($dato,"aes-256-cbc",$key,OPENSSL_RAW_DATA,$iv);
     }
 
