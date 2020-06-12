@@ -118,7 +118,7 @@
             var numVersion = (versions[i].num).substring(3, 7);
             var numNextVersion = (versions[i + 1].num).substring(3, 7);
 
-            if (numVersion.equals(numNextVersion)) {
+            if (numVersion == numNextVersion) {
                 versions.splice(i, 1);
             }
         }
