@@ -9,16 +9,17 @@
 
     function encrypt($dato) {
         $key='password';
-        $iv='aaaaaaaaaaaaaaaa';
         //return openssl_encrypt($dato,"aes-256-cbc",$key);
-        return openssl_encrypt($dato,"aes-256-cbc",$key,OPENSSL_RAW_DATA,$iv);
+        $iv='aaaaaaaaaaaaaaaa';
+        return openssl_encrypt($dato,"aes-256-cbc",$key,0,$iv);
+        //return base64_encode(openssl_encrypt($dato, "aes-256-cbc", AesCipher::fixKey($key), OPENSSL_RAW_DATA, $iv));
     }
 
     function decrypt($dato) {
         $key='password';
-        $iv='aaaaaaaaaaaaaaaa';
-        //return openssl_decrypt($dato,"aes-256-cbc",$key);
-        return openssl_decrypt($dato,"aes-256-cbc",$key,OPENSSL_RAW_DATA,$iv);
+        return openssl_decrypt($dato,"aes-256-cbc",$key);
+        //$iv='aaaaaaaaaaaaaaaa';
+        //return openssl_decrypt($dato,"aes-256-cbc",$key,OPENSSL_RAW_DATA,$iv);
     }
 
     function encryptPassword($pass,$mail,$user) {
