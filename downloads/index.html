@@ -109,29 +109,22 @@
     var windowsV;
     var macV;
     var linuxV;
-/*
-    $.when(function () {
+
+
+    startWindows().then(startMac).then(startLinux).then(checkAllVersions);
+
+    function startWindows() {
         var windowsV = loadWindows();
-    })
-        .then(function () {
-            var macV = loadMac();
-        })
-        .then(function () {
-            var linuxV = loadLinux();
-        })
-        .then(checkAllVersions);*/
-
-    function start(callback) {
-        setTimeout(function() {
-            var windowsV = loadWindows();
-        },1000);
+        console.log("1");
     }
-    start(function(err) {
-        if (err) return console.log(err.message)
-        console.log(windowsV);
-        checkAllVersions();
-    })
-
+    function startMac() {
+        var macV = loadMac();
+        console.log("2");
+    }
+    function startLinux() {
+        var linuxV = loadLinux();
+        console.log("3");
+    }
 
 
 
@@ -140,6 +133,7 @@
     //checkAllVersions();
 
     function checkAllVersions() {
+        console.log("4");
         //Add windows versions
         for (var i = 0; i < windowsV.length; i++) {
             setVersions.add(windowsV[i].num);
