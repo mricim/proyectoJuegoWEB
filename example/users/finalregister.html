@@ -87,11 +87,11 @@
                         },
                         success: function (mailExists) {
                             if (mailExists == "0" || mailExists == 0) {
-                                $("#buttonRegister").prop('disabled', true);
+                                $("#button_sender").prop('disabled', true);
                                 $("#email").prop("style", "border: 1px solid red");
                             } else {
                                 $("#email").removeAttr("style");
-                                $("#buttonRegister").prop('disabled', false);
+                                $("#button_sender").prop('disabled', false);
                             }
                         }
                     })
