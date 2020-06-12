@@ -104,13 +104,9 @@
 <script>
     //Load XML files
     if (document.addEventListener) {
-        window.addEventListener('load', loadWindows, false);
-        window.addEventListener('load', loadMac, false);
-        window.addEventListener('load', loadLinux, false);
+        window.addEventListener('load', createTableVersions, false);
     } else {
-        window.attachEvent('onload', loadWindows);
-        window.attachEvent('onload', loadMac);
-        window.attachEvent('onload', loadLinux);
+        window.attachEvent('onload', createTableVersions);
     }
 
     function createTableVersions() {
