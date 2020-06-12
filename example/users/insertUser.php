@@ -29,7 +29,7 @@ $links = conectar_db();
             }
 
 		}
-
+exit();
         //Si no existe el usuario se añade a la BD
         $exists = userExists($userMail);
         if ($exists == 1) {
