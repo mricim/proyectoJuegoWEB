@@ -103,7 +103,8 @@
 -->
 <script>
     //Load XML files
-    createTableVersions();
+
+        createTableVersions();
 
     function createTableVersions() {
         var windowsV = loadWindows();
@@ -132,6 +133,7 @@
 
         //Create table
         function createTable(allVersions) {
+            console.log("create table + all versions: " + allVersions);
             var table = document.getElementById("versions");
 
             for (var i = 0; i < allVersions.length; i++) {
@@ -173,6 +175,7 @@
 
     //WINDOWS
     function loadWindows() {
+        console.log("WINDOWS");
         loadXMLDoc();
 
         function loadXMLDoc() {
@@ -216,7 +219,7 @@
                     versions.splice(i, 1);
                 }
             }
-            console.log(versions);
+            console.log("VERSIONS WINDOWS");
             //createTable(versions);
 
         }
@@ -247,6 +250,7 @@
 
     //MAC
     function loadMac() {
+        console.log("MAC");
         loadXMLDoc();
 
         function loadXMLDoc() {
@@ -290,7 +294,7 @@
                     versions.splice(i, 1);
                 }
             }
-            console.log(versions);
+            console.log("VERSIONS MAC");
             //createTable(versions);
 
         }
@@ -321,6 +325,7 @@
 
     //LINUX
     function loadLinux() {
+        console.log("LINUX");
         loadXMLDoc();
 
         function loadXMLDoc() {
@@ -364,7 +369,7 @@
                     versions.splice(i, 1);
                 }
             }
-            console.log(versions);
+            console.log("VERSIONS LINUX");
             //createTable(versions);
 
         }
