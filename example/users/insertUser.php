@@ -20,12 +20,15 @@ $links = conectar_db();
 		if ($_POST) {
         	if (isset($_POST['name'])) {
         	    $userName = encrypt($_POST['name']);
+        	    echo '<br>userName= '.$userName;
         	}
         	if (isset($_POST['password'])) {
                 $userPass = encryptPassword($_POST['password'],$_POST['email'],$_POST['name']);
+                echo '<br>userPass= '.$userPass;
             }
             if (isset($_POST['email'])) {
                 $userMail = encrypt($_POST['email']);
+                echo '<br>userMail= '.$userMail;
             }
 
 		}
@@ -34,8 +37,7 @@ $links = conectar_db();
         $exists = userExists($userMail);
         if ($exists == 1) {
             $links = conectar_db();
-            $insert_user = "INSERT INTO users (name,email,password,date_register,last_conexion)
-            		VALUES ( '$userName', '$userMail', '$userPass',now(),now())";
+            $insert_user = "INSERT INTO users (name,email,password,date_register,last_conexion) VALUES ( '$userName', '$userMail', '$userPass',now(),now())";
             $result_mensaje = mysqli_query($links, $insert_user);
 
             if (isset($result_mensaje) == FALSE) {
@@ -46,6 +48,7 @@ $links = conectar_db();
                 echo "<br>Result mensaje: ".$result_mensaje."<br>";
             	echo"<br>Se a guardado en nuestra base de datos<br>";
             	echo"<br><b>Todo correcto</b><br>";
+            	exit();
             	echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=true'; </script>";
             }
         } else {

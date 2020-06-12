@@ -8,13 +8,17 @@
 
 
     function encrypt($dato) {
-        $password='password';
-        return openssl_encrypt($dato,"AES-128-ECB",$password);
+        $key='password';
+        $iv='0000000000000000';
+        //return openssl_encrypt($dato,"aes-256-cbc",$key);
+        return openssl_encrypt($dato,"aes-256-cbc",$key,OPENSSL_RAW_DATA,$iv);
     }
 
     function decrypt($dato) {
-        $password='password';
-        return openssl_decrypt($dato,"AES-128-ECB",$password);
+        $key='password';
+        $iv='0000000000000000';
+        //return openssl_decrypt($dato,"aes-256-cbc",$key);
+        return openssl_decrypt($dato,"aes-256-cbc",$key,OPENSSL_RAW_DATA,$iv);
     }
 
     function encryptPassword($pass,$mail,$user) {
