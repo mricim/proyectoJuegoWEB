@@ -111,34 +111,21 @@
     var linuxV;
 
 
-    startWindows().then(startMac).then(startLinux).then(checkAllVersions);
+    startWindows();//.then(startMac).then(startLinux).then(checkAllVersions);
 
     function startWindows() {
-        const promise = new Promise(function (resolve, reject) {
-                windowsV = loadWindows();
-                resolve(windowsV)
-        });
-
-        return promise;
-
-        console.log("1");
+        windowsV = loadWindows();
+        setTimeout(startMac(),1000);
     }
 
     function startMac() {
-        const promise = new Promise(function (resolve, reject) {
                 macV = loadMac();
-                console.log("2");
-                resolve(macV);
-        });
-        return promise;
+                setTimeout(startLinux(),1000);
     }
 
     function startLinux() {
-        const promise = new Promise(function (resolve, reject) {
                 linuxV = loadLinux();
-                resolve(linuxV);
-        });
-        return promise;
+                setTimeout(checkAllVersions());
     }
 
 
