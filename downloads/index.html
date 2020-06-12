@@ -101,81 +101,84 @@
 
 
 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     //Load XML files
+    $.when(function () {
+        loadWindows();
+    })
+        .then(function () {
+            loadMac();
+        })
+        .then(function () {
+            loadLinux();
+        })
+        .then(checkAllVersions);
 
-        createTableVersions();
-    var runTableWindows = false;
-    var runTableLinux = false;
-    var runTableMac = false;
 
-    function createTableVersions() {
-        while (!runTableLinux && !runTableWindows && !runTableMac) {
-            var windowsV = loadWindows();
-            var macV = loadMac();
-            var linuxV = loadLinux();
+    /*var windowsV = loadWindows();
+    var macV = loadMac();
+    var linuxV = loadLinux();*/
+
+    var setVersions = new Set();
+
+    //checkAllVersions();
+
+    function checkAllVersions() {
+        //Add windows versions
+        for (var i = 0; i < windowsV.length; i++) {
+            setVersions.add(windowsV[i].num);
         }
-
-        var setVersions = new Set();
-        checkAllVersions();
-
-        function checkAllVersions() {
-            //Add windows versions
-            for (var i = 0; i < windowsV.length; i++) {
-                setVersions.add(windowsV[i].num);
-            }
-            //Add mac versions
-            for (var i = 0; i < macV.length; i++) {
-                setVersions.add(macV[i].num)
-            }
-            //Add linux versions
-            for (var i = 0; i < linuxV.length; i++) {
-                setVersions.add(linuxV[i].num)
-            }
-            createTable(setVersions);
+        //Add mac versions
+        for (var i = 0; i < macV.length; i++) {
+            setVersions.add(macV[i].num)
         }
+        //Add linux versions
+        for (var i = 0; i < linuxV.length; i++) {
+            setVersions.add(linuxV[i].num)
+        }
+        createTable(setVersions);
+    }
 
 
-        //Create table
-        function createTable(allVersions) {
-            console.log("create table + all versions: " + allVersions);
-            var table = document.getElementById("versions");
+    //Create table
+    function createTable(allVersions) {
+        console.log("create table + all versions: " + allVersions);
+        var table = document.getElementById("versions");
 
-            for (var i = 0; i < allVersions.length; i++) {
-                var rowVersion = document.createElement("tr");
-                var columnNumVersion = document.createElement("td");
-                table.appendChild(rowVersion);
-                rowVersion.appendChild(columnNumVersion);
-                columnNumVersion.setAttribute("id",allVersions[i]);
-                columnNumVersion.textContent = allVersions[i];
+        for (var i = 0; i < allVersions.length; i++) {
+            var rowVersion = document.createElement("tr");
+            var columnNumVersion = document.createElement("td");
+            table.appendChild(rowVersion);
+            rowVersion.appendChild(columnNumVersion);
+            columnNumVersion.setAttribute("id", allVersions[i]);
+            columnNumVersion.textContent = allVersions[i];
 
-                //Windows versions
-                for (var j = 0; j < windowsV.length; j++) {
-                    if (allVersions.has(windowsV[i].num)) {
-                        var columnWindows = document.createElement("td");
-                        rowVersion.appendChild(columnWindows);
-                        columnWindows.textContent = windowsV[i].href;
-                    }
-                }
-                //Linux versions
-                for (var j = 0; j < linuxV.length; j++) {
-                    if (allVersions.has(linuxV[i].num)) {
-                        var columnLinux = document.createElement("td");
-                        rowVersion.appendChild(columnLinux);
-                        columnLinux.textContent = linuxV[i].href;
-                    }
-                }
-                //Mac versions
-                for (var j = 0; j < macV.length; j++) {
-                    if (allVersions.has(macV[i].num)) {
-                        var columnMac = document.createElement("td");
-                        rowVersion.appendChild(columnMac);
-                        columnMac.textContent = macV[i].href;
-                    }
+            //Windows versions
+            for (var j = 0; j < windowsV.length; j++) {
+                if (allVersions.has(windowsV[i].num)) {
+                    var columnWindows = document.createElement("td");
+                    rowVersion.appendChild(columnWindows);
+                    columnWindows.textContent = windowsV[i].href;
                 }
             }
+            //Linux versions
+            for (var j = 0; j < linuxV.length; j++) {
+                if (allVersions.has(linuxV[i].num)) {
+                    var columnLinux = document.createElement("td");
+                    rowVersion.appendChild(columnLinux);
+                    columnLinux.textContent = linuxV[i].href;
+                }
+            }
+            //Mac versions
+            for (var j = 0; j < macV.length; j++) {
+                if (allVersions.has(macV[i].num)) {
+                    var columnMac = document.createElement("td");
+                    rowVersion.appendChild(columnMac);
+                    columnMac.textContent = macV[i].href;
+                }
+            }
         }
-
     }
 
     //WINDOWS
@@ -228,31 +231,8 @@
             console.log("VERSIONS WINDOWS");
             runTableWindows = true;
 
-            //createTable(versions);
-
         }
 
-        /*function createTable(versions) {
-            //Construir tabla
-            var table = document.getElementById("windowsVerions");
-
-            var titleRow = document.createElement("tr");
-            table.appendChild(titleRow);
-            titleRow.appendChild((document.createElement("th"))).textContent = "Version";
-            titleRow.appendChild((document.createElement("th"))).textContent = "Href";
-            table.appendChild(document.createElement("tr"))
-
-            for (var i = 0; i < versions.length; i++) {
-                var row = document.createElement("tr");
-                var numVersionColumn = document.createElement("td");
-                var hrefVersionColumn = document.createElement("td");
-                table.appendChild(row);
-                row.appendChild(numVersionColumn);
-                row.appendChild(hrefVersionColumn);
-                numVersionColumn.textContent = versions[i].num;
-                hrefVersionColumn.textContent = versions[i].href;
-            }
-        }*/
         return versions;
     }
 
@@ -308,27 +288,6 @@
 
         }
 
-        /*function createTable(versions) {
-            //Construir tabla
-            var table = document.getElementById("macVersions");
-
-            var titleRow = document.createElement("tr");
-            table.appendChild(titleRow);
-            titleRow.appendChild((document.createElement("th"))).textContent = "Version";
-            titleRow.appendChild((document.createElement("th"))).textContent = "Href";
-            table.appendChild(document.createElement("tr"))
-
-            for (var i = 0; i < versions.length; i++) {
-                var row = document.createElement("tr");
-                var numVersionColumn = document.createElement("td");
-                var hrefVersionColumn = document.createElement("td");
-                table.appendChild(row);
-                row.appendChild(numVersionColumn);
-                row.appendChild(hrefVersionColumn);
-                numVersionColumn.textContent = versions[i].num;
-                hrefVersionColumn.textContent = versions[i].href;
-            }
-        }*/
         return versions;
     }
 
@@ -380,31 +339,9 @@
             }
             console.log("VERSIONS LINUX");
             runTableLinux = true;
-            //createTable(versions);
 
         }
 
-        /*function createTable(versions) {
-            //Construir tabla
-            var table = document.getElementById("linuxVersions");
-
-            var titleRow = document.createElement("tr");
-            table.appendChild(titleRow);
-            titleRow.appendChild((document.createElement("th"))).textContent = "Version";
-            titleRow.appendChild((document.createElement("th"))).textContent = "Href";
-            table.appendChild(document.createElement("tr"))
-
-            for (var i = 0; i < versions.length; i++) {
-                var row = document.createElement("tr");
-                var numVersionColumn = document.createElement("td");
-                var hrefVersionColumn = document.createElement("td");
-                table.appendChild(row);
-                row.appendChild(numVersionColumn);
-                row.appendChild(hrefVersionColumn);
-                numVersionColumn.textContent = versions[i].num;
-                hrefVersionColumn.textContent = versions[i].href;
-            }
-        }*/
         return versions;
     }
 </script>

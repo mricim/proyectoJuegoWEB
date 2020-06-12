@@ -129,15 +129,15 @@
 
                 //Remove whitespace
                 function removeWS(text) {
-                    text.replace(/ /g, "");
+                    text.replace();
                 }
 
-                c = removeWS(c);
-                inputValue = removeWS(inputValue);
+                cEspai = c.replace(/ /g, "");
+                inputValueEspai = inputValue.replace(/ /g, "");
 
 
-                console.log("C: " + typeof c + "Valor: " + c);
-                console.log("input: " + typeof inputValue + "Valor: " + inputValue);
+                console.log("C: " + typeof c + "Valor: " + c + "Valor sense espais: "+ cEspai);
+                console.log("input: " + typeof inputValue + "Valor: " + inputValue + "Valor sense espais: "+ inputValueEspai);
                 console.log(c == inputValue);
                 if (c == inputValue) {
                     $("#ButtonCaptcha").prop('disabled', false);
