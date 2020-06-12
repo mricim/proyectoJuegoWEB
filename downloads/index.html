@@ -111,10 +111,7 @@
     var linuxV;
 
 
-    startWindows()
-        .then(startMac)
-        .then(startLinux)
-        .then(checkAllVersions);
+    startWindows().then(startMac).then(startLinux).then(checkAllVersions);
 
     function startWindows() {
         var windowsV = loadWindows();
