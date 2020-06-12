@@ -113,8 +113,9 @@
             var auxVersion = new Version(n, h);
             versions.push(auxVersion);
         }
+        console.log(versions);
         //Comprueba las versiones
-        for (var i = 0; i < versions.length; i++) {
+        for (var i = 0; i < versions.length -1; i++) {
             var numVersion = (versions[i].num).substring(3, 7);
             var numNextVersion = (versions[i + 1].num).substring(3, 7);
 
