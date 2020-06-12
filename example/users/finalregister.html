@@ -124,21 +124,14 @@
                 $("#ButtonCaptcha").prop('disabled', true);
             })
 
-            function checkCaptcha(inputValue) {
-                var c = document.getElementById("mainCaptcha").textContent;
-
-                //Remove whitespace
-                function removeWS(text) {
-                    text.replace();
-                }
-
-                cEspai = c.replace(/ /g, "");
-                inputValueEspai = inputValue.replace(/ /g, "");
+            function checkCaptcha(inputValueAux) {
+                var captchaAux = document.getElementById("mainCaptcha").textContent;
 
 
-                console.log("C: " + typeof c + "Valor: " + c + "Valor sense espais: "+ cEspai);
-                console.log("input: " + typeof inputValue + "Valor: " + inputValue + "Valor sense espais: "+ inputValueEspai);
-                console.log(c == inputValue);
+                captcha = captchaAux.replace(/ /g, "");
+                inputValue = inputValueAux.replace(/ /g, "");
+
+
                 if (c == inputValue) {
                     $("#ButtonCaptcha").prop('disabled', false);
                     $("#txtInput").removeAttr("style");

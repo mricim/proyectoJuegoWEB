@@ -105,13 +105,13 @@
 <script>
     //Load XML files
     $.when(function () {
-        loadWindows();
+        windowsV = loadWindows();
     })
         .then(function () {
-            loadMac();
+            var macV = loadMac();
         })
         .then(function () {
-            loadLinux();
+            var linuxV = loadLinux();
         })
         .then(checkAllVersions);
 
