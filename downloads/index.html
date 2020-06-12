@@ -152,21 +152,24 @@
         for (var i = 0; i < windowsV.length; i++) {
             setVersions.add(windowsV[i].num);
         }
+        console.log(setVersions);
         //Add mac versions
         for (var i = 0; i < macV.length; i++) {
             setVersions.add(macV[i].num)
         }
+        console.log(setVersions);
         //Add linux versions
         for (var i = 0; i < linuxV.length; i++) {
             setVersions.add(linuxV[i].num)
         }
+        console.log(setVersions);
         createTable(setVersions);
     }
 
 
     //Create table
     function createTable(allVersions) {
-        console.log("create table + all versions: " + allVersions);
+        //console.log("create table + all versions: " + allVersions);
         var table = document.getElementById("versions");
 
         for (var i = 0; i < allVersions.length; i++) {
@@ -206,7 +209,7 @@
 
     //WINDOWS
     function loadWindows() {
-        console.log("WINDOWS");
+        //console.log("WINDOWS");
         loadXMLDoc();
 
         function loadXMLDoc() {
@@ -240,7 +243,7 @@
                 versions.push(auxVersion);
                 oldVersions.push(auxVersion);
             }
-            console.log(oldVersions);
+            //console.log(oldVersions);
 
             //Check the versions
             for (var i = 0; i < versions.length - 1; i++) {
@@ -251,7 +254,7 @@
                     versions.splice(i, 1);
                 }
             }
-            console.log("VERSIONS WINDOWS");
+            //console.log("VERSIONS WINDOWS");
             runTableWindows = true;
 
         }
@@ -261,7 +264,7 @@
 
     //MAC
     function loadMac() {
-        console.log("MAC");
+        //console.log("MAC");
         loadXMLDoc();
 
         function loadXMLDoc() {
@@ -295,7 +298,7 @@
                 versions.push(auxVersion);
                 oldVersions.push(auxVersion);
             }
-            console.log(oldVersions);
+            //console.log(oldVersions);
             //Check the versions
             for (var i = 0; i < versions.length - 1; i++) {
                 var numVersion = (versions[i].num).substring(3, 7);
@@ -305,7 +308,7 @@
                     versions.splice(i, 1);
                 }
             }
-            console.log("VERSIONS MAC");
+            //console.log("VERSIONS MAC");
             runTableMac = true;
             //createTable(versions);
 
@@ -316,7 +319,7 @@
 
     //LINUX
     function loadLinux() {
-        console.log("LINUX");
+        //console.log("LINUX");
         loadXMLDoc();
 
         function loadXMLDoc() {
@@ -350,7 +353,7 @@
                 versions.push(auxVersion);
                 oldVersions.push(auxVersion);
             }
-            console.log(oldVersions);
+            //console.log(oldVersions);
             //Check the versions
             for (var i = 0; i < versions.length - 1; i++) {
                 var numVersion = (versions[i].num).substring(3, 7);
@@ -360,7 +363,7 @@
                     versions.splice(i, 1);
                 }
             }
-            console.log("VERSIONS LINUX");
+            //console.log("VERSIONS LINUX");
             runTableLinux = true;
 
         }
