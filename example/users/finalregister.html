@@ -105,10 +105,10 @@
             function checkPassRepeat(p) {
                 if (p == pass) {
                     $("#passwordRepet").removeAttr("style");
-                    $("#buttonRegister").prop('disabled', false);
+                    $("#button_sender").prop('disabled', false);
                 } else {
                     $("#passwordRepet").prop("style", "border: 1px solid red");
-                    $("#buttonRegister").prop('disabled', false);
+                    $("#button_sender").prop('disabled', true);
                 }
             }
 
