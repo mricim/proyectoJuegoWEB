@@ -14,7 +14,7 @@
 
     function decrypt($dato) {
         $password='password';
-        return openssl_decrypt($dato,"AES-256-cbc",$password,OPENSSL_RAW_DATA,,"iv");
+        return openssl_decrypt($dato,"AES-256-cbc",$password,OPENSSL_RAW_DATA,"iv");
     }
 
     function encryptPassword($pass,$mail,$user) {
