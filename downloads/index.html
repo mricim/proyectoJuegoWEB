@@ -114,7 +114,15 @@
     startWindows().then(startMac).then(startLinux).then(checkAllVersions);
 
     function startWindows() {
-        var windowsV = loadWindows();
+        const promise = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                windowsV = loadWindows();
+                resolve(windowsV)
+            },1000);
+        })
+
+        return promise;
+
         console.log("1");
     }
     function startMac() {
