@@ -194,6 +194,7 @@
         xmlhttp.send();
         xmlhttp.onload = function() {
             v = xmlhttp.responseXML.documentElement;
+            console.log(v);
         }
 
         console.log(v + "SRC: "+src);
