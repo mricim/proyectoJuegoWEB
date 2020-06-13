@@ -107,9 +107,12 @@
     loadXml();
 
     function loadXml() {
-        var windowsV = loadXMLDoc("application/installers/windows/testlist.xml");
-        var macV = loadXMLDoc("application/installers/mac/list.xml");
-        var linuxV = loadXMLDoc("application/installers/linux/list.xml");
+        var windowsV;
+        loadXMLDoc("application/installers/windows/testlist.xml",windowsV);
+        var macV;
+        loadXMLDoc("application/installers/mac/list.xml",macV);
+        var linuxV;
+        loadXMLDoc("application/installers/linux/list.xml",linuxV);
         checkAllVersions(windowsV, macV, linuxV);
     }
 
@@ -177,8 +180,8 @@
         }
     }
 
-    function loadXMLDoc(src) {
-        var v;
+    function loadXMLDoc(src,v) {
+        v = null;
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
