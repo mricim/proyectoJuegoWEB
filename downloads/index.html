@@ -183,10 +183,12 @@
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 v = myFunction(this);
+                console.log("Dentro if: "+v);
             }
         };
         xmlhttp.open("GET", src, true);
         xmlhttp.send();
+        console.log(v);
         return v;
     }
 
