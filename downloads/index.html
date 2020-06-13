@@ -182,26 +182,25 @@
 
 
     function start() {
-        Chain
-            .on("done", function() {
+        Chain.run(
+            function (res, next) {
                 windowsV = loadWindows();
-            }).run(
-            Chain
-                .on("done", function() {
-                    macV = loadMac();
-                })).run(
-            Chain
-                .on("done", function () {
-                    linuxV = loadLinux();
-                })).run(
-            Chain.on("done", function() {
+                console.log("1");
+            },
+            function (res, next) {
+                macV = loadMac();
+                console.log("2");
+            },
+            function (res, next) {
+                linuxV = loadLinux();
+                console.log("3");
+            },
+            function (res, next) {
+                console.log("4");
                 checkAllVersions();
-            }));
-
+            }
+        );
     }
-
-
-
     var setVersions = new Set();
 
     //checkAllVersions();
