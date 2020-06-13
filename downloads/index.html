@@ -15,70 +15,17 @@
         }
     </style>
 </head>
-<body onload="start()">
+<body>
 <!--onload="loadXML()">-->
 
 
-<table style="width:100%">
+<br><b>VERSIONS</b><br>
+<table id="versions">
     <tr>
         <th>Version</th>
         <th colspan="2">Windows</th>
         <th colspan="2">Linux</th>
         <th colspan="2">Mac</th>
-    </tr>
-    <tr>
-        <td>1.1</td>
-
-        <td><a href="application/installers/windows/0/-12/0/4/20200602/0/ArmegisInstaller.exe" target="_blank">exe</a>
-        </td>
-        <td><a href="application/installers/windows/0/-12/0/4/20200602/0/ArmegisInstaller.zip" target="_blank">zip</a>
-        </td>
-
-        <td><a href="application/installers/linux/0/-12/0/4/20200602/0/Armegis.tar.gz" target="_blank">tar.gz</a></td>
-        <td><a href="application/installers/linux/0/-12/0/4/20200602/0/Armegis.zip" target="_blank">zip</a></td>
-
-        <td>mac</td>
-        <td>rar</td>
-    </tr>
-    <tr>
-        <td>1.0</td>
-
-        <td><a href="" target="_blank">exe</a></td>
-        <td><a href="" target="_blank">zip</a></td>
-
-        <td>npl</td>
-        <td>tar.gz</td>
-
-        <td>mac</td>
-        <td>rar</td>
-    </tr>
-    <tr>
-        <td>0.9</td>
-
-        <td>exe</td>
-        <td>zip</td>
-
-        <td>npl</td>
-        <td>tar.gz</td>
-
-        <td>mac</td>
-        <td>rar</td>
-    </tr>
-</table>
-
-
-<!---
-
-
-
--->
-<br><b>VERSIONS</b><br>
-<table id="versions">
-    <tr>
-        <th>Version</th>
-        <th>Windows</th>
-        <th>Linux</th>
-        <th>Mac</th>
     </tr>
 </table>
 <!--<br><b>WINDOWS</b><br>
@@ -101,112 +48,244 @@
 
 
 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 
     loadXml();
 
     function loadXml() {
         var windowsV;
-        loadXMLDoc("application/installers/windows/testlist.xml",windowsV);
         var macV;
-        loadXMLDoc("application/installers/mac/list.xml",macV);
         var linuxV;
-        loadXMLDoc("application/installers/linux/list.xml",linuxV);
-        checkAllVersions(windowsV, macV, linuxV);
+        loadXMLDoc("application/installers/windows/testlist.xml", function (windowsV) {
+            loadXMLDoc("application/installers/mac/list.xml", function (macV) {
+                loadXMLDoc("application/installers/linux/list.xml", function (linuxV) {
+                    checkAllVersions(windowsV, macV, linuxV);
+                });
+            });
+        });
     }
 
 
     function checkAllVersions(windowsV, macV, linuxV) {
+
+        /*var x = xmlDoc.getElementsByTagName("file");
+        for (i = 0; i <x.length; i++) {
+            table += "<tr><td>" + x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue + "</td><td>" + x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue + "</td></tr>";
+        }*/
+
         var setVersions = new Set();
 
+        var windowsVersions = myFunction(windowsV);
+        var linuxVersions = myFunction(linuxV);
+        var macVersions = myFunction(macV);
+
+
         //Add windows versions
-        for (var i = 0; i < windowsV.length; i++) {
-            setVersions.add(windowsV[i].num);
-            console.log(windowsV);
+        for (var i = 0; i < windowsVersions.length; i++) {
+            setVersions.add(windowsVersions[i].num);
         }
-        console.log(setVersions);
         //Add mac versions
-        for (var i = 0; i < macV.length; i++) {
-            setVersions.add(macV[i].num);
+        for (var i = 0; i < macVersions.length; i++) {
+            setVersions.add(macVersions[i].num);
         }
-        console.log(setVersions);
         //Add linux versions
-        for (var i = 0; i < linuxV.length; i++) {
-            setVersions.add(linuxV[i].num);
+        for (var i = 0; i < linuxVersions.length; i++) {
+            setVersions.add(linuxVersions[i].num);
         }
-        console.log(setVersions);
-        createTable(setVersions);
+        createTable(setVersions, windowsVersions, linuxVersions, macVersions);
     }
 
 
     //Create table
-    function createTable(allVersions) {
-        //console.log("create table + all versions: " + allVersions);
+    function createTable(allVersions, windowsVersions, linuxVersions, macVersions) {
+
+        const ruta = "application/installers/";
         var table = document.getElementById("versions");
 
-        for (var i = 0; i < allVersions.length; i++) {
+        var versions = [];
+
+        allVersions.forEach(valor => {
+            versions.push(valor);
+        });
+
+        versions.sort(function (o1, o2) {
+                var e = o2.split(".")[0] - o1.split(".")[0];
+                if (e != 0) {
+                    return e;
+                } else {
+                    var e = o2.split(".")[1] - o1.split(".")[1];
+                    if (e != 0) {
+                        return e;
+                    } else {
+                        var e = o2.split(".")[2] - o1.split(".")[2];
+                        if (e != 0) {
+                            return e;
+                        } else {
+                            var e = o2.split(".")[3] - o1.split(".")[3];
+                            if (e != 0) {
+                                return e;
+                            } else {
+                                var e = o2.split(".")[4] - o1.split(".")[4];
+                                if (e != 0) {
+                                    return e;
+                                } else {
+                                    var e = o2.split(".")[4] - o1.split(".")[4];
+                                    if (e != 0) {
+                                        return e;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return 0;
+            }
+        );
+
+
+        for (var i = 0; i < versions.length; i++) {
             var rowVersion = document.createElement("tr");
             var columnNumVersion = document.createElement("td");
             table.appendChild(rowVersion);
             rowVersion.appendChild(columnNumVersion);
-            columnNumVersion.setAttribute("id", allVersions[i]);
-            columnNumVersion.textContent = allVersions[i];
+
+            var id = versions[i].split(".")[1];
+            columnNumVersion.setAttribute("id", id);
+
+            columnNumVersion.textContent = versions[i];
+
 
             //Windows versions
-            for (var j = 0; j < windowsV.length; j++) {
-                if (allVersions.has(windowsV[i].num)) {
-                    var columnWindows = document.createElement("td");
-                    rowVersion.appendChild(columnWindows);
-                    columnWindows.textContent = windowsV[i].href;
+            var versionsW = [];
+            windowsVersions.forEach(valor => {
+                versionsW.push(valor);
+            });
+            var windows = false;
+            for (var j = 0; j < versionsW.length; j++) {
+                if (versions[i] == (versionsW[j].num)) {
+                    windows = true;
+                    var columnWindows0 = document.createElement("td");
+                    rowVersion.appendChild(columnWindows0);
+                    var link0 = document.createElement("a");
+                    columnWindows0.appendChild(link0);
+                    link0.setAttribute("href", ruta + "windows/" + versionsW[j].href);
+                    link0.setAttribute("target", "_blank");
+                    link0.textContent = versionsW[j].href;
+
+                    var columnWindows1 = document.createElement("td");
+                    columnWindows1.setAttribute("id", "column");
+                    var link1 = document.createElement("a");
+                    columnWindows1.appendChild(link1);
+                    rowVersion.appendChild(columnWindows1);
+                    var zip = (versionsW[j].href.substring(0, versionsW[j].href.length - 3) + "zip");
+                    link1.setAttribute("href", ruta + "windows/" + zip);
+                    link1.setAttribute("target", "_blank");
+                    link1.textContent = zip;
                 }
             }
+            if (!windows) {
+                rowVersion.appendChild(document.createElement("td"));
+                rowVersion.appendChild(document.createElement("td"));
+            }
+
             //Linux versions
-            for (var j = 0; j < linuxV.length; j++) {
-                if (allVersions.has(linuxV[i].num)) {
-                    var columnLinux = document.createElement("td");
-                    rowVersion.appendChild(columnLinux);
-                    columnLinux.textContent = linuxV[i].href;
+            var versionsL = [];
+            linuxVersions.forEach(valor => {
+                versionsL.push(valor);
+            });
+            var linux = false;
+            for (var j = 0; j < versionsL.length; j++) {
+                if (versions[i] == versionsL[j].num) {
+                    linux = true;
+                    var columnLinux0 = document.createElement("td");
+                    rowVersion.appendChild(columnLinux0);
+                    var link0 = document.createElement("a")
+                    columnLinux0.appendChild(link0);
+                    link0.setAttribute("href", ruta + "linux/" + versionsW[j].href);
+                    link0.setAttribute("target", "_blank");
+                    link0.textContent = versionsL[j].href;
+
+                    var columnLinux1 = document.createElement("td");
+                    rowVersion.appendChild(columnLinux1);
+                    var zip = (versionsL[j].href.substring(0, versionsL[j].href.length - 6) + "zip");
+                    var link1 = document.createElement("a")
+                    columnLinux1.appendChild(link1);
+                    link1.setAttribute("href", ruta + "linux/" + zip);
+                    link1.setAttribute("target", "_blank");
+                    link1.textContent = versionsL[j].href;
                 }
             }
+            if (!linux) {
+                rowVersion.appendChild(document.createElement("td"));
+                rowVersion.appendChild(document.createElement("td"));
+            }
+
             //Mac versions
-            for (var j = 0; j < macV.length; j++) {
-                if (allVersions.has(macV[i].num)) {
-                    var columnMac = document.createElement("td");
-                    rowVersion.appendChild(columnMac);
-                    columnMac.textContent = macV[i].href;
+            var versionsM = [];
+            macVersions.forEach(valor => {
+                versionsM.push(valor);
+            });
+            var mac = false;
+            for (var j = 0; j < versionsM.length; j++) {
+                if (versions[i] == versionsM[j].num) {
+                    mac = true;
+                    var name = versionsM[j].href.substring(0, versionsM[j].href.length - 6);
+
+                    var columnMac0 = document.createElement("td");
+                    rowVersion.appendChild(columnMac0);
+                    var link0 = document.createElement("a")
+                    columnMac0.appendChild(link0);
+                    link0.setAttribute("href", ruta + "mac/" + name+"zip");
+                    link0.setAttribute("target", "_blank");
+                    link0.textContent = name + "zip";
+
+                    var columnMac1 = document.createElement("td");
+                    rowVersion.appendChild(columnMac1);
+                    var link1 = document.createElement("a")
+                    columnMac0.appendChild(link1);
+                    link1.setAttribute("href", ruta + "mac/" + name+"rar");
+                    link1.setAttribute("target", "_blank");
+                    link1.textContent = name + "rar";
                 }
+            }
+            if (!mac) {
+                rowVersion.appendChild(document.createElement("td"));
+                rowVersion.appendChild(document.createElement("td"));
             }
         }
     }
 
-    function loadXMLDoc(src,v) {
-        v = null;
-        var xmlhttp = new XMLHttpRequest();
-        /*xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                v = myFunction(this);
-                console.log("Dentro if: "+v + "SRC: "+src);
-                //return v;
-            }
-        };*/
-        xmlhttp.open("GET", src, true);
-        xmlhttp.send();
-        xmlhttp.onload = function() {
-            v = xmlhttp.responseXML.documentElement;
-            console.log(v);
-        }
 
-        console.log(v + "SRC: "+src);
+    var resultado = null;
+
+    function loadXMLDoc(src, callback) {
+        v = null;
+
+        var request = new XMLHttpRequest();
+        var params = "UID=CORS&name=CORS";
+
+        request.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                callback(this.responseXML);
+            }
+        };
+
+        request.open("POST", src, true);
+        request.send(null);
+        /*request.onload = function() {
+            resultado = xmlhttp.responseXML.documentElement;
+            console.log(resultado);
+        }*/
         return v;
     }
 
 
     function myFunction(xml) {
-        var i;
-        var xmlDoc = xml.responseXML;
-
-        var x = xmlDoc.getElementsByTagName("file");
+        //var i;
+        var xmlDoc = xml.getElementsByTagName("file");
+        /*console.log(xmlDoc);
+        console.log(xmlDoc[0].getElementsByTagName("version")[0].childNodes[0].nodeValue);
+        console.log(xmlDoc);*/
 
         //Constructor
         function Version(num, href) {
@@ -214,11 +293,15 @@
             this.href = href;
         };
         var versions = [];
-        for (var i = 0; i < x.length; i++) {
-            var n = x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue;
-            var h = x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue;
-            var auxVersion = new Version(n, h);
-            versions.push(auxVersion);
+        for (var i = 0; i < xmlDoc.length; i++) {
+            try {
+                var n = xmlDoc[i].getElementsByTagName("version")[0].childNodes[0].nodeValue;
+                var h = xmlDoc[i].getElementsByTagName("href")[0].childNodes[0].nodeValue;
+                var auxVersion = new Version(n, h);
+                versions.push(auxVersion);
+            } catch (error) {
+
+            }
         }
 
         //Check the versions
@@ -234,5 +317,5 @@
     }
 
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
-</html>
