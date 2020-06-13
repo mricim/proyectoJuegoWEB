@@ -104,113 +104,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 
-    //Load XML files
+    loadXml();
 
-    var windowsV;
-    var macV;
-    var linuxV;
-
-
-    // startWindows();//.then(startMac).then(startLinux).then(checkAllVersions);
-
-
-    var Chain = (function () {
-
-        var _listeners = {},
-            _resultOfPreviousFunc = null,
-            self = this,
-            api = {};
-
-        var on = function (type, listener) {
-            if (!_listeners[type]) _listeners[type] = [];
-            _listeners[type].push(listener);
-            return api;
-        }
-        var off = function (type, listener) {
-            if (_listeners[type]) {
-                var arr = [];
-                for (var i = 0; f = _listeners[type][i]; i++) {
-                    if (f !== listener) {
-                        arr.push(f);
-                    }
-                }
-                _listeners[type] = arr;
-            }
-            return api;
-        }
-        var dispatch = function (type, param) {
-            if (_listeners[type]) {
-                for (var i = 0; f = _listeners[type][i]; i++) {
-                    f(param);
-                }
-            }
-        }
-        var run = function () {
-            if (arguments.length > 0) {
-                var funcs = [];
-                for (var i = 0; f = arguments[i]; i++) funcs.push(f);
-                var element = funcs.shift();
-                if (typeof element === 'function') {
-                    element(_resultOfPreviousFunc, function (res) {
-                        _resultOfPreviousFunc = res;
-                        run.apply(self, funcs);
-                    })
-                } else if (typeof element === 'object' && element.length > 0) {
-                    var f = element.shift();
-                    var callback = function (res) {
-                        _resultOfPreviousFunc = res;
-                        run.apply(self, funcs);
-                    }
-                    f.apply(f, element.concat([callback]));
-                }
-
-            } else {
-                dispatch("done", _resultOfPreviousFunc);
-            }
-            return api;
-        }
-
-        return api = {
-            run: run,
-            on: on,
-            off: off
-        }
-
-    })();
-
-
-    function start() {
-        Chain.run(
-            function (res, next) {
-                windowsV = loadWindows();
-                console.log(windowsV);
-                console.log("1");
-                next(10);
-            },
-            function (res, next) {
-                macV = loadMac();
-                console.log("2");
-                console.log(macV);
-                next(res + 1);
-            },
-            function (res, next) {
-                linuxV = loadLinux();
-                console.log("3");
-                console.log(linuxV);
-                next();
-            },
-            function () {
-                console.log("4");
-                checkAllVersions();
-            }
-        );
+    function loadXml() {
+        var windowsV;
+        loadXMLDoc("application/installers/windows/testlist.xml",windowsV);
+        var macV;
+        loadXMLDoc("application/installers/mac/list.xml",macV);
+        var linuxV;
+        loadXMLDoc("application/installers/linux/list.xml",linuxV);
+        checkAllVersions(windowsV, macV, linuxV);
     }
 
-    var setVersions = new Set();
 
-    //checkAllVersions();
+    function checkAllVersions(windowsV, macV, linuxV) {
+        var setVersions = new Set();
 
-    function checkAllVersions() {
         //Add windows versions
         for (var i = 0; i < windowsV.length; i++) {
             setVersions.add(windowsV[i].num);
@@ -219,12 +128,12 @@
         console.log(setVersions);
         //Add mac versions
         for (var i = 0; i < macV.length; i++) {
-            setVersions.add(macV[i].num)
+            setVersions.add(macV[i].num);
         }
         console.log(setVersions);
         //Add linux versions
         for (var i = 0; i < linuxV.length; i++) {
-            setVersions.add(linuxV[i].num)
+            setVersions.add(linuxV[i].num);
         }
         console.log(setVersions);
         createTable(setVersions);
@@ -271,24 +180,27 @@
         }
     }
 
-    function loadXMLDoc(src) {
-        var v;
+    function loadXMLDoc(src,v) {
+        v = null;
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
+        /*xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 v = myFunction(this);
+                console.log("Dentro if: "+v + "SRC: "+src);
+                //return v;
             }
-        };
+        };*/
         xmlhttp.open("GET", src, true);
         xmlhttp.send();
+        xmlhttp.onload = function() {
+            v = xmlhttp.responseXML.documentElement;
+            console.log(v);
+        }
+
+        console.log(v + "SRC: "+src);
         return v;
     }
 
-    function loadXml() {
-        loadXMLDoc("application/installers/windows/testlist.xml");
-        loadXMLDoc("application/installers/linux/list.xml");
-        loadXMLDoc("application/installers/mac/list.xml");
-    }
 
     function myFunction(xml) {
         var i;
