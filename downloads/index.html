@@ -272,23 +272,21 @@
     }
 
     function loadXMLDoc(src) {
+        var v;
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                myFunction(this);
+                v = myFunction(this);
             }
         };
         xmlhttp.open("GET", src, true);
         xmlhttp.send();
+        return v;
     }
 
-    function loadWindows() {
+    function loadXml() {
         loadXMLDoc("application/installers/windows/testlist.xml");
-    }
-    function loadLinux() {
         loadXMLDoc("application/installers/linux/list.xml");
-    }
-    function loadMac() {
         loadXMLDoc("application/installers/mac/list.xml");
     }
 
