@@ -183,15 +183,19 @@
     function loadXMLDoc(src,v) {
         v = null;
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
+        /*xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 v = myFunction(this);
                 console.log("Dentro if: "+v + "SRC: "+src);
                 //return v;
             }
-        };
+        };*/
         xmlhttp.open("GET", src, true);
         xmlhttp.send();
+        xmlhttp.onload = function() {
+            v = xmlhttp.responseXML.documentElement;
+        }
+
         console.log(v + "SRC: "+src);
         return v;
     }
