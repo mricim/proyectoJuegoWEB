@@ -111,28 +111,26 @@
     var linuxV;
 
 
-   // startWindows();//.then(startMac).then(startLinux).then(checkAllVersions);
+    // startWindows();//.then(startMac).then(startLinux).then(checkAllVersions);
 
 
-
-
-    var Chain = (function() {
+    var Chain = (function () {
 
         var _listeners = {},
             _resultOfPreviousFunc = null,
             self = this,
             api = {};
 
-        var on = function(type, listener) {
-            if(!_listeners[type]) _listeners[type] = [];
+        var on = function (type, listener) {
+            if (!_listeners[type]) _listeners[type] = [];
             _listeners[type].push(listener);
             return api;
         }
-        var off = function(type, listener) {
-            if(_listeners[type]) {
+        var off = function (type, listener) {
+            if (_listeners[type]) {
                 var arr = [];
-                for(var i=0; f=_listeners[type][i]; i++) {
-                    if(f !== listener) {
+                for (var i = 0; f = _listeners[type][i]; i++) {
+                    if (f !== listener) {
                         arr.push(f);
                     }
                 }
@@ -140,26 +138,26 @@
             }
             return api;
         }
-        var dispatch = function(type, param) {
-            if(_listeners[type]) {
-                for(var i=0; f=_listeners[type][i]; i++) {
+        var dispatch = function (type, param) {
+            if (_listeners[type]) {
+                for (var i = 0; f = _listeners[type][i]; i++) {
                     f(param);
                 }
             }
         }
-        var run = function() {
-            if(arguments.length > 0) {
+        var run = function () {
+            if (arguments.length > 0) {
                 var funcs = [];
-                for(var i=0; f=arguments[i]; i++) funcs.push(f);
+                for (var i = 0; f = arguments[i]; i++) funcs.push(f);
                 var element = funcs.shift();
-                if(typeof element === 'function') {
-                    element(_resultOfPreviousFunc, function(res) {
+                if (typeof element === 'function') {
+                    element(_resultOfPreviousFunc, function (res) {
                         _resultOfPreviousFunc = res;
                         run.apply(self, funcs);
                     })
-                } else if(typeof element === 'object' && element.length > 0) {
+                } else if (typeof element === 'object' && element.length > 0) {
                     var f = element.shift();
-                    var callback = function(res) {
+                    var callback = function (res) {
                         _resultOfPreviousFunc = res;
                         run.apply(self, funcs);
                     }
@@ -183,30 +181,31 @@
 
     function start() {
         Chain.run(
-            function(res,next) {
+            function (res, next) {
                 windowsV = loadWindows();
-                console.log("1");
                 console.log(windowsV);
+                console.log("1");
                 next(10);
             },
-            function(res,next) {
+            function (res, next) {
                 macV = loadMac();
                 console.log("2");
                 console.log(macV);
-                next(res+1);
+                next(res + 1);
             },
-            function(res,next) {
+            function (res, next) {
                 linuxV = loadLinux();
                 console.log("3");
                 console.log(linuxV);
                 next();
             },
-            function() {
+            function () {
                 console.log("4");
                 checkAllVersions();
             }
         );
     }
+
     var setVersions = new Set();
 
     //checkAllVersions();
@@ -272,171 +271,58 @@
         }
     }
 
-    //WINDOWS
+    function loadXMLDoc(src) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunction(this);
+            }
+        };
+        xmlhttp.open("GET", src, true);
+        xmlhttp.send();
+    }
+
     function loadWindows() {
-        //console.log("WINDOWS");
-        loadXMLDoc();
-
-        function loadXMLDoc() {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    myFunction(this);
-                }
-            };
-            xmlhttp.open("GET", "application/installers/windows/testlist.xml", true);
-            xmlhttp.send();
-        }
-
-        function myFunction(xml) {
-            var i;
-            var xmlDoc = xml.responseXML;
-
-            var x = xmlDoc.getElementsByTagName("file");
-
-            //Constructor
-            function Version(num, href) {
-                this.num = num;
-                this.href = href;
-            };
-            var versions = [];
-            var oldVersions = [];
-            for (var i = 0; i < x.length; i++) {
-                var n = x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue;
-                var h = x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue;
-                var auxVersion = new Version(n, h);
-                versions.push(auxVersion);
-                oldVersions.push(auxVersion);
-            }
-            //console.log(oldVersions);
-
-            //Check the versions
-            for (var i = 0; i < versions.length - 1; i++) {
-                var numVersion = (versions[i].num).substring(3, 7);
-                var numNextVersion = (versions[i + 1].num).substring(3, 7);
-
-                if (numVersion == numNextVersion) {
-                    versions.splice(i, 1);
-                }
-            }
-            //console.log("VERSIONS WINDOWS");
-            runTableWindows = true;
-
-        }
-
-        return versions;
+        loadXMLDoc("application/installers/windows/testlist.xml");
     }
-
-    //MAC
-    function loadMac() {
-        //console.log("MAC");
-        loadXMLDoc();
-
-        function loadXMLDoc() {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    myFunction(this);
-                }
-            };
-            xmlhttp.open("GET", "application/installers/mac/list.xml", true);
-            xmlhttp.send();
-        }
-
-        function myFunction(xml) {
-            var i;
-            var xmlDoc = xml.responseXML;
-
-            var x = xmlDoc.getElementsByTagName("file");
-
-            //Constructor
-            function Version(num, href) {
-                this.num = num;
-                this.href = href;
-            };
-            var versions = [];
-            var oldVersions = [];
-            for (var i = 0; i < x.length; i++) {
-                var n = x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue;
-                var h = x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue;
-                var auxVersion = new Version(n, h);
-                versions.push(auxVersion);
-                oldVersions.push(auxVersion);
-            }
-            //console.log(oldVersions);
-            //Check the versions
-            for (var i = 0; i < versions.length - 1; i++) {
-                var numVersion = (versions[i].num).substring(3, 7);
-                var numNextVersion = (versions[i + 1].num).substring(3, 7);
-
-                if (numVersion == numNextVersion) {
-                    versions.splice(i, 1);
-                }
-            }
-            //console.log("VERSIONS MAC");
-            runTableMac = true;
-            //createTable(versions);
-
-        }
-
-        return versions;
-    }
-
-    //LINUX
     function loadLinux() {
-        //console.log("LINUX");
-        loadXMLDoc();
+        loadXMLDoc("application/installers/linux/list.xml");
+    }
+    function loadMac() {
+        loadXMLDoc("application/installers/mac/list.xml");
+    }
 
-        function loadXMLDoc() {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    myFunction(this);
-                }
-            };
-            xmlhttp.open("GET", "application/installers/linux/list.xml", true);
-            xmlhttp.send();
+    function myFunction(xml) {
+        var i;
+        var xmlDoc = xml.responseXML;
+
+        var x = xmlDoc.getElementsByTagName("file");
+
+        //Constructor
+        function Version(num, href) {
+            this.num = num;
+            this.href = href;
+        };
+        var versions = [];
+        for (var i = 0; i < x.length; i++) {
+            var n = x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue;
+            var h = x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue;
+            var auxVersion = new Version(n, h);
+            versions.push(auxVersion);
         }
 
-        function myFunction(xml) {
-            var i;
-            var xmlDoc = xml.responseXML;
+        //Check the versions
+        for (var i = 0; i < versions.length - 1; i++) {
+            var numVersion = (versions[i].num).substring(3, 7);
+            var numNextVersion = (versions[i + 1].num).substring(3, 7);
 
-            var x = xmlDoc.getElementsByTagName("file");
-
-            //Constructor
-            function Version(num, href) {
-                this.num = num;
-                this.href = href;
-            };
-            var versions = [];
-            var oldVersions = [];
-            for (var i = 0; i < x.length; i++) {
-                var n = x[i].getElementsByTagName("version")[0].childNodes[0].nodeValue;
-                var h = x[i].getElementsByTagName("href")[0].childNodes[0].nodeValue;
-                var auxVersion = new Version(n, h);
-                versions.push(auxVersion);
-                oldVersions.push(auxVersion);
+            if (numVersion == numNextVersion) {
+                versions.splice(i, 1);
             }
-            //console.log(oldVersions);
-            //Check the versions
-            for (var i = 0; i < versions.length - 1; i++) {
-                var numVersion = (versions[i].num).substring(3, 7);
-                var numNextVersion = (versions[i + 1].num).substring(3, 7);
-
-                if (numVersion == numNextVersion) {
-                    versions.splice(i, 1);
-                }
-            }
-            //console.log("VERSIONS LINUX");
-            runTableLinux = true;
-
         }
-
         return versions;
     }
+
 </script>
-
-
 </body>
 </html>
