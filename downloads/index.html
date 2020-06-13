@@ -186,16 +186,19 @@
             function(res,next) {
                 windowsV = loadWindows();
                 console.log("1");
+                console.log(windowsV);
                 next(10);
             },
             function(res,next) {
                 macV = loadMac();
                 console.log("2");
+                console.log(macV);
                 next(res+1);
             },
             function(res,next) {
                 linuxV = loadLinux();
                 console.log("3");
+                console.log(linuxV);
                 next();
             },
             function() {
@@ -209,7 +212,6 @@
     //checkAllVersions();
 
     function checkAllVersions() {
-        console.log("4");
         //Add windows versions
         for (var i = 0; i < windowsV.length; i++) {
             setVersions.add(windowsV[i].num);
