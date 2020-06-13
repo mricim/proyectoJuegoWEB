@@ -183,19 +183,19 @@
 
     function start() {
         Chain.run(
-            function (res, next) {
+            function() {
                 windowsV = loadWindows();
                 console.log("1");
             },
-            function (res, next) {
+            function() {
                 macV = loadMac();
                 console.log("2");
             },
-            function (res, next) {
+            function() {
                 linuxV = loadLinux();
                 console.log("3");
             },
-            function (res, next) {
+            function() {
                 console.log("4");
                 checkAllVersions();
             }
