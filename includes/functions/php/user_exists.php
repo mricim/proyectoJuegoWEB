@@ -5,7 +5,7 @@ header('Content-Type: text/html; charset=iso-8859-1');
 include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt.php');
 include_once($_SERVER['DOCUMENT_ROOT'] .'/includes/functions/php/db_connection.php');
 
-    $loginMail = encrypt($_POST['m']);
+    $loginMail = encrypt($_POST['m']); //assert
     if ($loginMail != "") {
         echo userExists($loginMail);
     }
@@ -32,9 +32,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] .'/includes/functions/php/db_connection.p
                 //echo '1';
                 return 1;
             }
-            /*foreach($array_resultado as $usuario){
-            	echo "<br>".$usuario['id']." ".$usuario['name'];
-            }*/
 		}
 
 

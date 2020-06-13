@@ -15,7 +15,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="start()">
 <!--onload="loadXML()">-->
 
 
@@ -111,22 +111,29 @@
     var linuxV;
 
 
-    startWindows();//.then(startMac).then(startLinux).then(checkAllVersions);
+   // startWindows();//.then(startMac).then(startLinux).then(checkAllVersions);
 
-    function startWindows() {
-        windowsV = loadWindows();
-        setTimeout(startMac(),1000);
+
+    function start() {
+        Chain
+            .on("done", function() {
+                windowsV = loadWindows();
+            }).run(
+            Chain
+                .on("done", function() {
+                    macV = loadMac();
+                })).run(
+            Chain
+                .on("done", function () {
+                    linuxV = loadLinux();
+                })).run(
+            Chain.on("done", function() {
+                checkAllVersions();
+            }));
+
     }
 
-    function startMac() {
-                macV = loadMac();
-                setTimeout(startLinux(),1000);
-    }
 
-    function startLinux() {
-                linuxV = loadLinux();
-                setTimeout(checkAllVersions(),1000);
-    }
 
 
     var setVersions = new Set();
