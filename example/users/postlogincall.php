@@ -66,7 +66,17 @@
         $SentToName =  $UserName; //NAME OR NULL 
         $Asunto = 'Register complet';
         //$BodyHTML = 'Hola que tal, '.$UserName.'? <br><a href="'.$actual_link.'/example/users/beforeregister.html?key='.$hash.'">Click aquí para terminar el registro.</a>'; //Cuerpo
-        $BodyHTMLTest = 'Hola, '.$UserName.'? <br><a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'">Click aquí para terminar el registro.</a>'; //Cuerpo
+        $BodyHTMLTest =
+        '<html>
+        <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        </head>
+            <body>
+            <h3>PROVA</H3>
+            Hola, '.$UserName.'? <br><a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'">Click aquí para terminar el registro.</a>
+            </body>
+            </html>';
+         //Cuerpo
 
         $x = require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/mail/emailUnique.php');//MAIL
        //PHP MAIL
