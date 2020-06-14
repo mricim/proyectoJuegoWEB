@@ -48,7 +48,7 @@ $links = conectar_db();
                 echo "<br>Result mensaje: ".$result_mensaje."<br>";
             	echo"<br>Se a guardado en nuestra base de datos<br>";
             	echo"<br><b>Todo correcto</b><br>";
-            	exit();
+            	//exit();
             	echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=true'; </script>";
             }
         } else {
