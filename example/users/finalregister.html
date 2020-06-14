@@ -114,6 +114,11 @@
                 }
             }
 
+            var p = document.getElementById("password").setAttribute("title","")
+            p.onivalid = function (event) {
+                event.target.setCustomValidity("Invalid password");
+            }
+
         </script>
         <script src='/includes/js/captcha.js'>
 
@@ -153,7 +158,7 @@
                                name="email" placeholder="Email" type="text" onkeyup="checkMail(this.value)" required>
                         <input aria-label="password" class="form-control col-10 col-lg-4 offset-1 offset-lg-2"
                                id="password" name="password" placeholder="Password" type="password"
-                               onkeyup="checkPass(this.value)" required>
+                               onkeyup="checkPass(this.value)" pattern=" /(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/" required>
                         <div class="clearfix"></div>
                         <br><br>
                         <input aria-label="name" class="form-control col-10 col-lg-4 offset-1" id="user"
