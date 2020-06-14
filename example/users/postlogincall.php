@@ -71,101 +71,37 @@
         <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <style>
-        .titulo {
-        text-align: left;
-        font-family: Arial Black;
-        font-weight: bold;
-        font-size: 30px;
-        color: #fff;
-        text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
-        }
-        body {
+        button {
+            width: 150px;
+            height: 30px;
+            margin: 0;
 
-        	display: flex;
-        	justify-content: center;
-        	align-items: center;
-        	height: 100vh;
-        	background: #fcf3ec;
-
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
         }
 
-        .button {
-
-        	--offset: 10px;
-        	--border-size: 2px;
-
-        	display: block;
-        	position: relative;
-        	padding: 1.5em 3em;
-        	appearance: none;
-        	border: 0;
-        	background: transparent;
-        	color: #e55743;
-        	text-transform: uppercase;
-        	letter-spacing: .25em;
-        	outline: none;
-        	cursor: pointer;
-        	font-weight: bold;
-        	border-radius: 0;
-        	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
-        	transition: background .8s ease;
-
-        	&:hover {
-        		background: rgba(100, 0, 0, .03);
-        	}
-
-        	&__horizontal,
-        	&__vertical {
-        		position: absolute;
-        		top: var(--horizontal-offset, 0);
-        		right: var(--vertical-offset, 0);
-        		bottom: var(--horizontal-offset, 0);
-        		left: var(--vertical-offset, 0);
-        		transition: transform .8s ease;
-        		will-change: transform;
-
-        		&::before {
-        			content: '';
-        			position: absolute;
-        			border: inherit;
-        		}
-        	}
-
-        	&__horizontal {
-        		--vertical-offset: calc(var(--offset) * -1);
-        		border-top: var(--border-size) solid currentcolor;
-        		border-bottom: var(--border-size) solid currentcolor;
-
-        		&::before {
-        			top: calc(var(--vertical-offset) - var(--border-size));
-        			bottom: calc(var(--vertical-offset) - var(--border-size));
-        			left: calc(var(--vertical-offset) * -1);
-        			right: calc(var(--vertical-offset) * -1);
-        		}
-        	}
-
-        	&:hover &__horizontal {
-        		transform: scaleX(0);
-        	}
-
-        	&__vertical {
-        		--horizontal-offset: calc(var(--offset) * -1);
-        		border-left: var(--border-size) solid currentcolor;
-        		border-right: var(--border-size) solid currentcolor;
-
-        		&::before {
-        			top: calc(var(--horizontal-offset) * -1);
-        			bottom: calc(var(--horizontal-offset) * -1);
-        			left: calc(var(--horizontal-offset) - var(--border-size));
-        			right: calc(var(--horizontal-offset) - var(--border-size));
-        		}
-        	}
-
-        	&:hover &__vertical {
-        		transform: scaleY(0);
-        	}
-
+        button:hover {
+            background-color: rgb(190, 97, 63) !important;
         }
+
+        #boto {
+            width:auto !important;
+            height: auto !important;
+            color:black;
+            border:2px solid #fa8f68;
+            border-radius: 2px;
+            padding: 5px 10px;
+            background-color: #fa8f68;
+            float: right;
+            font-size: 12px;
+        }
+        #boto:hover {
+            background-color: darkolivegreen !important;
+            border:2px solid darkolivegreen;
+            color: white;
+        }
+
         </style>
         </head>
             <body>
@@ -174,10 +110,8 @@
             <h4 class="titulo">Hola, '.$UserName. '!</h4>
             <br>
 
-            <button class="button">
+            <button id="boto">
             	<a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'">Sign up!</a>
-            	<div class="button__horizontal"></div>
-            	<div class="button__vertical"></div>
             </button>
             <br>
             </body>
