@@ -92,8 +92,8 @@
             <h4 class="titulo" style="text-align-center">Hola, '.$UserName. '!</h4>
             <br>
 
-<button>Sign up!
-            	<a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'"></a>
+<button>
+            	<a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'">Sign up!</a>
             </button>
             <br>
             </body>
