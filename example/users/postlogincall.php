@@ -105,12 +105,12 @@
         </style>
         </head>
             <body>
-            <h3>ARMEGIS</H3>
+            <h3 style="text-algin:center">ARMEGIS</H3>
             <div>
-            <h4 class="titulo">Hola, '.$UserName. '!</h4>
+            <h4 class="titulo" style="text-align-center">Hola, '.$UserName. '!</h4>
             <br>
 
-            <button id="boto">
+<button class="btn btn-warning btn-circle btn-circle-xl m-1 align-center">Sign up!<i class="fa fa-check"></i></button>
             	<a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'">Sign up!</a>
             </button>
             <br>
