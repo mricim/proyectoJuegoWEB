@@ -158,7 +158,7 @@
                                name="email" placeholder="Email" type="text" onkeyup="checkMail(this.value)" required>
                         <input aria-label="password" class="form-control col-10 col-lg-4 offset-1 offset-lg-2"
                                id="password" name="password" placeholder="Password" type="password"
-                               onkeyup="checkPass(this.value)" pattern="/[a-zA-Z0-9._]{8,16}$/" required>
+                               onkeyup="checkPass(this.value)" pattern="[a-zA-Z0-9._]{8,16}" required>
                         <div class="clearfix"></div>
                         <br><br>
                         <input aria-label="name" class="form-control col-10 col-lg-4 offset-1" id="user"
@@ -236,11 +236,7 @@
 
     </script>
 
-    <div footer="..\add\90footer.html">
-        <script>
-            includeHTML("footer");
-        </script>
-    </div>
+
 </div>
 </body>
 
