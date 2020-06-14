@@ -79,27 +79,9 @@
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
-        }
 
-        button:hover {
-            background-color: rgb(190, 97, 63) !important;
-        }
-
-        #boto {
-            width:auto !important;
-            height: auto !important;
-            color:black;
-            border:2px solid #fa8f68;
+            background-color: #78ad2d !important;
             border-radius: 2px;
-            padding: 5px 10px;
-            background-color: #fa8f68;
-            float: right;
-            font-size: 12px;
-        }
-        #boto:hover {
-            background-color: darkolivegreen !important;
-            border:2px solid darkolivegreen;
-            color: white;
         }
 
         </style>
@@ -110,8 +92,8 @@
             <h4 class="titulo" style="text-align-center">Hola, '.$UserName. '!</h4>
             <br>
 
-<button class="btn btn-warning btn-circle btn-circle-xl m-1 align-center">Sign up!<i class="fa fa-check"></i></button>
-            	<a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'">Sign up!</a>
+<button>Sign up!
+            	<a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'"></a></button>
             </button>
             <br>
             </body>
