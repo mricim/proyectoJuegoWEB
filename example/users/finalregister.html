@@ -171,9 +171,11 @@
                     </div>
                     <div class="col-6 mx-auto justify-content-center">
                         <canvas id="captcha"></canvas>
+                        <br>
                         <input type="button" id="refresh" value="Refresh"
                                onclick="Captcha('mainCaptcha');"/><br>
                         <input type="text" hidden="hidden" id="mainCaptcha">
+                        <br>
                         <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)"/>
                     </div>
                     <button class="btn btn-outline-success" disabled id="button_sender" name="button_sender"
