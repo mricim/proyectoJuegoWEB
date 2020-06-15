@@ -89,11 +89,9 @@
                         },
                         success: function (mailExists) {
                             if (mailExists == "0" || mailExists == 0) {
-                                $("#button_sender").prop('disabled');
                                 $("#email").prop("style", "border: 1px solid red");
                             } else {
                                 $("#email").removeAttr("style");
-                                $("#button_sender").prop('disabled');
                             }
                         }
                     })
