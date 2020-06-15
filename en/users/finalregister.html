@@ -108,19 +108,18 @@
             }
 
             function checkPassRepeat(p) {
+                var style = $("#passwordRepet").getAttribute("style");
                 if (p == pass) {
                     $("#passwordRepet").removeAttr("style");
-                    $("#button_sender").prop('disabled', false);
                 } else {
-                    $("#passwordRepet").prop("style", "border: 1px solid red");
-                    $("#button_sender").prop('disabled', true);
+                    $("#passwordRepet").prop("style", "border: 1px solid red; "+style);
                 }
             }
 
             //Button disabled
-            window.addEventListener('load', function disabledButtons() {
+            /*window.addEventListener('load', function disabledButtons() {
                 $("#button_sender").prop('disabled', true);
-            })
+            })*/
 
             //Check captcha
             function checkCaptcha(inputValueAux) {
@@ -164,22 +163,22 @@
                         <input class="key" disabled id="key" name="key" type="hidden" value=''>
                         <input class="send" disabled id="send" name="send" type="hidden" value='register.html'>
                         <button class="btn btn-outline-success my-0 my-sm-0 offset-1" id="button_sender" name="button_sender"
-                                type="submit" disabled="disabled">Register
+                                type="submit" disabled style="margin-left:520px;">Register
                         </button>
                     </div>
                 </form>
             </div>
         </div>
         <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Captcha</h6>
+            <h6 class="border-bottom border-gray pb-2">Captcha</h6>
             <div class="containter">
                 <canvas id="captcha" style="margin-top: 20px; margin-left: 420px;margin-right:10px;"></canvas>
                 <br>
                 <input type="button" id="refresh" value="Refresh"
-                       onclick="Captcha('mainCaptcha');" style="margin-top: 20px; margin-left: 420px;margin-right:10px;"/><br>
+                       onclick="Captcha('mainCaptcha');" style="margin-top: 0px; margin-left: 420px;margin-right:10px;"/><br>
                 <input type="text" hidden="hidden" id="mainCaptcha">
                 <br>
-                <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)" style="margin-top: 20px; margin-left: 420px;margin-right:10px;"/>
+                <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)" style="margin-top: 0px; margin-left: 450px;margin-right:10px;"/>
                 <br/>
             </div>
         </div>
