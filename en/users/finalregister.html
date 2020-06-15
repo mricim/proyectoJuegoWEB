@@ -108,11 +108,11 @@
             }
 
             function checkPassRepeat(p) {
-                var style = $("#passwordRepet").getAttribute("style");
                 if (p == pass) {
                     $("#passwordRepet").removeAttr("style");
+                    $("#passwordRepet").prop("style","margin-top: 0px; margin-left: 450px;margin-right:10px;");
                 } else {
-                    $("#passwordRepet").prop("style", "border: 1px solid red; "+style);
+                    $("#passwordRepet").prop("style", "border: 1px solid red; margin-top: 0px; margin-left: 450px;margin-right:10px;");
                 }
             }
 
