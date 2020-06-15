@@ -97,7 +97,7 @@
             <div>
             <h4 class="titulo" style="text-align-center">Hola, '.$UserName. '!</h4>
             <br>
-            <a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'"><button>Sign up!</button></a>
+            <a href="'.$actual_link.'/en/users/finalregister.html?key='.$hash.'"><button>Sign up!</button></a>
             <br>
             </body>
             </html>';
