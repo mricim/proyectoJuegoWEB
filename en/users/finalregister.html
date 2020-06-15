@@ -79,7 +79,7 @@
             function checkMail(mail) {
                 if (!(/^([a-zA-Z0-9._]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,4})$/.test(mail))) {
                     $("#email").prop("style", "border: 1px solid red");
-                    //$("#buttonRegister").prop('disabled', true);
+                    $("#buttonRegister").prop('disabled');
                 } else {
                     $.ajax({
                         method: "POST",
@@ -89,11 +89,11 @@
                         },
                         success: function (mailExists) {
                             if (mailExists == "0" || mailExists == 0) {
-                                //$("#button_sender").prop('disabled', true);
+                                $("#button_sender").prop('disabled');
                                 $("#email").prop("style", "border: 1px solid red");
                             } else {
                                 $("#email").removeAttr("style");
-                                //$("#button_sender").prop('disabled', false);
+                                $("#button_sender").prop('disabled');
                             }
                         }
                     })
@@ -107,14 +107,13 @@
                 pass = p;
             }
 
-            /*function checkPassRepeat(p) {
+            function checkPassRepeat(p) {
                 if (p == pass) {
                     $("#passwordRepet").removeAttr("style");
-                    $("#passwordRepet").prop("style","margin-top: 0px; margin-left: 450px;margin-right:10px;");
                 } else {
                     $("#passwordRepet").prop("style", "border: 1px solid red; margin-top: 0px; margin-left: 450px;margin-right:10px;");
                 }
-            }*/
+            }
 
             //Button disabled
             /*window.addEventListener('load', function disabledButtons() {
@@ -133,9 +132,9 @@
                 if (captcha == inputValue) {
                     $("#txtInput").removeAttr("style");
                     $("#button_sender").prop('disabled', false);
-
+                   $("#txtInput").prop("style", "border: 1px solid red; margin-top: 0px; margin-left: 450px;margin-right:10px;");
                 } else {
-                    $("#txtInput").prop("style", "border: 1px solid red");
+                    $("#txtInput").prop("style", "border: 1px solid red; margin-top: 0px; margin-left: 450px;margin-right:10px;");
                     $("#button_sender").prop('disabled', true);
                 }
             }
@@ -177,7 +176,7 @@
                     <canvas id="captcha" style="margin-top: 20px; margin-left: 420px;margin-right:10px;"></canvas>
                 <br>
                 <input type="button" id="refresh" value="Refresh"
-                       onclick="Captcha('mainCaptcha');" style="margin-top: 0px; margin-left: 420px;margin-right:10px;"/><br>
+                       onclick="Captcha('mainCaptcha');" style="margin-top: 10px; margin-bottom: 10px; nmargin-left: 420px;margin-right:10px;"/><br>
                 <input type="text" hidden="hidden" id="mainCaptcha">
                 <br>
                 <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)" style="margin-top: 0px; margin-left: 450px;margin-right:10px;"/>
