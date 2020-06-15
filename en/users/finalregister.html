@@ -164,22 +164,26 @@
                         <input class="key" disabled id="key" name="key" type="hidden" value=''>
                         <input class="send" disabled id="send" name="send" type="hidden" value='register.html'>
 
+                        <br/><br/>
 
-                    <br/><br/>
-<!--                    <div class="col-6 mx-auto justify-content-center align-items-center justify-content-center" style="display: flex">-->
-                        <canvas id="captcha" style="margin: 0px auto"></canvas>
-                        <br>
-                        <input type="button" id="refresh" value="Refresh"
-                               onclick="Captcha('mainCaptcha');"/><br>
-                        <input type="text" hidden="hidden" id="mainCaptcha">
-                        <br>
-                        <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)"/>
-                        <br/>
-                    <button class="btn btn-outline-success" id="button_sender" name="button_sender"
-                            type="submit" disabled="disabled" >Register
-                    </button>
+                        <button class="btn btn-outline-success" id="button_sender" name="button_sender"
+                                type="submit" disabled="disabled">Register
+                        </button>
                     </div>
                 </form>
+            </div>
+        </div>
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+            <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Captcha</h6>
+            <div class="containter">
+                <canvas id="captcha" style="margin-top: 20px; margin-left: 420px;margin-right:10px;"></canvas>
+                <br>
+                <input type="button" id="refresh" value="Refresh"
+                       onclick="Captcha('mainCaptcha');"/><br>
+                <input type="text" hidden="hidden" id="mainCaptcha">
+                <br>
+                <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)"/>
+                <br/>
             </div>
         </div>
 
