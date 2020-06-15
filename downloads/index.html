@@ -98,7 +98,7 @@
                 var windowsV;
                 var macV;
                 var linuxV;
-                loadXMLDoc("application/installers/windows/testlist.xml", function (windowsV) {
+                loadXMLDoc("application/installers/windows/list.xml", function (windowsV) {
                     loadXMLDoc("application/installers/mac/list.xml", function (macV) {
                         loadXMLDoc("application/installers/linux/list.xml", function (linuxV) {
                             checkAllVersions(windowsV, macV, linuxV);
