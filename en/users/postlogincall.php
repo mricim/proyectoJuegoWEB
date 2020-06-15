@@ -83,6 +83,12 @@
             background-color: #78ad2d !important;
             border-radius: 2px;
         }
+        button:hover {
+            color: white;
+        }
+        button: active {
+        color:white;
+        }
 
         </style>
         </head>
@@ -91,10 +97,7 @@
             <div>
             <h4 class="titulo" style="text-align-center">Hola, '.$UserName. '!</h4>
             <br>
-
-<button>Sign up!
-            	<a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'"></a>
-            </button>
+            <a href="'.$actual_link.'/example/users/finalregister.html?key='.$hash.'"><button>Sign up!</button></a>
             <br>
             </body>
             </html>';
