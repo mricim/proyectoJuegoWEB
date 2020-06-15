@@ -43,16 +43,16 @@ $links = conectar_db();
             if (isset($result_mensaje) == FALSE) {
             	echo"Error: "+$insert_user+"<br>ERROR TIPO 2".$links->error;
             	echo "<br>No se a enviado el mensaje";
-            	echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=error'; </script>";
+            	echo "<script> window.location='../../../en/users/registerdone.html?AddedUser=error'; </script>";
             } else {
                 echo "<br>Result mensaje: ".$result_mensaje."<br>";
             	echo"<br>Se a guardado en nuestra base de datos<br>";
             	echo"<br><b>Todo correcto</b><br>";
             	//exit();
-            	echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=true'; </script>";
+            	echo "<script> window.location='../../../en/users/registerdone.html?AddedUser=true'; </script>";
             }
         } else {
-            echo "<script> window.location='../../../example/users/registerdone.html?AddedUser=false'; </script>";
+            echo "<script> window.location='../../../en/users/registerdone.html?AddedUser=false'; </script>";
         }
 
 

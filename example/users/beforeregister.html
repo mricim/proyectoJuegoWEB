@@ -75,7 +75,7 @@
 
         <div class="my-3 p-4 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register compled</h6>
-            <div class="containter">
+            <!--<div class="containter">
                 <div class="row justify-content-md-center">
                     <div class="row">
                         <p>
@@ -83,16 +83,16 @@
                             Hello <b></b>
 
 
-                            <!--</b>!<br/>
+                            &lt;!&ndash;</b>!<br/>
                                 An email has been sent to you, please check your email: <b>
                                 <div id="email">Error</div>
-                            </b>-->
+                            </b>&ndash;&gt;
                         </div>
                         </p>
                     </div>
 
                 </div>
-            </div>
+            </div>-->
         </div>
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register</h6>
@@ -100,25 +100,25 @@
                 <div class="row justify-content-md-center" id="messageEmailSend">
 
 
-                <!--Averigua si el email se ha enviado-->
-                <script>
-                    function getParameterByName(name) {
-                        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-                        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                            results = regex.exec(location.search);
-                        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-                    }
+                    <!--Averigua si el email se ha enviado-->
+                    <script>
+                        function getParameterByName(name) {
+                            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                                results = regex.exec(location.search);
+                            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+                        }
 
-                    var mailSend = getParameterByName('resultMail');
+                        var mailSend = getParameterByName('resultMail');
 
-                    if (mailSend != 0) {
-                        //document.write("<h4>Error al enviar el email</h4>");
-                        var container = document.getElementById("messageEmailSend");
-                        //var div
-                    } else {
-                        document.write("<h4>Email enviado, revisa tu correo para finalizar el registro.</h4>")
-                    }
-                </script>
+                        if (mailSend != 0) {
+                            //document.write("<h4>Error al enviar el email</h4>");
+                            var container = document.getElementById("messageEmailSend");
+                            //var div
+                        } else {
+                            document.write("<h4>Mail sent, check your mail to complete register.</h4>")
+                        }
+                    </script>
                 </div>
             </div>
         </div>
@@ -172,14 +172,14 @@
 
     </script>
 
-   <!-- <div footer="..\add\90footer.html">
-        <script>
-            includeHTML("footer");
-        </script>
-    </div>-->
-    </b>
-    <link rel="import" href="\example\add\91js.html" onload="handleLoad(event)" onerror="handleError(event, this.href)">
-    </body>
+    <!--  <div footer="..\add\90footer.html">
+          <script>
+              includeHTML("footer");
+          </script>
+      </div>-->
+</b>
+<link rel="import" href="\example\add\91js.html" onload="handleLoad(event)" onerror="handleError(event, this.href)">
+</body>
 
 
 </html>
