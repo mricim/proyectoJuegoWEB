@@ -108,19 +108,18 @@
             }
 
             function checkPassRepeat(p) {
+                var style = $("#passwordRepet").getAttribute("style");
                 if (p == pass) {
                     $("#passwordRepet").removeAttr("style");
-                    $("#button_sender").prop('disabled', false);
                 } else {
-                    $("#passwordRepet").prop("style", "border: 1px solid red");
-                    $("#button_sender").prop('disabled', true);
+                    $("#passwordRepet").prop("style", "border: 1px solid red; "+style);
                 }
             }
 
             //Button disabled
-            window.addEventListener('load', function disabledButtons() {
+            /*window.addEventListener('load', function disabledButtons() {
                 $("#button_sender").prop('disabled', true);
-            })
+            })*/
 
             //Check captcha
             function checkCaptcha(inputValueAux) {
@@ -164,7 +163,7 @@
                         <input class="key" disabled id="key" name="key" type="hidden" value=''>
                         <input class="send" disabled id="send" name="send" type="hidden" value='register.html'>
                         <button class="btn btn-outline-success my-0 my-sm-0 offset-1" id="button_sender" name="button_sender"
-                                type="submit" disabled="disabled" style="margin-left:520px;">Register
+                                type="submit" disabled style="margin-left:520px;">Register
                         </button>
                     </div>
                 </form>
