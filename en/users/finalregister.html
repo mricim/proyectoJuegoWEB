@@ -164,7 +164,7 @@
                         <input class="key" disabled id="key" name="key" type="hidden" value=''>
                         <input class="send" disabled id="send" name="send" type="hidden" value='register.html'>
 
-                        <br/><br/>
+                        <br><br>
 
                         <button class="btn btn-outline-success" id="button_sender" name="button_sender"
                                 type="submit" disabled="disabled">Register
@@ -179,10 +179,10 @@
                 <canvas id="captcha" style="margin-top: 20px; margin-left: 420px;margin-right:10px;"></canvas>
                 <br>
                 <input type="button" id="refresh" value="Refresh"
-                       onclick="Captcha('mainCaptcha');"/><br>
+                       onclick="Captcha('mainCaptcha');" style="margin-top: 20px; margin-left: 420px;margin-right:10px;"/><br>
                 <input type="text" hidden="hidden" id="mainCaptcha">
                 <br>
-                <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)"/>
+                <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)" style="margin-top: 20px; margin-left: 420px;margin-right:10px;"/>
                 <br/>
             </div>
         </div>
