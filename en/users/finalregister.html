@@ -285,19 +285,19 @@
                                type="hidden">
                         <input class="key" disabled id="key" name="key" type="hidden" value=''>
                         <input class="send" disabled id="send" name="send" type="hidden" value='register.html'>
-                        <div>
+                        <div class="justify-content-md-center">
                             <canvas id="captcha"
                                     style="margin-top: 20px; margin-left: 420px;margin-right:10px;"></canvas>
                             <input type="button" id="refresh" value="Refresh"
-                                   onclick="Captcha('mainCaptcha');"
-                                   style="margin-top: 10px; margin-bottom: 10px; margin-left: 420px;margin-right:10px;"/>
+                                   onclick="Captcha('mainCaptcha');"/>
                         </div>
                         <input type="text" hidden="hidden" id="mainCaptcha">
-                        <div>
-                            <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)"
-                                   style="margin-top: 0px; margin-left: 450px;margin-right:10px;"/>
+                        <br><br>
+                        <div class="center">
+                            <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)"/>
                         </div>
                     </div>
+                    <br><br>
                     <button class="btn btn-outline-success my-0 my-sm-0 offset-1" id="button_sender"
                             name="button_sender"
                             type="submit" disabled style="margin-left:520px;">Register
