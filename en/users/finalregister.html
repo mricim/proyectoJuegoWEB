@@ -229,9 +229,8 @@
                 if (captcha == inputValue) {
                     $("#txtInput").removeAttr("style");
                     $("#button_sender").prop('disabled', false);
-                    $("#txtInput").prop("style", "border: 1px solid red; margin-top: 0px; margin-left: 450px;margin-right:10px;");
                 } else {
-                    $("#txtInput").prop("style", "border: 1px solid red; margin-top: 0px; margin-left: 450px;margin-right:10px;");
+                    $("#txtInput").prop("style", "border: 1px solid red;");
                     $("#button_sender").prop('disabled', true);
                 }
 
@@ -255,13 +254,7 @@
                                id="passwordRepet" name="passwordRepet" placeholder="Password Repet"
                                type="password" onkeyup="checkPassRepeat(this.value)" required>
                         <br>
-                        <div id="message">
-                            <h3>Password must contain the following:</h3>
-                            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                            <p id="number" class="invalid">A <b>number</b></p>
-                            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-                        </div>
+
                         <input class="recaptcha_response" disabled id="recaptcha_response" name="recaptcha_response"
                                type="hidden">
                         <input class="key" disabled id="key" name="key" type="hidden" value=''>
@@ -271,6 +264,13 @@
                         <input type="button" id="refresh" value="Refresh" class="col-1 lg-2 offset-1 offset-lg-1" onclick="Captcha('mainCaptcha');"/>
                         <input type="text" id="txtInput" class="col-10 col-lg-4" onkeyup="checkCaptcha(this.value)" required/>
                         <input type="text" hidden="hidden" id="mainCaptcha">
+                        <div id="message">
+                            <h3>Password must contain the following:</h3>
+                            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                            <p id="number" class="invalid">A <b>number</b></p>
+                            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                        </div>
                         <br>
                         <button class="btn btn-outline-success my-0 my-sm-0 offset-5" id="button_sender"
                                 name="button_sender"
