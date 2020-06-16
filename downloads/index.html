@@ -185,211 +185,201 @@
                 );
 
                 //Versions estables i precursores
-                var versionsEstables = versions;
                 for (var i = 0; i < versions.length - 1; i++) {
                     //Versio 0
-                    var versio =  versions[i].split(".");
+                    var versio = versions[i].split(".");
                     var joc = versio[0];
                     var instalador = versio[1];
                     var jar = versio[2];
                     var estat = versio[3];
                     //Versio 1
-                    var versio2 =  versions[i+1].split(".");
-                    var joc2 = versio[0];
-                    var instalador2 = versio[1];
-                    var jar2 = versio[2];
-                    var estat2 = versio[3];
+                    var versio2 = versions[i + 1].split(".");
+                    var joc2 = versio2[0];
+                    var instalador2 = versio2[1];
+                    var jar2 = versio2[2];
+                    var estat2 = versio2[3];
+
 
                     if (joc == joc2 && instalador == instalador2 && jar == jar2) {
                         if (estat == estat2) {
-                            versionsEstables.splice(i,1);
+                            versions.splice(i + 1, 1);
                         } else if (estat < estat2) {
-                            versionsEstables.splice(i,1);
+                            versions.splice(i, 1);
                         } else if (estat2 < estat) {
-                            versionsEstables.splice(i+1,1);
+                            versions.splice(i + 1, 1);
+                        }
+                    }
+                    console.log(versions);
+
+                    for (var i = 0; i < versions.length; i++) {
+
+                        var rowVersion = document.createElement("tr");
+                        var columnNumVersion = document.createElement("td");
+                        table.appendChild(rowVersion);
+                        rowVersion.appendChild(columnNumVersion);
+
+                        var id = versions[i].split(".")[1];
+                        columnNumVersion.setAttribute("id", id);
+
+                        columnNumVersion.textContent = versions[i];
+
+
+                        //Windows versions
+                        var versionsW = [];
+                        windowsVersions.forEach(valor => {
+                            versionsW.push(valor);
+                        });
+                        var windows = false;
+                        for (var j = 0; j < versionsW.length; j++) {
+                            if (versions[i] == (versionsW[j].num)) {
+                                windows = true;
+                                var columnWindows0 = document.createElement("td");
+                                rowVersion.appendChild(columnWindows0);
+                                var link0 = document.createElement("a");
+                                columnWindows0.appendChild(link0);
+                                link0.setAttribute("href", ruta + "windows/" + versionsW[j].href);
+                                link0.setAttribute("target", "_blank");
+                                link0.textContent = versionsW[j].href.substring(versionsW[j].href.length - 3, versionsW[j].href.length);
+
+                                var columnWindows1 = document.createElement("td");
+                                columnWindows1.setAttribute("id", "column");
+                                var link1 = document.createElement("a");
+                                columnWindows1.appendChild(link1);
+                                rowVersion.appendChild(columnWindows1);
+                                var zip = (versionsW[j].href.substring(0, versionsW[j].href.length - 3) + "zip");
+                                link1.setAttribute("href", ruta + "windows/" + zip);
+                                link1.setAttribute("target", "_blank");
+                                link1.textContent = "zip";
+                            }
+                        }
+                        if (!windows) {
+                            rowVersion.appendChild(document.createElement("td"));
+                            rowVersion.appendChild(document.createElement("td"));
+                        }
+
+                        //Linux versions
+                        var versionsL = [];
+                        linuxVersions.forEach(valor => {
+                            versionsL.push(valor);
+                        });
+                        var linux = false;
+                        for (var j = 0; j < versionsL.length; j++) {
+                            if (versions[i] == versionsL[j].num) {
+                                linux = true;
+
+                                //Columna 1
+                                var columnLinux0 = document.createElement("td");
+                                rowVersion.appendChild(columnLinux0);
+                                var link0 = document.createElement("a")
+                                columnLinux0.appendChild(link0);
+                                link0.setAttribute("href", ruta + "linux/" + versionsL[j].href);
+                                link0.setAttribute("target", "_blank");
+                                link0.textContent = versionsL[j].href.substring(versionsL[j].href.length - 7, versionsL[j].href.length);
+
+                                //Columna 2
+                                var columnLinux1 = document.createElement("td");
+                                rowVersion.appendChild(columnLinux1);
+                                var link1 = document.createElement("a");
+                                columnLinux1.appendChild(link1);
+                                var zip = (versionsL[j].href.substring(0, versionsL[j].href.length - 3) + "zip");
+                                link1.setAttribute("href", ruta + "linux/" + zip);
+                                link1.setAttribute("target", "_blank");
+                                link1.textContent = "zip";
+                            }
+                        }
+                        if (!linux) {
+                            rowVersion.appendChild(document.createElement("td"));
+                            rowVersion.appendChild(document.createElement("td"));
+                        }
+
+                        //Mac versions
+                        var versionsM = [];
+                        macVersions.forEach(valor => {
+                            versionsM.push(valor);
+                        });
+                        var mac = false;
+                        for (var j = 0; j < versionsM.length; j++) {
+                            if (versions[i] == versionsM[j].num) {
+                                mac = true;
+                                var name = versionsM[j].href.substring(0, versionsM[j].href.length - 6);
+
+                                var columnMac0 = document.createElement("td");
+                                rowVersion.appendChild(columnMac0);
+                                var link0 = document.createElement("a")
+                                columnMac0.appendChild(link0);
+                                link0.setAttribute("href", ruta + "mac/" + name + "zip");
+                                link0.setAttribute("target", "_blank");
+                                link0.textContent = "zip";
+
+                                var columnMac1 = document.createElement("td");
+                                rowVersion.appendChild(columnMac1);
+                                var link1 = document.createElement("a")
+                                columnMac0.appendChild(link1);
+                                link1.setAttribute("href", ruta + "mac/" + name + "rar");
+                                link1.setAttribute("target", "_blank");
+                                link1.textContent = "rar";
+                            }
+                        }
+                        if (!mac) {
+                            rowVersion.appendChild(document.createElement("td"));
+                            rowVersion.appendChild(document.createElement("td"));
                         }
                     }
                 }
 
-                console.log(versionsEstables);
 
-                for (var i = 0; i < versions.length; i++) {
+                var resultado = null;
 
-                    var rowVersion = document.createElement("tr");
-                    var columnNumVersion = document.createElement("td");
-                    table.appendChild(rowVersion);
-                    rowVersion.appendChild(columnNumVersion);
+                function loadXMLDoc(src, callback) {
+                    v = null;
 
-                    var id = versions[i].split(".")[1];
-                    columnNumVersion.setAttribute("id", id);
+                    var request = new XMLHttpRequest();
+                    var params = "UID=CORS&name=CORS";
 
-                    columnNumVersion.textContent = versions[i];
-
-
-                    //Windows versions
-                    var versionsW = [];
-                    windowsVersions.forEach(valor => {
-                        versionsW.push(valor);
-                    });
-                    var windows = false;
-                    for (var j = 0; j < versionsW.length; j++) {
-                        if (versions[i] == (versionsW[j].num)) {
-                            windows = true;
-                            var columnWindows0 = document.createElement("td");
-                            rowVersion.appendChild(columnWindows0);
-                            var link0 = document.createElement("a");
-                            columnWindows0.appendChild(link0);
-                            link0.setAttribute("href", ruta + "windows/" + versionsW[j].href);
-                            link0.setAttribute("target", "_blank");
-                            link0.textContent = versionsW[j].href.substring(versionsW[j].href.length - 3, versionsW[j].href.length);
-
-                            var columnWindows1 = document.createElement("td");
-                            columnWindows1.setAttribute("id", "column");
-                            var link1 = document.createElement("a");
-                            columnWindows1.appendChild(link1);
-                            rowVersion.appendChild(columnWindows1);
-                            var zip = (versionsW[j].href.substring(0, versionsW[j].href.length - 3) + "zip");
-                            link1.setAttribute("href", ruta + "windows/" + zip);
-                            link1.setAttribute("target", "_blank");
-                            link1.textContent = "zip";
+                    request.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            callback(this.responseXML);
                         }
-                    }
-                    if (!windows) {
-                        rowVersion.appendChild(document.createElement("td"));
-                        rowVersion.appendChild(document.createElement("td"));
-                    }
+                    };
 
-                    //Linux versions
-                    var versionsL = [];
-                    linuxVersions.forEach(valor => {
-                        versionsL.push(valor);
-                    });
-                    var linux = false;
-                    for (var j = 0; j < versionsL.length; j++) {
-                        if (versions[i] == versionsL[j].num) {
-                            console.log("Versió: "+versions[i]);
-                            console.log("Versió linux: "+versionsL[j].num);
-                            linux = true;
-
-                            //Columna 1
-                            var columnLinux0 = document.createElement("td");
-                            rowVersion.appendChild(columnLinux0);
-                            var link0 = document.createElement("a")
-                            columnLinux0.appendChild(link0);
-                            link0.setAttribute("href", ruta + "linux/" + versionsL[j].href);
-                            link0.setAttribute("target", "_blank");
-                            link0.textContent = versionsL[j].href.substring(versionsL[j].href.length - 7, versionsL[j].href.length);
-
-                            //Columna 2
-                            var columnLinux1 = document.createElement("td");
-                            rowVersion.appendChild(columnLinux1);
-                            var link1 = document.createElement("a");
-                            columnLinux1.appendChild(link1);
-                            var zip = (versionsL[j].href.substring(0, versionsL[j].href.length - 3) + "zip");
-                            link1.setAttribute("href", ruta + "linux/" + zip);
-                            link1.setAttribute("target", "_blank");
-                            link1.textContent = "zip";
-                        }
-                    }
-                    if (!linux) {
-                        rowVersion.appendChild(document.createElement("td"));
-                        rowVersion.appendChild(document.createElement("td"));
-                    }
-
-                    //Mac versions
-                    var versionsM = [];
-                    macVersions.forEach(valor => {
-                        versionsM.push(valor);
-                    });
-                    var mac = false;
-                    for (var j = 0; j < versionsM.length; j++) {
-                        if (versions[i] == versionsM[j].num) {
-                            mac = true;
-                            var name = versionsM[j].href.substring(0, versionsM[j].href.length - 6);
-
-                            var columnMac0 = document.createElement("td");
-                            rowVersion.appendChild(columnMac0);
-                            var link0 = document.createElement("a")
-                            columnMac0.appendChild(link0);
-                            link0.setAttribute("href", ruta + "mac/" + name + "zip");
-                            link0.setAttribute("target", "_blank");
-                            link0.textContent = "zip";
-
-                            var columnMac1 = document.createElement("td");
-                            rowVersion.appendChild(columnMac1);
-                            var link1 = document.createElement("a")
-                            columnMac0.appendChild(link1);
-                            link1.setAttribute("href", ruta + "mac/" + name + "rar");
-                            link1.setAttribute("target", "_blank");
-                            link1.textContent = "rar";
-                        }
-                    }
-                    if (!mac) {
-                        rowVersion.appendChild(document.createElement("td"));
-                        rowVersion.appendChild(document.createElement("td"));
-                    }
-                }
-            }
-
-
-            var resultado = null;
-
-            function loadXMLDoc(src, callback) {
-                v = null;
-
-                var request = new XMLHttpRequest();
-                var params = "UID=CORS&name=CORS";
-
-                request.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        callback(this.responseXML);
-                    }
-                };
-
-                request.open("POST", src, true);
-                request.send(null);
-                /*request.onload = function() {
-                    resultado = xmlhttp.responseXML.documentElement;
-                    console.log(resultado);
-                }*/
-                return v;
-            }
-
-
-            function myFunction(xml) {
-                //var i;
-                var xmlDoc = xml.getElementsByTagName("file");
-                /*console.log(xmlDoc);
-                console.log(xmlDoc[0].getElementsByTagName("version")[0].childNodes[0].nodeValue);
-                console.log(xmlDoc);*/
-
-                //Constructor
-                function Version(num, href) {
-                    this.num = num;
-                    this.href = href;
-                };
-                var versions = [];
-                for (var i = 0; i < xmlDoc.length; i++) {
-                    try {
-                        var n = xmlDoc[i].getElementsByTagName("version")[0].childNodes[0].nodeValue;
-                        var h = xmlDoc[i].getElementsByTagName("href")[0].childNodes[0].nodeValue;
-                        var auxVersion = new Version(n, h);
-                        versions.push(auxVersion);
-                    } catch (error) {
-
-                    }
+                    request.open("POST", src, true);
+                    request.send(null);
+                    return v;
                 }
 
-                //Check the versions
-                for (var i = 0; i < versions.length - 1; i++) {
-                    var numVersion = (versions[i].num).substring(3, 7);
-                    var numNextVersion = (versions[i + 1].num).substring(3, 7);
 
-                    if (numVersion == numNextVersion) {
-                        versions.splice(i, 1);
+                function myFunction(xml) {
+                    //var i;
+                    var xmlDoc = xml.getElementsByTagName("file");
+
+                    //Constructor
+                    function Version(num, href) {
+                        this.num = num;
+                        this.href = href;
+                    };
+                    var versions = [];
+                    for (var i = 0; i < xmlDoc.length; i++) {
+                        try {
+                            var n = xmlDoc[i].getElementsByTagName("version")[0].childNodes[0].nodeValue;
+                            var h = xmlDoc[i].getElementsByTagName("href")[0].childNodes[0].nodeValue;
+                            var auxVersion = new Version(n, h);
+                            versions.push(auxVersion);
+                        } catch (error) {
+
+                        }
                     }
+
+                    //Check the versions
+                    for (var i = 0; i < versions.length - 1; i++) {
+                        var numVersion = (versions[i].num).substring(3, 7);
+                        var numNextVersion = (versions[i + 1].num).substring(3, 7);
+
+                        if (numVersion == numNextVersion) {
+                            versions.splice(i, 1);
+                        }
+                    }
+                    return versions;
                 }
-                return versions;
             }
 
         </script>
@@ -399,3 +389,4 @@
 <link rel="import" href="/en/add/91js.html" onload="handleLoad(event)" onerror="handleError(event, this.href)">
 </body>
 </html>
+
