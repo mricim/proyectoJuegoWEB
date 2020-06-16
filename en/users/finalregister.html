@@ -61,6 +61,9 @@
     <script src="https://www.google.com/recaptcha/api.js?render=6LctbbsUAAAAAHVc5Cp-j8FZKOZG1wAH0eUV690D"></script>
     <style>
 
+        .space {
+            margin-top: 300px;
+        }
 
         /* The message box is shown when the user clicks on the password field */
         #message {
@@ -247,13 +250,13 @@
                                id="password" name="password" placeholder="Password" type="password"
                                onkeyup="checkPass(this.value)" required>
                         <div class="clearfix"></div>
-                        <br>
+                        <div class="space"></div>
                         <input aria-label="name" class="form-control col-10 col-lg-4 offset-1" id="user"
                                name="name" placeholder="Name User" type="text" required>
                         <input aria-label="passwordRepet" class="form-control col-10 col-lg-4 offset-1 offset-lg-2"
                                id="passwordRepet" name="passwordRepet" placeholder="Password Repet"
                                type="password" onkeyup="checkPassRepeat(this.value)" required>
-                        <br>
+                        <div class="space"></div>
 
                         <input class="recaptcha_response" disabled id="recaptcha_response" name="recaptcha_response"
                                type="hidden">
@@ -261,8 +264,10 @@
                         <input class="send" disabled id="send" name="send" type="hidden" value='register.html'>
 
                         <canvas id="captcha" class="col-10 col-lg-4 offset-1"></canvas>
-                        <input type="button" id="refresh" value="Refresh" class="col-1 lg-2 offset-1 offset-lg-1" onclick="Captcha('mainCaptcha');"/>
-                        <input type="text" id="txtInput" class="col-10 col-lg-4" onkeyup="checkCaptcha(this.value)" required/>
+                        <input type="button" id="refresh" value="Refresh" class="col-1 lg-2 offset-1 offset-lg-1"
+                               onclick="Captcha('mainCaptcha');"/>
+                        <input type="text" id="txtInput" class="col-10 col-lg-4" onkeyup="checkCaptcha(this.value)"
+                               required/>
                         <input type="text" hidden="hidden" id="mainCaptcha">
                         <div id="message">
                             <h3>Password must contain the following:</h3>
@@ -271,28 +276,23 @@
                             <p id="number" class="invalid">A <b>number</b></p>
                             <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                         </div>
-                        <br>
+                        <div class="space"></div>
+                        <div class="space"></div>
                         <button class="btn btn-outline-success my-0 my-sm-0 offset-5" id="button_sender"
                                 name="button_sender"
                                 type="submit" disabled>Register
                         </button>
+
                     </div>
                 </form>
             </div>
         </div>
-        <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <h6 class="border-bottom border-gray pb-2">Captcha</h6>
+        <div class="my-5 p-3 bg-white rounded shadow-sm">
             <div class="containter">
-
-            </div>
-
-            <div class="my-5 p-3 bg-white rounded shadow-sm">
-                <div class="containter">
-                    <div class="row justify-content-md-center">
-                        This site is protected by reCAPTCHA and the Google&nbsp;
-                        <a href="https://policies.google.com/privacy">Privacy Policy</a>&nbsp;and&nbsp;
-                        <a href="https://policies.google.com/terms">Terms of Service</a>&nbsp;apply.
-                    </div>
+                <div class="row justify-content-md-center">
+                    This site is protected by reCAPTCHA and the Google&nbsp;
+                    <a href="https://policies.google.com/privacy">Privacy Policy</a>&nbsp;and&nbsp;
+                    <a href="https://policies.google.com/terms">Terms of Service</a>&nbsp;apply.
                 </div>
             </div>
         </div>
