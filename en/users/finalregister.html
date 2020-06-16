@@ -62,7 +62,6 @@
     <style>
 
 
-
         /* The message box is shown when the user clicks on the password field */
         #message {
             display: none;
@@ -212,28 +211,29 @@
                     }
                 }
             }
-                //Button disabled
-                /*window.addEventListener('load', function disabledButtons() {
-                $("#button_sender").prop('disabled', true);
-            })*/
 
-                //Check captcha
-                function checkCaptcha(inputValueAux) {
-                    var captchaAux = document.getElementById("mainCaptcha").textContent;
+            //Button disabled
+            /*window.addEventListener('load', function disabledButtons() {
+            $("#button_sender").prop('disabled', true);
+        })*/
 
-
-                    captcha = captchaAux.replace(/ /g, "");
-                    inputValue = inputValueAux.replace(/ /g, "");
+            //Check captcha
+            function checkCaptcha(inputValueAux) {
+                var captchaAux = document.getElementById("mainCaptcha").textContent;
 
 
-                    if (captcha == inputValue) {
-                        $("#txtInput").removeAttr("style");
-                        $("#button_sender").prop('disabled', false);
-                        $("#txtInput").prop("style", "border: 1px solid red; margin-top: 0px; margin-left: 450px;margin-right:10px;");
-                    } else {
-                        $("#txtInput").prop("style", "border: 1px solid red; margin-top: 0px; margin-left: 450px;margin-right:10px;");
-                        $("#button_sender").prop('disabled', true);
-                    }
+                captcha = captchaAux.replace(/ /g, "");
+                inputValue = inputValueAux.replace(/ /g, "");
+
+
+                if (captcha == inputValue) {
+                    $("#txtInput").removeAttr("style");
+                    $("#button_sender").prop('disabled', false);
+                    $("#txtInput").prop("style", "border: 1px solid red; margin-top: 0px; margin-left: 450px;margin-right:10px;");
+                } else {
+                    $("#txtInput").prop("style", "border: 1px solid red; margin-top: 0px; margin-left: 450px;margin-right:10px;");
+                    $("#button_sender").prop('disabled', true);
+                }
 
             }
         </script>
@@ -267,22 +267,16 @@
                                type="hidden">
                         <input class="key" disabled id="key" name="key" type="hidden" value=''>
                         <input class="send" disabled id="send" name="send" type="hidden" value='register.html'>
-                        <div class="align-items-center justify-content-center align-self-center">
-                            <canvas id="captcha"></canvas>
-                            <input type="button" id="refresh" value="Refresh"
-                                   onclick="Captcha('mainCaptcha');"/>
-                        </div>
+
+                        <canvas id="captcha" class="col-10 col-lg-4 offset-1"></canvas>
+                        <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)" required/>
+                        <input type="button" id="refresh" value="Refresh" onclick="Captcha('mainCaptcha');"/>
                         <input type="text" hidden="hidden" id="mainCaptcha">
-                        <br><br>
-                        <div class="center">
-                            <input type="text" id="txtInput" onkeyup="checkCaptcha(this.value)" required/>
-                        </div>
+                        <button class="btn btn-outline-success my-0 my-sm-0 offset-1" id="button_sender"
+                                name="button_sender"
+                                type="submit" disabled>Register
+                        </button>
                     </div>
-                    <br><br>
-                    <button class="btn btn-outline-success my-0 my-sm-0 offset-1" id="button_sender"
-                            name="button_sender"
-                            type="submit" disabled style="margin-left:520px;">Register
-                    </button>
                 </form>
             </div>
         </div>
