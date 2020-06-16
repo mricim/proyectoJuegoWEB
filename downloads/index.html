@@ -184,8 +184,37 @@
                     }
                 );
 
+                //Versions estables i precursores
+                var versionsEstables = versions;
+                for (var i = 0; i < versions.length - 1; i++) {
+                    //Versio 0
+                    var versio =  versions[i].split(".");
+                    var joc = versio[0];
+                    var instalador = versio[1];
+                    var jar = versio[2];
+                    var estat = versio[3];
+                    //Versio 1
+                    var versio2 =  versions[i+1].split(".");
+                    var joc2 = versio[0];
+                    var instalador2 = versio[1];
+                    var jar2 = versio[2];
+                    var estat2 = versio[3];
+
+                    if (joc == joc2 && instalador == instalador2 && jar == jar2) {
+                        if (estat == estat2) {
+                            versionsEstables.splice(i,1);
+                        } else if (estat < estat2) {
+                            versionsEstables.splice(i,1);
+                        } else if (estat2 < estat) {
+                            versionsEstables.splice(i+1,1);
+                        }
+                    }
+                }
+
+                console.log(versionsEstables);
 
                 for (var i = 0; i < versions.length; i++) {
+
                     var rowVersion = document.createElement("tr");
                     var columnNumVersion = document.createElement("td");
                     table.appendChild(rowVersion);
@@ -238,21 +267,25 @@
                     var linux = false;
                     for (var j = 0; j < versionsL.length; j++) {
                         if (versions[i] == versionsL[j].num) {
+                            console.log("Versió: "+versions[i]);
+                            console.log("Versió linux: "+versionsL[j].num);
                             linux = true;
+
+                            //Columna 1
                             var columnLinux0 = document.createElement("td");
                             rowVersion.appendChild(columnLinux0);
                             var link0 = document.createElement("a")
                             columnLinux0.appendChild(link0);
-                            link0.setAttribute("href", ruta + "linux/" + versionsW[j].href);
+                            link0.setAttribute("href", ruta + "linux/" + versionsL[j].href);
                             link0.setAttribute("target", "_blank");
                             link0.textContent = versionsL[j].href.substring(versionsL[j].href.length - 7, versionsL[j].href.length);
-                            ;
 
+                            //Columna 2
                             var columnLinux1 = document.createElement("td");
                             rowVersion.appendChild(columnLinux1);
-                            var zip = (versionsL[j].href.substring(0, versionsL[j].href.length - 6) + "zip");
-                            var link1 = document.createElement("a")
+                            var link1 = document.createElement("a");
                             columnLinux1.appendChild(link1);
+                            var zip = (versionsL[j].href.substring(0, versionsL[j].href.length - 3) + "zip");
                             link1.setAttribute("href", ruta + "linux/" + zip);
                             link1.setAttribute("target", "_blank");
                             link1.textContent = "zip";
