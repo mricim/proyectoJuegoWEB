@@ -82,8 +82,7 @@
         function cookieLanguage() {
             var lang = getCookie("language");
             if (lang == "") {
-                var buttonEn = document.getElementById("languageEn");
-                buttonEn.addEventListener("click",createCookie("language","en"));
+                createCookie("language","en");
             }
         }
 
