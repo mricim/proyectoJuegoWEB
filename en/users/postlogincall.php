@@ -137,11 +137,11 @@
         } else {
             $error = "Wrong email or password!";
         }
-
+        echo 'Entra';
 
     } else {
       echo 'Please check the form'; //echo 'ERES ROBOT';
-      echo '<script>window.setTimeout(function () {window.history.back();},10000);</script>';
+     // echo '<script>window.setTimeout(function () {window.history.back();},10000);</script>';
     }
     //echo PHP_EOL.'Tu puntuaccion es de ' . $score;
   } else {
