@@ -61,3 +61,18 @@
     </div>
     <!-- FIN MENU 2 -->
 </header>
+<script type="text/javascript">
+    function cookieLanguage() {
+        var lang = getCookie("language");
+        if (lang == "") {
+            createCookie("language","en");
+        }
+    }
+
+    var buttonEn = document.getElementById("languageEn");
+    buttonEn.addEventListener("click",createCookie("language","en"));
+    var buttonEs = document.getElementById("languageEs");
+    buttonEs.addEventListener("click",createCookie("language","es"));
+    var buttonCat = document.getElementById("languageCat");
+    buttonCat.addEventListener("click",createCookie("language","cat"));
+    </script>
