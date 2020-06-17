@@ -5,8 +5,8 @@
         <a class="navbar-brand mr-auto mr-lg-5" href="/"></a>
 
         <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
 
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
@@ -27,16 +27,20 @@
                     <a href="/en/users/login.html" class="btn btn-success my-2 my-sm-0">Users</a>
                 </li>
                 <li>
-                    <div class="btn-group">
+                    <div class="dropdown">
                         <button type="button" class="btn btn-warning my-2 my-sm-0 dropdown-toggle"
-                                data-toggle="dropdown">
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                id="dropdownMenuButton">
                             Change language <span class="caret"></span>
                         </button>
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a class="dropdown-item disabled btn btn-warning" href="/en/login.html" id="languageEn">English</a></li>
-                            <li><a class="dropdown-item btn btn-warning" href="/es/login.html" id="languageEs">Spanish</a></li>
-                            <li><a class="dropdown-item btn btn-warning" href="/cat/login.hmtl" id="languageCat">Catalan</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item disabled btn btn-warning" href="/en/login.html" id="languageEn">English</a>
+                            </li>
+                            <li><a class="dropdown-item btn btn-warning" href="/es/login.html"
+                                   id="languageEs">Spanish</a></li>
+                            <li><a class="dropdown-item btn btn-warning" href="/cat/login.hmtl"
+                                   id="languageCat">Catalan</a></li>
                         </ul>
                     </div>
                 </li>
@@ -44,7 +48,6 @@
                     <a href="/example/search/search.html" class="btn btn-outline-success my-2 my-sm-0 offset-md-2">Search</a>
                 </li>-->
             </ul>
-
 
 
         </div>
