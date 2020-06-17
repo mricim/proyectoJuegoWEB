@@ -264,9 +264,9 @@
                         <input class="send" disabled id="send" name="send" type="hidden" value='register.html'>
 
                         <canvas id="captcha" class="col-10 col-lg-4 offset-1"></canvas>
-                        <input type="button" id="refresh" value="Refresh" class="btn btn-outline-success my-0 my-sm-0 offset-5"
-                               onclick="Captcha('mainCaptcha');"/>
-                        <input type="text" id="txtInput" class="col-10 col-lg-4 form-control" onkeyup="checkCaptcha(this.value)"
+                        <button type="button" id="refresh" class="col-lg-4 col-2 btn btn-secondary my-0 my-sm-0"
+                               onclick="Captcha('mainCaptcha');">Refresh</button>
+                        <input type="text" id="txtInput" class="col-8 col-lg-4 form-control" onkeyup="checkCaptcha(this.value)"
                                required/>
                         <input type="text" hidden="hidden" id="mainCaptcha">
                         <div id="message">
