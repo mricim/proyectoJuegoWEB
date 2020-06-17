@@ -34,10 +34,10 @@ function CreaIMG(texto) {
     document.getElementById("mainCaptcha").textContent = texto;
     var fontSize = "30px";
     var fontFamily = "Arial";
-    var width = 250;
+    var width = 50;
     var height = 50;
     //tamaño
-    ctxCanvas.canvas.width = height;
+    ctxCanvas.canvas.width = width;
     ctxCanvas.canvas.height = height;
     //color de fondo
     ctxCanvas.fillStyle = "whitesmoke";
