@@ -65,7 +65,6 @@
             margin-top: 50px;
         }
 
-
     </style>
 </head>
 <body onload="Captcha()">
@@ -234,13 +233,6 @@
                         <input type="text" id="txtInput" class="col-6 col-lg-2 form-control offset-1" onkeyup="checkCaptcha(this.value)"
                                required/>
                         <input type="text" hidden="hidden" id="mainCaptcha">
-                        <div id="message">
-                            <h3>Password must contain the following:</h3>
-                            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                            <p id="number" class="invalid">A <b>number</b></p>
-                            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-                        </div>
                         <div class="space"></div>
                         <div class="col-12"></div>
                         <button class="btn btn-outline-success my-0 my-sm-0 offset-5" id="button_sender"

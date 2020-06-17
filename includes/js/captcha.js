@@ -37,7 +37,7 @@ function CreaIMG(texto) {
     var width = 250;
     var height = 50;
     //tamaño
-    ctxCanvas.canvas.width = width;
+    ctxCanvas.canvas.width = height;
     ctxCanvas.canvas.height = height;
     //color de fondo
     ctxCanvas.fillStyle = "whitesmoke";
