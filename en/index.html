@@ -53,27 +53,12 @@
 </head>
 
 
-
-
-
-<body style="background-color:#848484;" onload="setTimeout(tester, 5000);">
+<body style="background-color:#848484;" onload="cookieLanguage()">
     <div menu="\en\add\02menu.html">
         <script>
             includeHTML("menu");
         </script>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- CAROUSEL -->
     <style>
         .carousel-item {
@@ -86,6 +71,25 @@
             background-size: cover;
         }
     </style>
+    <script type="text/javascript" href="/includes/js/cookies.js"></script>
+    <script type="text/javascript">
+        function cookieLanguage() {
+            var lang = getCookie("language");
+            if (lang == "") {
+                var buttonEn = document.getElementById("languageEn");
+                buttonEn.addEventListener("click",createCookie("language","en"));
+            } else {
+                window.location.href = "/" + lang;
+            }
+        }
+
+        var buttonEn = document.getElementById("languageEn");
+        buttonEn.addEventListener("click",createCookie("language","en"));
+        var buttonEs = document.getElementById("languageEs");
+        buttonEs.addEventListener("click",createCookie("language","es"));
+        var buttonCat = document.getElementById("languageCat");
+        buttonCat.addEventListener("click",createCookie("language","cat"));
+    </script>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
