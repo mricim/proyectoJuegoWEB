@@ -71,20 +71,21 @@
 
 
 <main class="container" role="main" style="padding-bottom: 70px;">
+
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Login</h6>
         <div class="containter">
             <form action="/en/users/postlogincall.php" id="comment_form" method="POST">
                 <div class="row">
                     <input aria-label="User" class="form-control col-10 col-lg-4 offset-1"
-                           placeholder="Email" type="text" id="loginMail">
+                           placeholder="Email" type="text" id="loginMail" onkeyup="loginMailExists(this.value)" name="loginMail">
                     <input aria-label="Password"
-                           class="form-control col-10 col-lg-4 offset-1" placeholder="Password" type="password">
+                           class="form-control col-10 col-lg-4 offset-1" placeholder="Password" type="password" name="loginPass">
                     <input class="recaptcha_response" id="recaptcha_response" name="recaptcha_response"
                            type="hidden">
                     <input class="send" id="send" name="send" type="hidden" value='postlogin.html'>
                     <button class="btn btn-outline-success my-0 my-sm-0 offset-1" disabled name="button_sender"
-                            type="submit">Login
+                            type="submit" id="buttonLogin">Login
                     </button>
                     <!-- -->
                 </div>
@@ -93,27 +94,38 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript">
+
+        function userExists(mail) {
+            $.ajax({
+                method: "POST",
+                url: "/includes/functions/php/user_exists.php",
+                data: {
+                    m: mail
+                },
+                success: function (mail) {
+                    if (mail == "0" || mail == 0) {
+                        $("#buttonRegister").prop('disabled', true);
+                        $("#buttonLogin").prop('disabled', false);
+                        $("#email").prop("style", "border: 1px solid red")
+                    } else {
+                        $("#email").removeAttr("style");
+                        $("#buttonRegister").prop('disabled', false);
+                        $("#buttonLogin").prop('disabled', true);
+                    }
+                }
+            });
+        }
+
+        function loginMailExists(mail) {
+            userExists(mail);
+        }
+
         function checkMail(mail) {
             if (!(/^([a-zA-Z0-9._]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,4})$/.test(mail))) {
                 $("#email").prop("style", "border: 1px solid red");
                 $("#buttonRegister").prop('disabled', true);
             } else {
-                $.ajax({
-                    method: "POST",
-                    url: "/includes/functions/php/user_exists.php",
-                    data: {
-                        m: mail
-                    },
-                    success: function (mailExists) {
-                        if (mailExists == "0" || mailExists == 0) {
-                            $("#buttonRegister").prop('disabled', true);
-                            $("#email").prop("style", "border: 1px solid red")
-                        } else {
-                            $("#email").removeAttr("style");
-                            $("#buttonRegister").prop('disabled', false);
-                        }
-                    }
-                })
+                userExists(mail);
             }
         }
     </script>
