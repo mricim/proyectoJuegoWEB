@@ -67,10 +67,10 @@
         meter[value="3"]::-webkit-meter-optimum-value { background: orange; }
         meter[value="4"]::-webkit-meter-optimum-value { background: green; }
 
-        meter[value="1"]::-moz-meter-bar { background: red; }
+        /*meter[value="1"]::-moz-meter-bar { background: red; }
         meter[value="2"]::-moz-meter-bar { background: yellow; }
         meter[value="3"]::-moz-meter-bar { background: orange; }
-        meter[value="4"]::-moz-meter-bar { background: green; }
+        meter[value="4"]::-moz-meter-bar { background: green; }*/
 
         .feedback {
             color: #9ab;
@@ -174,6 +174,7 @@
 
             password.addEventListener('input', function()
             {
+                console.log("prova");
                 var val = password.value;
                 var result = zxcvbn(val);
 
@@ -288,7 +289,7 @@
                         <div class="space"></div>
                         <br><br><br>
                         <meter max="4" id="password-strength-meter"></meter>
-                        <p id="password-strength-text"></p>
+                        <p id="password-strength-text" class="col-6 col-lg-2 form-control offset-2"></p>
                         <br><br><br>
                         <button class="btn btn-outline-success my-0 my-sm-0 col-lg-2 offset-5" id="button_sender"
                                 name="button_sender"

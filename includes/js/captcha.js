@@ -34,7 +34,7 @@ function CreaIMG(texto) {
     document.getElementById("mainCaptcha").textContent = texto;
     var fontSize = "30px";
     var fontFamily = "Arial";
-    var width = 50;
+    var width = 250;
     var height = 50;
     //tamaño
     ctxCanvas.canvas.width = width;
