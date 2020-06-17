@@ -59,6 +59,8 @@
       echo '<input type="hidden" name="email" id="email" value="' . $UserEmail . '">';
 
       if (strpos($_POST['send'], 'beforeregister.html') !== false) {
+      echo strpos($_POST['send'], 'beforeregister.html') !== false;
+
         $t = date("y.m.d"); // e.g. "03.10.01"
         $hash=hash('gost', "a.l45Up=dF8t0".$UserEmail.$t,false);
         //$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
