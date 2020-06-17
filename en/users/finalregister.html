@@ -160,20 +160,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
         <script type="text/javascript">
-            var strength = {
-                0: "Worst ☹",
-                1: "Bad ☹",
-                2: "Weak ☹",
-                3: "Good ☺",
-                4: "Strong ☻"
-            }
 
-            var password = document.getElementById('password');
-            var meter = document.getElementById('password-strength-meter');
-            var text = document.getElementById('password-strength-text');
 
-            password.addEventListener('input', function()
-            {
+            function ppp() {
+                var strength = {
+                    0: "Worst ☹",
+                    1: "Bad ☹",
+                    2: "Weak ☹",
+                    3: "Good ☺",
+                    4: "Strong ☻"
+                }
+
+                var password = document.getElementById('password');
+                var meter = document.getElementById('password-strength-meter');
+                var text = document.getElementById('password-strength-text');
                 console.log("prova");
                 var val = password.value;
                 var result = zxcvbn(val);
@@ -188,7 +188,7 @@
                 else {
                     text.innerHTML = "";
                 }
-            });
+            }
             //Check mail
             function checkMail(mail) {
                 if (!(/^([a-zA-Z0-9._]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,4})$/.test(mail))) {
@@ -218,6 +218,7 @@
             var pass = "";
 
             function checkPass(p) {
+                ppp();
                 pass = p;
 
 
