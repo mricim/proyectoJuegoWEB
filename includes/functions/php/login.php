@@ -2,7 +2,7 @@
 include("/includes/functions/php/db_connection.php");//Contienen las variables, el servidor, usuario, contraseña y nombre  de la base de datos
 include("/includes/functions/php/encrypt.php");
 
-session_start(); // Iniciando sesion
+//session_start(); // Iniciando sesion
 $error=''; // Variable para almacenar el mensaje de error
 
  // Define $username y $password
