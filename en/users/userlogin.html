@@ -92,9 +92,15 @@
                                 if (addedUser == 'true') {
                                     var user = getParameterByName('User');
                                     document.write("<h1>Hola " +user+" </h1>");
+                                    document.write("<button class='btn btn-info' id='buttonChangePass'>Change password</button>");
                                 } else if (addedUser == 'false') {
                                     document.write("<h1>Error en el login.</h1>");
                                 }
+
+                                var buttonChangePass = document.getElementById("buttonChangePass");
+                                buttonChangePass.addEventListener("click", function () {
+                                    window.location="/en/user/newPass.html?Mail="+ getParameterByName("User")+";
+                                });
                             </script>
                     </div>
                 </div>
