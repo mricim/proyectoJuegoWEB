@@ -289,18 +289,32 @@
                                id="passwordRepet" name="passwordRepet" placeholder="Password Repet"
                                type="password" onkeyup="checkPassRepeat(this.value)" required>
                         <div class="space"></div>
-
-
-                        <input type="text" id="txtInput" placeholder="Captcha"
-                               class="col-6 col-lg-2 form-control offset-1"
-                               onkeyup="checkCaptcha(this.value)"
-                               required/>
-                        <button id="refresh" class="btn btn-secondary my-0 my-sm-0 form-control col-2 col-lg-1"
-                                onclick="Captcha('mainCaptcha');">Refresh
-                        </button>
-                        <div class="col-9 col-lg-3 offset-1">
-                            <canvas id="captcha"></canvas>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-9 col-lg-3 offset-1">
+                                    <canvas id="captcha"></canvas>
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <input type="text" id="txtInput" placeholder="Captcha"
+                                       class="col-6 col-lg-2 form-control offset-1"
+                                       onkeyup="checkCaptcha(this.value)"
+                                       required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <button id="refresh" class="btn btn-secondary my-0 my-sm-0 form-control col-2 col-lg-1"
+                                        onclick="Captcha('mainCaptcha');">Refresh
+                                </button>
+                            </div>
+                        </div>
+
+
+
                         <input type="text" hidden="hidden" id="mainCaptcha">
                         <div class="space"></div>
                         <br><br><br>
