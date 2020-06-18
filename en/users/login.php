@@ -2,7 +2,6 @@
 <html>
 <body>
 <?php
-header('Content-Type: text/html; charset=iso-8859-1');
 
 include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt.php');
 include_once($_SERVER['DOCUMENT_ROOT'] .'/includes/functions/php/db_connection.php');
