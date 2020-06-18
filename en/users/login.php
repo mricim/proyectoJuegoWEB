@@ -1,4 +1,6 @@
-
+<!DOCTYPE html>
+<html>
+<body>
 <?php
 header('Content-Type: text/html; charset=iso-8859-1');
 
@@ -8,6 +10,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] .'/includes/functions/php/db_connection.p
     $loginMail = encrypt($_POST['loginMail']); //assert
     if ($loginMail != "") {
         echo userExists($loginMail);
+    } else {
+        echo "Error, user doesn't exist.";
     }
 
         //Si existe el usuario -> return 0
@@ -35,3 +39,5 @@ include_once($_SERVER['DOCUMENT_ROOT'] .'/includes/functions/php/db_connection.p
 
 
 ?>
+</body>
+</html>
