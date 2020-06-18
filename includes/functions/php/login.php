@@ -15,20 +15,20 @@ $error=''; // Variable para almacenar el mensaje de error
 
 
         // Estableciendo la conexion a la base de datos
-        conectar_db();
+       // conectar_db();
 
-        $mail    = encrypt($mail);
-        $password =  encryptPassword($password);
+//        $mail    = encrypt($mail);
+  //      $password =  encryptPassword($password);
+//
+    //    $sql = "SELECT name FROM users WHERE email = '" . $mail . "' and password='".$password."';";
+      //  $resultado = mysqli_query($conectar, $sql);
 
-        $sql = "SELECT name FROM users WHERE email = '" . $mail . "' and password='".$password."';";
-        $resultado = mysqli_query($conectar, $sql);
+        //            while($unrow = mysqli_fetch_array($resultado)){
+          //              $array_resultado[] = $unrow;
+            //        }
 
-                    while($unrow = mysqli_fetch_array($resultado)){
-                        $array_resultado[] = $unrow;
-                    }
-
-        if (count($array_resultado) > 0) {
-            $_SESSION['login_user_sys']=$username; // Iniciando la sesion
+        //if (count($array_resultado) > 0) {
+          //  $_SESSION['login_user_sys']=$username; // Iniciando la sesion
             echo "<script> window.location='/en/users/profile.php?Sessio=true'; </script>";
         } else {
             echo "El correo electrónico o la contraseña es inválida.";
