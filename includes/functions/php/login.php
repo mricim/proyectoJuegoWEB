@@ -5,36 +5,35 @@ include("/includes/functions/php/encrypt.php");
 session_start(); // Iniciando sesion
 $error=''; // Variable para almacenar el mensaje de error
 if (isset($_POST['submit'])) {
-if (empty($_POST['loginMail']) || empty($_POST['loginPass'])) {
-$error = "Username or Password is invalid";
-}
-else
-{
-// Define $username y $password
-$mail=$_POST['loginMail'];
-$password=$_POST['loginPass'];
+    if (empty($_POST['loginMail']) || empty($_POST['loginPass'])) {
+        $error = "Username or Password is invalid";
+    } else {
+        // Define $username y $password
+        $mail=$_POST['loginMail'];
+        $password=$_POST['loginPass'];
 
-// Estableciendo la conexion a la base de datos
-conectar_db();
+        // Estableciendo la conexion a la base de datos
+        conectar_db();
 
-$mail    = encrypt($mail);
-$password =  encryptPassword($password);
+        $mail    = encrypt($mail);
+        $password =  encryptPassword($password);
 
-$sql = "SELECT email, password FROM users WHERE email = '" . $mail . "' and password='".$password."';";
-$resultado = mysqli_query($conectar, $sql);
+        $sql = "SELECT email, password FROM users WHERE email = '" . $mail . "' and password='".$password."';";
+        $resultado = mysqli_query($conectar, $sql);
 
-            while($unrow = mysqli_fetch_array($resultado)){
-            	$array_resultado[] = $unrow;
-            }
+                    while($unrow = mysqli_fetch_array($resultado)){
+                        $array_resultado[] = $unrow;
+                    }
 
-            if (count($array_resultado) > 0) {
-		$_SESSION['login_user_sys']=$username; // Iniciando la sesion
-		header("location: /en/users/profile.php"); // Redireccionando a la pagina profile.php
-
-
+        if (count($array_resultado) > 0) {
+            $_SESSION['login_user_sys']=$username; // Iniciando la sesion
+            echo "<script> window.location='/en/users/profile.php?Sessio=true'; </script>";
+        } else {
+            $error = "El correo electrónico o la contraseña es inválida.";
+            echo '<script>window.setTimeout(function () {window.history.back();},10000);</script>';
+        }
+    }
 } else {
-$error = "El correo electrónico o la contraseña es inválida.";
-}
-}
+echo '<script>window.setTimeout(function () {window.history.back();},10000);</script>';
 }
 ?>

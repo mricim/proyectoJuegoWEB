@@ -17,6 +17,6 @@ $resultado = mysqli_query($conectar, $sql);
 $login_session = $resultado;
 if(!isset($login_session)){
 mysqli_close($con); // Cerrando la conexion
-header('Location: /en/index.html'); // Redirecciona a la pagina de inicio
+echo "<script> window.location='/en/index.html?'; </script>";
 }
 ?>
