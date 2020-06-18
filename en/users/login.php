@@ -7,6 +7,8 @@ header('Content-Type: text/html; charset=iso-8859-1');
 include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt.php');
 include_once($_SERVER['DOCUMENT_ROOT'] .'/includes/functions/php/db_connection.php');
 
+echo "Mail abans: ".$_POST['loginMail'];
+echo "Mail després: ".encrypt($_POST['loginMail'];
     $loginMail = encrypt($_POST['loginMail']); //assert
     if ($loginMail != "") {
         echo userExists($loginMail);
