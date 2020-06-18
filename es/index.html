@@ -1,0 +1,487 @@
+﻿<!doctype html>
+<html lang="es">
+
+<head>
+
+
+    <script>
+        function includeHTML(name) {
+            var z, i, elmnt, file, xhttp;
+            /* Loop through a collection of all HTML elements: */
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain atrribute:*/
+                //file = elmnt.getAttribute("w3-include-html");
+                file = elmnt.getAttribute(name);
+                if (file) {
+                    /* Make an HTTP request using the attribute value as the file name: */
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                            }
+                            if (this.status == 404) {
+                                elmnt.innerHTML = "Page not found.";
+                            }
+                            /* Remove the attribute, and call this function once more: */
+                            //elmnt.removeAttribute("w3-include-html");
+                            elmnt.removeAttribute(name);
+                            includeHTML();
+                        }
+                    }
+                    //xhttp.open("GET", file, true);
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /* Exit the function: */
+                    return;
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--
+    <div onload="includeHTML();" w3-include-html="\add\header.html">
+        <script>
+            includeHTML();
+        </script>
+    </div>
+    -->
+    <div head="\en\add\01head.html">
+        <script>
+            includeHTML("head");
+        </script>
+    </div>
+</head>
+
+
+<body style="background-color:#848484;" onload="cookieLanguage()">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <div menu="\en\add\02menu.html">
+        <script>
+            includeHTML("menu");
+        </script>
+    </div>
+    <!-- CAROUSEL -->
+    <style>
+        .carousel-item {
+            height: 65vh;
+            min-height: 350px;
+            background: no-repeat center center scroll;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+   <script type="text/javascript" src="/includes/js/cookies.js"></script>
+
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active"
+                style="background-image: url('/es/gallery/logoArmegis.png')">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="display-4">Armegis</h3>
+                    <p class="lead"></p>
+                </div>
+            </div>
+            <!-- Slide Two - Set the background image for this slide in the line below -->
+            <div class="carousel-item"
+                style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1920x1080')">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="display-4">Second Slide</h3>
+                    <p class="lead">This is a description for the second slide.</p>
+                </div>
+            </div>
+            <!-- Slide Three - Set the background image for this slide in the line below -->
+            <div class="carousel-item">
+<!--                style="background-image: url()">-->
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="display-4">Third Slide</h3>
+                    <p class="lead">This is a description for the third slide.</p>
+                </div>
+            </div>
+            <!-- Slide Three - Set the background image for this slide in the line below -->
+            <div class="carousel-item">
+<!--                style="background-image: url()">-->
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="display-4">Third Slide</h3>
+                    <p class="lead"></p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- FIN CAROUSEL -->
+
+
+
+
+
+
+
+
+
+
+
+    <div id="wrap">
+        <main role="main" id="main" class="container" style="padding-bottom: 70px;">
+
+            <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+                <img class="mr-3" src="../../assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
+                <div class="lh-100">
+                    <h6 class="mb-0 text-white lh-100"></h6>
+                    <small></small>
+                </div>
+            </div>
+
+
+
+
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <a class="my-2 p-2" href="/bootstrap.html" target="_blank"><img src="holder.js/300x200"> </a>
+                <a class="my-2 p-2" href="/bootstrap.html" target="_blank"><img src="holder.js/600x200"></a>
+                <a class="my-2 p-2" href="/bootstrap.html" target="_blank"><img src="holder.js/800x200"></a>
+                <a class="my-2 p-2" href="/bootstrap.html" target="_blank"><img src="holder.js/400x500"></a>
+                <img src="holder.js/100x200">
+                <img src="holder.js/200x200">
+                <img src="holder.js/900x200">
+            </div>
+
+
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+                <div class="media text-muted pt-3">
+                    <a href="/bootstrap.html"><img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded"></a>
+                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <a href="/bootstrap.html"><strong class="d-block text-gray-dark">@username</strong></a> Donec id elit non mi porta gravida at
+                        eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                        fermentum massa justo sit amet risus.
+                    </p>
+                </div>
+                <div class="media text-muted pt-3">
+                    <img data-src="holder.js/32x32?theme=thumb&bg=e83e8c&fg=e83e8c&size=1" alt="" class="mr-2 rounded">
+                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">@username</strong> Donec id elit non mi porta gravida at
+                        eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                        fermentum massa justo sit amet risus.
+                    </p>
+                </div>
+                <div class="media text-muted pt-3">
+                    <img data-src="holder.js/32x32?theme=thumb&bg=6f42c1&fg=6f42c1&size=1" alt="" class="mr-2 rounded">
+                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">@username</strong> Donec id elit non mi porta gravida at
+                        eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                        fermentum massa justo sit amet risus.
+                    </p>
+                </div>
+                <small class="d-block text-right mt-3">
+                    <a href="#">All updates</a>
+                </small>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="album py-5 bg-light rounded">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img class="card-img-top" data-src="holder.js/100px225" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                        <small class="text-muted">9 mins</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img class="card-img-top"
+                                    data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                        <small class="text-muted">9 mins</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img class="card-img-top"
+                                    data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                        <small class="text-muted">9 mins</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img class="card-img-top"
+                                    data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                        <small class="text-muted">9 mins</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img class="card-img-top"
+                                    data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                        <small class="text-muted">9 mins</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img class="card-img-top"
+                                    data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </div>
+                                        <small class="text-muted">9 mins</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
+                <div class="media text-muted pt-3">
+                    <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+                    <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <div class="d-flex justify-content-between align-items-center w-100">
+                            <strong class="text-gray-dark">Full Name</strong>
+                            <a href="#">Follow</a>
+                        </div>
+                        <span class="d-block">@username</span>
+                    </div>
+                </div>
+                <div class="media text-muted pt-3">
+                    <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+                    <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <div class="d-flex justify-content-between align-items-center w-100">
+                            <strong class="text-gray-dark">Full Name</strong>
+                            <a href="#">Follow</a>
+                        </div>
+                        <span class="d-block">@username</span>
+                    </div>
+                </div>
+                <div class="media text-muted pt-3">
+                    <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+                    <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <div class="d-flex justify-content-between align-items-center w-100">
+                            <strong class="text-gray-dark">Full Name</strong>
+                            <a href="#">Follow</a>
+                        </div>
+                        <span class="d-block">@username</span>
+                    </div>
+                </div>
+                <small class="d-block text-right mt-3">
+                    <a href="#">All suggestions</a>
+                </small>
+            </div>
+
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <h1>Hello, world!</h1>
+                <div class="row">
+                    <div class="col-sm border bg-light">
+                        Uno
+                    </div>
+                    <div class="col-sm border bg-light">
+                        Dos
+                    </div>
+                    <div class="col-sm border bg-light">
+                        Tres
+                    </div>
+                </div>
+            </div>
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <div class="container">
+                    <h1>Hello, world!</h1>
+                    <div class="row">
+                        <div class="col-sm border bg-light">
+                            Uno
+                        </div>
+                        <div class="col-sm border bg-light">
+                            Dos
+                        </div>
+                        <div class="col-sm border bg-light">
+                            Tres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <div class="container-fluid">
+                    <h1>Hello, world!</h1>
+                    <div class="row">
+                        <div class="col-sm border bg-light">
+                            One of three columns
+                        </div>
+                        <div class="col-sm border bg-light">
+                            One of three columns
+                        </div>
+                        <div class="col-sm border bg-light">
+                            One of three columns
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+    </div>
+
+
+    <!--<div footer="\example\add\90footer.html">
+        <script>
+            includeHTML("footer");
+        </script>
+    </div>-->
+
+
+    <div acceptCookies="\en\add\acceptCookies.html">
+        <script>
+            includeHTML("acceptCookies");
+        </script>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function handleLoad(e) {
+            console.log('Loaded import: ' + e.target.href);
+        }
+
+        function handleError(e, text) {
+            console.log('Error loading import: ' + e.target.href + ' Link:' + text + " Error:500");
+            alert("Ocurred error: 500\nError: " + text);
+            window.location.href = "error.html?error=500&text=" + text + "&ocurred=" + window.location;
+        }
+    </script>
+
+    <link rel="import" href="\en\add\91js.html" onload="handleLoad(event)" onerror="handleError(event, this.href)">
+</body>
+
+
+<!-- autocompletar muy guay 
+    https://codepen.io/massimo-cassandro/pen/NqRmMe
+https://www.w3schools.com/howto/howto_js_autocomplete.asp 
+
+
+
+
+
+
+
+
+https://www.linode.com/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7/
+https://getbootstrap.com/docs/4.0/examples/
+https://startbootstrap.com/snippets/
+https://github.com/imsky/holder
+https://bootsnipp.com/tags/4.0.0
+https://getbootstrap.com/docs/4.0/utilities/colors/
+https://getbootstrap.com/docs/4.1/examples/
+https://stackoverflow.com/questions/12902010/twitter-bootstrap-autocomplete-dropdown-combobox-with-knockoutjs
+http://sliptree.github.io/bootstrap-tokenfield/
+https://select2.org/getting-started/basic-usage
+https://www.html5rocks.com/en/tutorials/webcomponents/imports/
+https://css-tricks.com/snippets/javascript/get-url-variables/
+https://stackoverflow.com/questions/1415054/printing-text-in-a-certain-position-using-javascript
+-->
+
+</html>
