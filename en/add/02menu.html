@@ -35,12 +35,9 @@
                         </button>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li class="disabled" id="languageEn"><a href="/en/index.html">English</a>
-                            </li>
-                            <li id="languageEs"><a href="/es/index.html"
-                                   >Spanish</a></li>
-                            <li><a href="/cat/index.html"
-                                   id="languageCat">Catalan</a></li>
+                            <li class="disabled"><a id="languageEn" href="/en/index.html" onclick="createCookie('language','en')">English</a></li>
+                            <li><a id="languageEs" href="/es/index.html" onclick="createCookie('language','es')">Spanish</a></li>
+                            <li><a href="/cat/index.html" id="languageCat">Catalan</a></li>
                         </ul>
                     </div>
                 </li>
@@ -63,24 +60,25 @@
 </header>
 <script type="text/javascript">
     window.onload(cookieLanguage());
+
     function cookieLanguage() {
         var lang = getCookie("language");
         if (lang == "") {
-            createCookie("language","en");
+            createCookie("language", "en");
         }
     }
 
     function createCookie(name, value) {
         document.cookie = name + "=" + value + ";path=/";
-        console.log("Cookie creada :"+name+":"+value);
+        console.log("Cookie creada :" + name + ":" + value);
     }
 
     var buttonEn = document.getElementById("languageEn");
-    buttonEn.addEventListener("click",createCookie("language","en"));
+    buttonEn.addEventListener("click", createCookie("language", "en"));
     var buttonEs = document.getElementById("languageEs");
-    buttonEs.addEventListener("click",createCookie("language","es"));
+    buttonEs.addEventListener("click", createCookie("language", "es"));
     var buttonCat = document.getElementById("languageCat");
-    buttonCat.addEventListener("click",createCookie("language","cat"));
+    buttonCat.addEventListener("click", createCookie("language", "cat"));
 
     function getCookie(cname) { // Devuelve el contenido de la cookie o (0) si no existe
         var name = cname + "=";
@@ -97,4 +95,4 @@
         }
         return "";
     }
-    </script>
+</script>
