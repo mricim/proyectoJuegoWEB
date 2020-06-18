@@ -192,17 +192,25 @@
                     var instalador = versio[1];
                     var jar = versio[2];
                     var estat = versio[3];
+                    var id = versio[5];
                     //Versio 1
                     var versio2 = versions[i + 1].split(".");
                     var joc2 = versio2[0];
                     var instalador2 = versio2[1];
                     var jar2 = versio2[2];
                     var estat2 = versio2[3];
+                    var id2 = versio2[5];
 
 
                     if (joc == joc2 && instalador == instalador2 && jar == jar2) {
                         if (estat == estat2) {
-                            versions.splice(i + 1, 1);
+                            if (id < id2) {
+                                versions.splice(i, 1);
+                            } else if (id > id2) {
+                                versions.splice(i + 1, 1);
+                            } else {
+                                versions.splice(i + 1, 1);
+                            }
                         } else if (estat < estat2) {
                             versions.splice(i, 1);
                         } else if (estat2 < estat) {

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>PROVA</h3>
+<script>
+function getParameterByName(name) {
+name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+results = regex.exec(location.search);
+return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+var user = getParameterByName('Mail');
+
+document.write(user);
+</script>
+</body>
+</html>
