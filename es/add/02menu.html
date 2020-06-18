@@ -39,7 +39,7 @@
                             </li>
                             <li id="languageEs"><a href="/es/index.html"
                                    >Spanish</a></li>
-                            <li><a href="/es/index.hmtl"
+                            <li><a href="/cat/index.hmtl"
                                    id="languageCat">Catalan</a></li>
                         </ul>
                     </div>
@@ -51,7 +51,21 @@
 
 
         </div>
+        <script type="text/javascript">
+            function cookieLanguage() {
+                var lang = getCookie("language");
+                if (lang == "") {
+                    createCookie("language","en");
+                }
+            }
 
+            var buttonEn = document.getElementById("languageEn");
+            buttonEn.addEventListener("click",createCookie("language","en"));
+            var buttonEs = document.getElementById("languageEs");
+            buttonEs.addEventListener("click",createCookie("language","es"));
+            var buttonCat = document.getElementById("languageCat");
+            buttonCat.addEventListener("click",createCookie("language","cat"));
+        </script>
     </nav>
     <!-- FIN DEL MENU-->
     <div class="nav-scroller bg-white shadow-sm">
@@ -61,18 +75,3 @@
     </div>
     <!-- FIN MENU 2 -->
 </header>
-<script type="text/javascript">
-    function cookieLanguage() {
-        var lang = getCookie("language");
-        if (lang == "") {
-            createCookie("language","en");
-        }
-    }
-
-    var buttonEn = document.getElementById("languageEn");
-    buttonEn.addEventListener("click",createCookie("language","en"));
-    var buttonEs = document.getElementById("languageEs");
-    buttonEs.addEventListener("click",createCookie("language","es"));
-    var buttonCat = document.getElementById("languageCat");
-    buttonCat.addEventListener("click",createCookie("language","cat"));
-    </script>
