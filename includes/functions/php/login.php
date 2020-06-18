@@ -5,12 +5,14 @@ include("/includes/functions/php/encrypt.php");
 session_start(); // Iniciando sesion
 $error=''; // Variable para almacenar el mensaje de error
 
-    if (empty($_POST['loginMail']) || empty($_POST['loginPass'])) {
-        $error = "Username or Password is invalid";
-    } else {
-        // Define $username y $password
+ // Define $username y $password
         $mail=$_POST['loginMail'];
         $password=$_POST['loginPass'];
+
+    if (empty($mail) || empty($password)) {
+        echo '<script>window.setTimeout(function () {window.history.back();alert("Error");},10000);</script>';
+    } else {
+
 
         // Estableciendo la conexion a la base de datos
         conectar_db();
@@ -18,7 +20,7 @@ $error=''; // Variable para almacenar el mensaje de error
         $mail    = encrypt($mail);
         $password =  encryptPassword($password);
 
-        $sql = "SELECT email, password FROM users WHERE email = '" . $mail . "' and password='".$password."';";
+        $sql = "SELECT name FROM users WHERE email = '" . $mail . "' and password='".$password."';";
         $resultado = mysqli_query($conectar, $sql);
 
                     while($unrow = mysqli_fetch_array($resultado)){
