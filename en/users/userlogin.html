@@ -77,8 +77,6 @@
             <div class="containter">
                 <div class="row justify-content-md-center">
                     <div class="row">
-                        <p>
-
                             <script>
                                 function getParameterByName(name) {
                                     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -99,7 +97,7 @@
 
                                 var buttonChangePass = document.getElementById("buttonChangePass");
                                 buttonChangePass.addEventListener("click", function () {
-                                    window.location="/en/user/newPass.html?Mail="+ getParameterByName("User")+";
+                                    window.location="/en/user/newPass.html?Mail="+ getParameterByName("User");
                                 });
                             </script>
                     </div>
