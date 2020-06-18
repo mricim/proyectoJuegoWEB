@@ -4,7 +4,7 @@ include("/includes/functions/php/encrypt.php");
 
 session_start(); // Iniciando sesion
 $error=''; // Variable para almacenar el mensaje de error
-if (isset($_POST['submit'])) {
+
     if (empty($_POST['loginMail']) || empty($_POST['loginPass'])) {
         $error = "Username or Password is invalid";
     } else {
@@ -29,11 +29,9 @@ if (isset($_POST['submit'])) {
             $_SESSION['login_user_sys']=$username; // Iniciando la sesion
             echo "<script> window.location='/en/users/profile.php?Sessio=true'; </script>";
         } else {
-            $error = "El correo electrónico o la contraseña es inválida.";
+            echo "El correo electrónico o la contraseña es inválida.";
             echo '<script>window.setTimeout(function () {window.history.back();},10000);</script>';
         }
     }
-} else {
-echo '<script>window.setTimeout(function () {window.history.back();},10000);</script>';
-}
+
 ?>
