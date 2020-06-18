@@ -29,11 +29,11 @@ include_once($_SERVER['DOCUMENT_ROOT'] .'/includes/functions/php/db_connection.p
             if (count($array_resultado) > 0) {
                // echo '<br>El usuario con email = '. $mail . 'ya existe.';
                mysqli_close($conectar);
-                echo "<script> window.location='../../../en/users/userlogin.html?Login=true&User='.$loginMail; </script>";
+                echo "<script> window.location='../../../en/users/userlogin.html?Login=true&User=".$loginMail."; </script>";
 
             } else {
                 mysqli_close($conectar);
-                echo "<script> window.location='../../../en/users/userlogin.html?Login=false&User='.$loginMail; </script>";
+                echo "<script> window.location='../../../en/users/userlogin.html?Login=false&User=".$loginMail."; </script>";
             }
 		}
 
