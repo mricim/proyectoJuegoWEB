@@ -1,9 +1,8 @@
 <?php
-include('postlogincall.php');
+include('session.php');
 ?>
-<!DOCTYPE HMTL>
-<html lang="es">
-
+<!DOCTYPE HTML>
+<html>
 <head>
     <script>
         function includeHTML(name) {
@@ -41,14 +40,6 @@ include('postlogincall.php');
             }
         }
     </script>
-    <!--
-    <div onload="includeHTML();" w3-include-html="\add\header.html">
-        <script>
-            includeHTML();
-        </script>
-    </div>
-    -->
-
 
     <div head="..\add\01head.html">
         <script>
@@ -57,49 +48,28 @@ include('postlogincall.php');
     </div>
 
 
-    <!-- Funciones JS-->
     <script src="\includes\js\parameter.js"></script>
-    <!-- Funciones JS FIN-->
 
     <script src="https://www.google.com/recaptcha/api.js?render=6LctbbsUAAAAAHVc5Cp-j8FZKOZG1wAH0eUV690D"></script>
 
 </head>
-
 <body>
-<b style="background-color:#848484;">
-    <div menu="..\add\02menu.html">
-        <script>
-            includeHTML("menu");
-        </script>
-    </div>
+<!--header start here-->
+<h1>Página de Inicio</h1>
+<div class="header agile">
+	<div class="wrap">
+		<div class="login-main wthree">
+			<div class="login">
+			<h3>Bienvenid@ al sistema  <i><?php echo $login_session; ?></i></h3>
+
+			<div class="clear"> </div>
+				<h4><a href="logout.php"> Cerrar sesión</a></h4>
+			</div>
 
 
-    <main class="container" role="main" style="padding-bottom: 70px;">
-        <div class="my-3 p-4 bg-white rounded shadow-sm">
-            <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register compled</h6>
-            <div class="containter">
-                <div class="row justify-content-md-center">
-                    <div class="row">
-                        <h3>Bienvenid@ al sistema  <i><?php echo $login_session; ?></i></h3>
+		</div>
+	</div>
+</div>
 
-                        			<div class="clear"> </div>
-                        				<h4><a href="logout.php"> Cerrar sesión</a></h4>
-                        			</div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!--<div footer="..\add\90footer.html">
-                <script>
-                    includeHTML("footer");
-                </script>
-            </div>-->
-        </div>
-        <link rel="import" href="\en\add\91js.html" onload="handleLoad(event)"
-              onerror="handleError(event, this.href)">
-
-    </main>
-</b>
 </body>
 </html>

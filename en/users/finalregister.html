@@ -279,7 +279,7 @@
                         <input aria-label="password" class="form-control col-6 col-lg-2 offset-1 offset-lg-2"
                                id="password" name="password" placeholder="Password" type="password"
                                onkeyup="checkPass(this.value)" required>
-                        <p id="password-strength-text" class="col-2 col-lg-2 form-control"></p>
+                        <p id="password-strength-text" class="col-2 col-lg-2"></p>
                         <div class="clearfix"></div>
                         <div class="space"></div>
                         <input aria-label="name" class="form-control col-10 col-lg-4 offset-1" id="user"
@@ -290,20 +290,19 @@
                         <div class="space"></div>
 
 
-                        <div class="col-9 col-lg-3 offset-1">
+                        <div class="col-9 col-lg-3 offset-4">
                             <canvas id="captcha"></canvas>
                         </div>
                         <button id="refresh" class="btn btn-secondary my-0 my-sm-0 form-control col-2 col-lg-1"
                                 onclick="Captcha('mainCaptcha');">Refresh
                         </button>
-                        <input type="text" id="txtInput" placeholder="Captcha" class="col-6 col-lg-2 form-control offset-2"
+                        <input type="text" id="txtInput" placeholder="Captcha" class="col-6 col-lg-2 form-control offset-5"
                                onkeyup="checkCaptcha(this.value)"
                                required/>
                         <input type="text" hidden="hidden" id="mainCaptcha">
                         <div class="space"></div>
                         <br><br><br>
 
-                        <br><br><br>
                         <button class="btn btn-outline-success my-0 my-sm-0 col-lg-2 offset-5" id="button_sender"
                                 name="button_sender"
                                 type="submit" disabled>Register

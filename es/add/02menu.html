@@ -52,11 +52,16 @@
 
         </div>
         <script type="text/javascript">
+            window.onload(cookieLanguage());
             function cookieLanguage() {
                 var lang = getCookie("language");
                 if (lang == "") {
                     createCookie("language","en");
                 }
+            }
+
+            function createCookie(name, value) {
+                document.cookie = name + "=" + value + ";path=/";
             }
 
             var buttonEn = document.getElementById("languageEn");
@@ -65,6 +70,22 @@
             buttonEs.addEventListener("click",createCookie("language","es"));
             var buttonCat = document.getElementById("languageCat");
             buttonCat.addEventListener("click",createCookie("language","cat"));
+
+            function getCookie(cname) { // Devuelve el contenido de la cookie o (0) si no existe
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
         </script>
     </nav>
     <!-- FIN DEL MENU-->
