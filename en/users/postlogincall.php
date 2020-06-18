@@ -5,6 +5,9 @@
 
 <body>
   <?php
+  include($_SERVER['DOCUMENT_ROOT'] . '/includes/functions/php/encrypt.php');
+  include_once($_SERVER['DOCUMENT_ROOT'] .'/includes/functions/php/db_connection.php');
+
   date_default_timezone_set('Europe/Madrid');
 
 
@@ -56,6 +59,8 @@
       echo '<input type="hidden" name="email" id="email" value="' . $UserEmail . '">';
 
       if (strpos($_POST['send'], 'beforeregister.html') !== false) {
+      echo strpos($_POST['send'], 'beforeregister.html') !== false;
+
         $t = date("y.m.d"); // e.g. "03.10.01"
         $hash=hash('gost', "a.l45Up=dF8t0".$UserEmail.$t,false);
         //$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -110,11 +115,12 @@
         echo '<input type="hidden" name="resultMail" id="resultMail" value="' . $x . '">';
 
       }
+
       echo '<input type="hidden" name="exit" id="exit" value="' . $score . '">';
       echo '</form><script>window.onload = function(){document.forms[\'form\'].submit();}</script>';
     } else {
       echo 'Please check the form'; //echo 'ERES ROBOT';
-      echo '<script>window.setTimeout(function () {window.history.back();},10000);</script>';
+     // echo '<script>window.setTimeout(function () {window.history.back();},10000);</script>';
     }
     //echo PHP_EOL.'Tu puntuaccion es de ' . $score;
   } else {

@@ -41,13 +41,9 @@
 
     function encryptPassword($pass,$mail,$user) {
         $numChar = strlen($mail);
-
         $pass = $mail . $pass . $user;
         $aux = hash('sha256',$pass);
-        //$pass = $aux . $user;
-        //$aux = hash('sha256',$pass);
         $pass = $aux . $numChar;
-
         return $pass;
     }
 ?>

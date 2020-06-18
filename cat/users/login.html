@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <script>
+        function includeHTML(name) {
+            var z, i, elmnt, file, xhttp;
+            // Loop through a collection of all HTML elements:
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                //search for elements with a certain atrribute:
+                //file = elmnt.getAttribute("w3-include-html");
+                file = elmnt.getAttribute(name);
+                if (file) {
+                    // Make an HTTP request using the attribute value as the file name:
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                            }
+                            if (this.status == 404) {
+                                elmnt.innerHTML = "Page not found.";
+                            }
+                            // Remove the attribute, and call this function once more:
+                            //elmnt.removeAttribute("w3-include-html");
+                            elmnt.removeAttribute(name);
+                            includeHTML();
+                        }
+                    }
+                    //xhttp.open("GET", file, true);
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    // Exit the function:
+                    return;
+                }
+            }
+        }
+    </script>
+    <!--
+    <div onload="includeHTML();" w3-include-html="\add\header.html">
+        <script>
+            includeHTML();
+        </script>
+    </div>
+                        //col-8 col-sm-8 col-md-6 col-lg-4 col-xl-4
+    -->
+    <div head="..\add\01head.html">
+        <script>
+            includeHTML("head");
+        </script>
+    </div>
+
+
+    <!-- Funciones JS-->
+    <script src="\includes\js\parameter.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- Funciones JS FIN-->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LctbbsUAAAAAHVc5Cp-j8FZKOZG1wAH0eUV690D"></script>
+
+</head>
+
+
+<body style="background-color:#848484;">
+<div menu="..\add\02menu.html">
+    <script>
+        includeHTML("menu");
+    </script>
+</div>
+
+
+<main class="container" role="main" style="padding-bottom: 70px;">
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Login</h6>
+        <div class="containter">
+            <form action="/cat/users/postlogincall.php" id="comment_form" method="POST">
+                <div class="row">
+                    <input aria-label="User" class="form-control col-10 col-lg-4 offset-1"
+                           placeholder="Email" type="text" id="loginMail" onkeyup="loginMailExists(this.value)" name="loginMail">
+                    <input aria-label="Password"
+                           class="form-control col-10 col-lg-4 offset-1" placeholder="Password" type="password" name="loginPass">
+                    <input class="recaptcha_response" id="recaptcha_response" name="recaptcha_response"
+                           type="hidden">
+                    <input class="send" id="send" name="send" type="hidden" value='postlogin.html'>
+                    <button class="btn btn-outline-success my-0 my-sm-0 offset-1" disabled name="button_sender"
+                            type="submit" id="buttonLogin">Login
+                    </button>
+                    <!-- -->
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        function userExists(mail) {
+            $.ajax({
+                method: "POST",
+                url: "/includes/functions/php/user_exists.php",
+                data: {
+                    m: mail
+                },
+                success: function (mail) {
+                    if (mail == "0" || mail == 0) {
+                        $("#buttonRegister").prop('disabled', true);
+                        $("#buttonLogin").prop('disabled', false);
+                        $("#email").prop("style", "border: 1px solid red")
+                    } else {
+                        $("#email").removeAttr("style");
+                        $("#buttonRegister").prop('disabled', false);
+                        $("#buttonLogin").prop('disabled', true);
+                    }
+                }
+            });
+        }
+
+        function loginMailExists(mail) {
+            userExists(mail);
+        }
+
+        function checkMail(mail) {
+            if (!(/^([a-zA-Z0-9._]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,4})$/.test(mail))) {
+                $("#email").prop("style", "border: 1px solid red");
+                $("#buttonRegister").prop('disabled', true);
+            } else {
+                userExists(mail);
+            }
+        }
+    </script>
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register</h6>
+        <div class="containter">
+            <form action="/cat/users/postlogincall.php" id="comment_form" method="POST">
+                <div class="row">
+                    <input aria-label="email" class="form-control col-10 col-lg-4 offset-1"
+                           id="email" name="email" placeholder="Email" type="text" onkeyup="checkMail(this.value)">
+                    <input aria-label="UserName"
+                           class="form-control col-10 col-lg-4 offset-1" id="username" name="username"
+                           placeholder="User Name" type="text">
+                    <input class="recaptcha_response" id="recaptcha_response" name="recaptcha_response"
+                           type="hidden">
+                    <input class="send" id="send" name="send" type="hidden" value='beforeregister.html'>
+                    <button class="btn btn-outline-success my-0 my-sm-0 offset-1" disabled name="button_sender"
+                            type="submit" id="buttonRegister">Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="my-5 p-3 bg-white rounded shadow-sm">
+        <div class="containter">
+            <div class="row justify-content-md-center">
+                This site is protected by reCAPTCHA and the Google&nbsp;
+                <a href="https://policies.google.com/privacy">Privacy Policy</a>&nbsp;and&nbsp;
+                <a href="https://policies.google.com/terms">Terms of Service</a>&nbsp;apply.
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="\includes\reCaptcha\reCaptcha.js" type="text/javascript"></script>
+<script>
+    var inputText = document.getElementsByClassName('send');
+    //alert(inputText[1].value+" "+inputText[1].value.charAt(0));
+    if (inputText[1].value.charAt(0) != 'h') {
+        var url = window.location.href;
+        var usedUrl = window.location.href.slice(0, url.lastIndexOf("/"));
+        for (i = 0; i < inputText.length; i++) {
+            var cog = inputText[i].value;
+            inputText[i].value = usedUrl + '/' + cog;
+        }
+    }
+</script>
+<script>
+    window.setTimeout(function () {
+        if (document.getElementsByName('recaptcha_response')[0].value == "" || document.getElementsByName('recaptcha_response')[1].value == "") {
+            location.reload();
+        } else {
+            var buttons = document.getElementsByName('button_sender');
+            for (i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = false;
+            }
+        }
+    }, 3000);
+</script>
+
+
+<!--<div footer="..\add\90footer.html">
+    <script>
+        includeHTML("footer");
+    </script>
+</div>-->
+<link href="\en\add\91js.html" onerror="handleError(event, this.href)" onload="handleLoad(event)" rel="import">
+</body>
+
+
+</html>

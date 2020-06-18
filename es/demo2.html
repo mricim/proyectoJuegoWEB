@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+	<script>
+        function includeHTML(name) {
+            var z, i, elmnt, file, xhttp;
+            // Loop through a collection of all HTML elements:
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                //search for elements with a certain atrribute:
+                //file = elmnt.getAttribute("w3-include-html");
+                file = elmnt.getAttribute(name);
+                if (file) {
+                    // Make an HTTP request using the attribute value as the file name:
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                            }
+                            if (this.status == 404) {
+                                elmnt.innerHTML = "Page not found.";
+                            }
+                            // Remove the attribute, and call this function once more:
+                            //elmnt.removeAttribute("w3-include-html");
+                            elmnt.removeAttribute(name);
+                            includeHTML();
+                        }
+                    }
+                    //xhttp.open("GET", file, true);
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    // Exit the function:
+                    return;
+                }
+            }
+        }
+	</script>
+	<div head="\example\add\01head.html">
+		<script>
+            includeHTML("head");
+		</script>
+	</div>
+
+
+	<!-- Funciones JS-->
+	<script src="\includes\js\parameter.js"></script>
+	<!-- Funciones JS FIN-->
+</head>
+
+
+<body style="background-color:#848484;">
+<div menu="\example\add\02menu.html">
+	<script>
+        includeHTML("menu");
+	</script>
+</div>
+
+
+<main class="container" role="main" style="padding-bottom: 70px;">
+
+	<div class="my-3 p-3 bg-white rounded shadow-sm">
+		<h6 class="border-bottom border-gray pb-2 mb-5 md-5">Ejemplo 1</h6>
+		<div class="container-fluid">
+			<div class="row">
+
+
+				AQUI PUEDES PONER TEXTO o lo que sea<br>
+				Si te fijas solo tienes que repetir<br>
+				una y otra vez este codigo<br>
+				<xmp>
+					<div class="my-3 p-3 bg-white rounded shadow-sm">
+						<h6 class="border-bottom border-gray pb-2 mb-5 md-5">Ejemplo 1</h6>
+						<div class="container-fluid">
+							<div class="row">
+								Aqui contenido
+							</div>
+						</div>
+					</div>
+				</xmp><br>
+				o si lo prefieres puedes usar 1 caja para multiples contenedores<br>
+				<xmp>
+					<div class="my-3 p-3 bg-white rounded shadow-sm">
+						<h6 class="border-bottom border-gray pb-2 mb-5 md-5">Ejemplo 1</h6>
+						<div class="container-fluid">
+							<div class="row">
+								Aqui contenido
+							</div>
+
+							<div class="row">
+								Aqui contenido
+							</div>
+						</div>
+					</div>
+				</xmp><br>
+
+
+			</div>
+		</div>
+	</div>
+
+</main>
+
+
+<div footer="\example\add\90footer.html">
+	<script>
+        includeHTML("footer");
+	</script>
+</div>
+<link href="\example\add\91js.html" onerror="handleError(event, this.href)" onload="handleLoad(event)" rel="import">
+</body>
+
+
+</html>
