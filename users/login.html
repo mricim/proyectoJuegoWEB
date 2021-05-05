@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!--PRELOADED HEAD-->
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /*loop through a collection of all HTML elements:*/
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain atrribute:*/
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /*make an HTTP request using the attribute value as the file name:*/
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            /*remove the attribute, and call this function once more:*/
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /*exit the function:*/
+                    return;
+                }
+            }
+        };
+    </script>
+    <div w3-include-html="\add\01head.html"></div>
+    <!--
+    <script>
+        var loadJS = function (url, implementationCode, location) {
+            //url is URL of external file, implementationCode is the code
+            //to be called from the file, location is the location to 
+            //insert the <script> element
+
+            var scriptTag = document.createElement('script');
+            scriptTag.src = url;
+
+            scriptTag.onload = implementationCode;
+            scriptTag.onreadystatechange = implementationCode;
+
+            location.appendChild(scriptTag);
+        };
+    </script>
+    -->
+    <script type="text/javascript" src="\includes/libs/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="\includes/libs/popper.min.js"></script>
+    <script type="text/javascript" src="\includes/bootstrap/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+    <!--PRELOADED HEAD FIN-->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LctbbsUAAAAAHVc5Cp-j8FZKOZG1wAH0eUV690D"></script>
+
+</head>
+
+
+<body style="background-color:#848484;">
+    <div w3-include-html="/add/02menu.html"></div>
+    <!--
+    <div w3-include-html="/add/03menudos.html"></div>
+    -->
+    <main role="main" id="main">
+
+
+    <main class="container" role="main" style="padding-bottom: 70px;">
+
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+            <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Login</h6>
+            <div class="containter">
+                <form action="\users/login.php" id="comment_form1" method="POST">
+                    <div class="row">
+                        <input aria-label="User" class="form-control col-10 col-lg-4 offset-1" placeholder="Email"
+                            type="text" id="loginMail" onkeyup="userExists(this.value,this.id,'buttonLogin')" name="loginMail">
+                        <input aria-label="Password" class="form-control col-10 col-lg-4 offset-1"
+                            placeholder="Password" type="password" name="loginPass">
+                        <input class="recaptcha_response" id="recaptcha_response1" name="recaptcha_response"
+                            type="hidden">
+                        <input class="send" id="send1" name="send" type="hidden" value='postlogin.html'>
+                        <button class="btn btn-outline-success my-0 my-sm-0 offset-1" disabled name="button_sender"
+                            type="submit" id="buttonLogin">Login
+                        </button>
+                        <!-- -->
+                    </div>
+                </form>
+            </div>
+        </div>
+       
+        <script type="text/javascript">
+
+            function userExists(mail,thisId,buttonId) {
+                //alert(buttonId)
+                $.ajax({
+                    method: "POST",
+                    url: "/includes/functions/php/user_exists.php",
+                    data: {
+                        m: mail
+                    },
+                    success: function (mail) {
+                        if (mail == "0" || mail == 0) {
+                            document.getElementById(buttonId).disabled;
+                            document.getElementById(thisId).style.border="red solid 1px";
+                        } else {
+                            document.getElementById(thisId).style.border="";
+                            document.getElementById(buttonId).disabled=false;
+                        }
+                    }
+                });
+            }
+
+            function checkMail(mail,thisId,buttonId) {
+                if (!(/^([a-zA-Z0-9._]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,4})$/.test(mail))) {
+                    $("#email").prop("style", "border: 1px solid red");
+                    $("#buttonRegister").prop('disabled', true);
+                } else {
+                    console.log('nope')
+                    userExists(mail,thisId,buttonId);
+                }
+            }
+        </script>
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+            <h6 class="border-bottom border-gray pb-2 mb-5 md-5">Register</h6>
+            <div class="containter">
+                <form action="\users/postlogincall.php" id="comment_form2" method="POST">
+                    <div class="row">
+                        <input aria-label="email" class="form-control col-10 col-lg-4 offset-1" id="email" name="email"
+                            placeholder="Email" type="text" onkeyup="checkMail(this.value,this.id,'buttonRegister')">
+                        <input aria-label="UserName" class="form-control col-10 col-lg-4 offset-1" id="username"
+                            name="username" placeholder="User Name" type="text">
+                        <input class="recaptcha_response" id="recaptcha_response2" name="recaptcha_response"
+                            type="hidden">
+                        <input class="send" id="send2" name="send" type="hidden" value='beforeregister.html'>
+                        <button class="btn btn-outline-success my-0 my-sm-0 offset-1" disabled name="button_sender"
+                            type="submit" id="buttonRegister">Register
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="my-5 p-3 bg-white rounded shadow-sm">
+            <div class="containter">
+                <div class="row justify-content-md-center">
+                    This site is protected by reCAPTCHA and the Google&nbsp;
+                    <a href="https://policies.google.com/privacy">Privacy Policy</a>&nbsp;and&nbsp;
+                    <a href="https://policies.google.com/terms">Terms of Service</a>&nbsp;apply.
+                </div>
+            </div>
+        </div>
+  
+
+    
+
+
+
+
+</main>
+<script src="\includes\reCaptcha\reCaptcha.js" type="text/javascript"></script>
+    <script>
+        var inputText = document.getElementsByClassName('send');
+        //alert(inputText[1].value+" "+inputText[1].value.charAt(0));
+        if (inputText[1].value.charAt(0) != 'h') {
+            var url = window.location.href;
+            var usedUrl = window.location.href.slice(0, url.lastIndexOf("/"));
+            for (i = 0; i < inputText.length; i++) {
+                var cog = inputText[i].value;
+                inputText[i].value = usedUrl + '/' + cog;
+            }
+        }
+    </script>
+    <script>
+        window.setTimeout(function () {
+            if (document.getElementsByName('recaptcha_response')[0].value == "" || document.getElementsByName('recaptcha_response')[1].value == "") {
+                location.reload();
+            } else {
+                var buttons = document.getElementsByName('button_sender');
+                for (i = 0; i < buttons.length; i++) {
+                    buttons[i].disabled = false;
+                }
+            }
+        }, 3000);
+    </script>
+<!--PRELOADED -->
+<div w3-include-html="\acceptCookies.html"></div>
+<!--
+    <div w3-include-html="\add\90footer.html" style="margin: 70px;"></div>
+    <object data="\add\90footer.html"></object>
+-->
+<script>
+setTimeout(() => {
+    if (getCookie('acceptCookies') == 0) {
+        //$('#modalCookies').modal('show');
+        $('#modalCookies').modal({ backdrop: 'static', keyboard: false });
+
+        var x = document.getElementById('selectorLanguageByModalCookies');
+        $.ajax({
+            method: "POST",
+            url: "\add/lang/languages.json",
+            success: function (output) {
+                //alert(output);
+                //console.log(output);
+                $.each(output, function (key, val) {
+                    $.each(val, function (key2, val2) {
+                        $.each(val2, function (key3, val3) {
+                        //console.log(val3);
+                        
+                        var option = document.createElement("option");
+                        option.text = key3+" - "+val3;
+                        option.value = val3;
+                        x.add(option);
+                    });
+                });
+                });
+            }
+        });
+    }
+}, 1000);
+
+</script>
+<script type="text/javascript">
+includeHTML();
+</script>
+<script type="text/javascript" src="\includes/js/cookies.js"></script>
+<script type="text/javascript" src="\includes/libs/offcanvas/offcanvas.js"></script>
+<script type="text/javascript" src="\includes/js/traductor.js"></script>
+<!--
+<script>
+var yourCodeToBeCalled = function () {
+    //your code goes here
+}
+loadJS('\add/91js.js', yourCodeToBeCalled, document.body);
+</script>
+-->
+<script>//POPPOVER
+$(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+    $('.pop').popover().click(function () {
+        setTimeout(function () {
+            $('.pop').popover('hide');
+        }, 2000);
+    });
+    $('.pop-lg').popover().click(function () {
+        setTimeout(function () {
+            $('.pop-lg').popover('hide');
+        }, 3000);
+    });
+});
+
+</script>
+<script>
+window.onload = function () {
+    setTimeout(() => {
+        traduccion();
+    }, 100);
+
+};
+</script>
+</body>
+
+
+</html>

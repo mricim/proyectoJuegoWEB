@@ -1,16 +1,16 @@
-function logValue(selectedLanguage) {
-    if (selectedLanguage == "") {
-        alert("Seleccione un idioma valido en el desplegable.");
-        //confirm('You chose option 3, didn\'t you?');
-        document.getElementById('my-input-id-min').setAttribute("onclick", "alert('Seleccione un idioma')");
-        document.getElementById('my-input-id-yes').setAttribute("onclick", "alert('Seleccione un idioma')");
-    } else {
-        document.getElementById('my-input-id-min').setAttribute("onclick", "createCookie('acceptCookies', 'min'); createCookie('lenguage', '" + selectedLanguage + "'); $('#exampleModal').modal('hide')");
-        document.getElementById('my-input-id-yes').setAttribute("onclick", "createCookie('acceptCookies', 'yes'); createCookie('lenguage', '" + selectedLanguage + "'); $('#exampleModal').modal('hide')");
+function selecionarIdioma(tipo){
+    seleccion=document.getElementById('selectorLanguageByModalCookies').value;
+    if(!seleccion){
+        alert("Seleccione un idioma");
+    }else{
+        createCookie('acceptCookies', tipo);
+        createCookie('language', seleccion);
+        $('#modalCookies').modal('hide');
+        setTimeout(() => {
+            traduccion();
+        }, 10);
     }
-
 }
-
 
 
 
@@ -31,8 +31,18 @@ function searchCookies(cname) { //Devuelve si existe (0) o no (1)
     }
     return 1;
 }
+function createCookie(cname, cvalue) {
+    setCookie(cname, cvalue, 364);
+}
 
-function getCookie(cname) { // Devuelve el contenido de la cookie o (0) si no existe
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/;SameSite=None; Secure ";
+}
+
+function getCookie(cname) { //lector de cookies
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -45,30 +55,8 @@ function getCookie(cname) { // Devuelve el contenido de la cookie o (0) si no ex
             return c.substring(name.length, c.length);
         }
     }
-    return "";
+    return 0;
 }
-
-function createCookie(name, value) {
-    document.cookie = name + "=" + value + ";path=/";
-}
-
-function tester() {
-    /*
-            $('#exampleModal').modal({
-                    backdrop: 'static',
-                    keyboard: false
-                }) //TODO (luego borrar)
-*/
-    var d = new Date();
-    d.setTime(d.getTime() + (6000));
-    document.cookie = "cookieTester=ok;expires=" + d.toUTCString() + ";path=/";
-    if (searchCookies("cookieTester") == 0) {
-        var ver2 = searchCookies("acceptCookies")
-        if (ver2 == 1) {
-            $('#exampleModal').modal({
-                backdrop: 'static',
-                keyboard: false
-            })
-        }
-    }
-}
+function deleteCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  }

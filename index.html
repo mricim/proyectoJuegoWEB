@@ -2,129 +2,275 @@
 <html lang="en">
 
 <head>
-    <script type="text/javascript">
-        function getCookie(cname) { //lector de cookies
-            var name = cname + "=";
-            var decodedCookie = decodeURIComponent(document.cookie);
-            var ca = decodedCookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return 0;
-        }
-    </script>
-
-    <script type="text/javascript">
-        var contenido = getCookie("lenguage");
-        if (contenido == 0) {
-            window.location.href = "\en";
-        } else {
-            window.location.href = "\\" + contenido; //Si tienes una cookie creada te mandara alla donde marque la coockie
-        }
-    </script>
-    <meta http-equiv="refresh" content="0; url=\en">
-
-
-
+    <!--PRELOADED HEAD-->
     <script>
-        function includeHTML(name) {
+        function includeHTML() {
             var z, i, elmnt, file, xhttp;
-            /* Loop through a collection of all HTML elements: */
+            /*loop through a collection of all HTML elements:*/
             z = document.getElementsByTagName("*");
             for (i = 0; i < z.length; i++) {
                 elmnt = z[i];
                 /*search for elements with a certain atrribute:*/
-                //file = elmnt.getAttribute("w3-include-html");
-                file = elmnt.getAttribute(name);
+                file = elmnt.getAttribute("w3-include-html");
                 if (file) {
-                    /* Make an HTTP request using the attribute value as the file name: */
+                    /*make an HTTP request using the attribute value as the file name:*/
                     xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function() {
-                            if (this.readyState == 4) {
-                                if (this.status == 200) {
-                                    elmnt.innerHTML = this.responseText;
-                                }
-                                if (this.status == 404) {
-                                    elmnt.innerHTML = "Page not found.";
-                                }
-                                /* Remove the attribute, and call this function once more: */
-                                //elmnt.removeAttribute("w3-include-html");
-                                elmnt.removeAttribute(name);
-                                includeHTML();
-                            }
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            /*remove the attribute, and call this function once more:*/
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
                         }
-                        //xhttp.open("GET", file, true);
+                    }
                     xhttp.open("GET", file, true);
                     xhttp.send();
-                    /* Exit the function: */
+                    /*exit the function:*/
                     return;
                 }
             }
-        }
+        };
     </script>
-    <div head="\example\add\01head.html"></div>
+    <div w3-include-html="\add\01head.html"></div>
+    <!--
     <script>
-        includeHTML("head");
+        var loadJS = function (url, implementationCode, location) {
+            //url is URL of external file, implementationCode is the code
+            //to be called from the file, location is the location to 
+            //insert the <script> element
+
+            var scriptTag = document.createElement('script');
+            scriptTag.src = url;
+
+            scriptTag.onload = implementationCode;
+            scriptTag.onreadystatechange = implementationCode;
+
+            location.appendChild(scriptTag);
+        };
     </script>
-    </div>
+    -->
+    <script type="text/javascript" src="\includes/libs/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="\includes/libs/popper.min.js"></script>
+    <script type="text/javascript" src="\includes/bootstrap/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+    <!--PRELOADED HEAD FIN-->
+
+
+    <style>
+        .carousel-inner {
+            background-color: white;
+        }
+
+        /*
+        .carousel-item {
+            height: 65vh;
+            min-height: 400px;
+            background: no-repeat center center scroll;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        */
+        .image-carousel {
+            min-height: 400px;
+            max-height: 400px;
+            min-width: 800px;
+            max-width: 1000px;
+        }
+
+        .carouselExampleIndicators {
+            max-height: 400px;
+        }
+    </style>
 </head>
 
 
+<body style="background-color:#848484;">
+    <div w3-include-html="/add/02menu.html"></div>
+    <!--
+    <div w3-include-html="/add/03menudos.html"></div>
+    -->
+    <main role="main" id="main">
+        <div style="padding-bottom: 16px;"></div>
+        
+
+        <!--CAROUSEL-->
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner">
+                <!-- Slide One - Set the background image for this slide in the line below -->
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <img class="d-block w-100 image-carousel" src="\images/logoArmegis.png" decoding="async"
+                            alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3 class="display-4">Armegis</h3>
+                            <p class="lead"></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide Two - Set the background image for this slide in the line below -->
+                <div class="carousel-item ">
+                    <div class="d-flex justify-content-center"></div>
+                    <img class="d-block w-100 image-carousel" src="\images/logo2.jpg" decoding="async"
+                        alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3 class="display-4">Armegis</h3>
+                        <p class="lead"></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide Three - Set the background image for this slide in the line below -->
+
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <!-- FIN CAROUSEL -->
 
 
-<body style="background-color:#848484;" onload="myFunction()">
-    <main role="main" id="main" class="container" style="padding-bottom: 70px;">
-        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
-            <img class="mr-3" src="../../assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
-            <div class="lh-100">
-                <h1 id="demo"></h1>
-                <small>Since 2019</small>
+        <div class="container-fluid">
+
+            <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+                <img class="mr-3" src="\images/logo2.jpg" alt="" width="48" height="48">
+                <div class="lh-100">
+                    <h6 class="mb-0 text-white lh-100"></h6>
+                    <small></small>
+                </div>
+            </div>
+
+
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title"
+                    data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle
+                    popover</button>
+                <button type="button" class="btn btn-lg btn-danger pop" data-toggle="popover" title="Popover title"
+                    data-content="And here's some amazing content. It's very engaging. Right?">Toggle
+                    popover (AutoClose)</button>
+                <button class="btn btn-dark btn-lg pop-lg" data-toggle="popover" title="Mute everyone"
+                    data-content="You have muted everyone, they can speak when they enable the microphone">Poppover auto
+                    close LG</button>
             </div>
         </div>
 
-        <script>
-            function myFunction() {
-                var x = document.domain;
-                //
-                //var position = x.indexOf(".") + 3;
-                //var corto = x.slice(0, 0 - position);
-                // BEFORE //var final = x.substring(x.indexOf(".") + 1);
-                var final = x.substring(0, x.indexOf('.'));
-                //
-                document.getElementById("demo").innerHTML = final;
-            }
-        </script>
-
-
-        <div class="album py-5 bg-light rounded">
-            <div class="container">
-                <ul>
-                    <li>
-                        <p>The page has moved to: <b>(EN)</b></p>
-
-                        <p><a href="\en">this page</a></p>
-
-                    </li>
-                    <li>
-                        <p>La web ha sido movida a: <b>(ES)</b></p>
-                        <p><a href="\es">esta pagina</a></p>
-                    </li>
-
-                </ul>
+        <div class="container-fluid">
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Launch demo modal
+                </button>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             </div>
         </div>
+
+
+
+
     </main>
-</body>
+    <!--PRELOADED -->
+    <div w3-include-html="\acceptCookies.html"></div>
+    <!--
+        <div w3-include-html="\add\90footer.html" style="margin: 70px;"></div>
+        <object data="\add\90footer.html"></object>
+    -->
+    <script>
+        setTimeout(() => {
+            if (getCookie('acceptCookies') == 0) {
+                //$('#modalCookies').modal('show');
+                $('#modalCookies').modal({ backdrop: 'static', keyboard: false });
 
+                var x = document.getElementById('selectorLanguageByModalCookies');
+                $.ajax({
+                    method: "POST",
+                    url: "\add/lang/languages.json",
+                    success: function (output) {
+                        //alert(output);
+                        //console.log(output);
+                        $.each(output, function (key, val) {
+                            $.each(val, function (key2, val2) {
+                                $.each(val2, function (key3, val3) {
+                                //console.log(val3);
+                                
+                                var option = document.createElement("option");
+                                option.text = key3+" - "+val3;
+                                option.value = val3;
+                                x.add(option);
+                            });
+                        });
+                        });
+                    }
+                });
+            }
+        }, 1000);
+
+    </script>
+    <script type="text/javascript">
+        includeHTML();
+    </script>
+    <script type="text/javascript" src="\includes/js/cookies.js"></script>
+    <script type="text/javascript" src="\includes/libs/offcanvas/offcanvas.js"></script>
+    <script type="text/javascript" src="\includes/js/traductor.js"></script>
+    <!--
+    <script>
+        var yourCodeToBeCalled = function () {
+            //your code goes here
+        }
+        loadJS('\add/91js.js', yourCodeToBeCalled, document.body);
+    </script>
+-->
+    <script>//POPPOVER
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
+            $('.pop').popover().click(function () {
+                setTimeout(function () {
+                    $('.pop').popover('hide');
+                }, 2000);
+            });
+            $('.pop-lg').popover().click(function () {
+                setTimeout(function () {
+                    $('.pop-lg').popover('hide');
+                }, 3000);
+            });
+        });
+
+    </script>
+    <script>
+        window.onload = function () {
+            setTimeout(() => {
+                traduccion();
+            }, 100);
+
+        };
+    </script>
+</body>
 
 <!-- autocompletar muy guay 
     https://codepen.io/massimo-cassandro/pen/NqRmMe
-https://www.w3schools.com/howto/howto_js_autocomplete.asp -->
+https://www.w3schools.com/howto/howto_js_autocomplete.asp 
+
+
+https://www.linode.com/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7/
+https://getbootstrap.com/docs/4.0/examples/
+https://startbootstrap.com/snippets/
+https://github.com/imsky/holder
+https://bootsnipp.com/tags/4.0.0
+https://getbootstrap.com/docs/4.0/utilities/colors/
+https://getbootstrap.com/docs/4.1/examples/
+https://stackoverflow.com/questions/12902010/twitter-bootstrap-autocomplete-dropdown-combobox-with-knockoutjs
+http://sliptree.github.io/bootstrap-tokenfield/
+https://select2.org/getting-started/basic-usage
+https://www.html5rocks.com/tutorials/webcomponents/imports/
+https://css-tricks.com/snippets/javascript/get-url-variables/
+https://stackoverflow.com/questions/1415054/printing-text-in-a-certain-position-using-javascript
+-->
 
 </html>

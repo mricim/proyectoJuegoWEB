@@ -1,6 +1,19 @@
 {
+    "name":"mricim/example",
+    "description":"Por poner",
     "require": {
-        "mongodb/mongodb": "^1.8",
-        "phpmailer/phpmailer": "^6.3"
-    }
+        "phpmailer/phpmailer": "^6.4"
+    },
+    "license": [
+        "LGPL-2.1-only",
+        "GPL-3.0-or-later"
+     ],
+    "authors": [
+        {
+            "name": "Eric Casanova",
+            "email": "ericcasanova.m@gmail.com",
+            "homepage": "https://mricim.tk",
+            "role": "Owner"
+        }
+    ]
 }
