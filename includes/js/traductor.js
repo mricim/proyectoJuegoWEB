@@ -1,3 +1,16 @@
+function selecionarIdioma(tipo) {
+  seleccion = document.getElementById('selectorLanguageByModalCookies').value;
+  if (!seleccion) {
+      alert("Seleccione un idioma");
+  } else {
+      createCookie('acceptCookies', tipo);
+      createCookie('language', seleccion);
+      $('#modalCookies').modal('hide');
+      setTimeout(() => {
+          traduccion();
+      }, 10);
+  }
+}
 //https://www.solvetic.com/tutoriales/article/2733-como-tener-una-pagina-web-traducida-en-varios-idiomas/
 /*
 window.onload = function() {
@@ -8,12 +21,13 @@ window.onload = function() {
 */
 //$(document).ready(traduccion());
 function traduccion() {
+  /*
   protocolWeb = ('https:' == document.location.protocol ? 'https://' : 'http://');
   var js = document.createElement("script");
   js.type = "text/javascript";
   js.src = protocolWeb + document.domain + "/includes/js/cookies.js";
   document.body.appendChild(js);
-
+*/
 
   var loadLang = function (lang) {
     document.getElementsByTagName('html')[0].lang=lang;

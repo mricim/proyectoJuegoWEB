@@ -1,21 +1,3 @@
-function selecionarIdioma(tipo){
-    seleccion=document.getElementById('selectorLanguageByModalCookies').value;
-    if(!seleccion){
-        alert("Seleccione un idioma");
-    }else{
-        createCookie('acceptCookies', tipo);
-        createCookie('language', seleccion);
-        $('#modalCookies').modal('hide');
-        setTimeout(() => {
-            traduccion();
-        }, 10);
-    }
-}
-
-
-
-
-
 function searchCookies(cname) { //Devuelve si existe (0) o no (1)
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -31,6 +13,9 @@ function searchCookies(cname) { //Devuelve si existe (0) o no (1)
     }
     return 1;
 }
+
+//FUNCIONES DE COOKIES
+
 function createCookie(cname, cvalue) {
     setCookie(cname, cvalue, 364);
 }
@@ -57,6 +42,7 @@ function getCookie(cname) { //lector de cookies
     }
     return 0;
 }
+
 function deleteCookie(name) {
-    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-  }
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
